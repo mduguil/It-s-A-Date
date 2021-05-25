@@ -55,69 +55,71 @@ export default class DateForm extends React.Component {
 
   render() {
     return (
-      <div className="form-container">
-      <h1 className="form-title">Date</h1>
-      <form>
-        <div className="day-input-container">
-          <label className="day-label">
-            Day
-            <div className="day-options">
-              <select className="day"
-              value={this.state.day}
-              onChange={event => {
-                this.setState({
-                  day: event.target.value
-                });
-              }}>
-                {this.state.days.map(day => {
-                  return (
-                    <option value={day.date} key={day.date}>{day.dayName.slice(0, 3)} {day.date} </option>
-                  );
-                })}
-              </select>
-              <select
-              className="month"
-              value={this.state.selectedMonth}
-              onChange={event => {
-                const newSelectedMonth = +event.target.value;
-                const newDays = this.getDaysOfTheMonth(this.state.dayNames, newSelectedMonth, this.state.selectedYear);
-                this.setState({
-                  selectedMonth: newSelectedMonth,
-                  days: newDays
-                });
-              }}>
-                {this.state.months.map(monthNum => {
-                  return (
-                    <option
-                      value={monthNum}
-                      key={monthNum}
-                    >
-                      {this.getMonthName(monthNum)}
-                    </option>
-                  );
-                })}
-              </select>
-              <select
-                className="year"
-                value={this.state.selectedYear}
+      <div className="container">
+        <div className="form-container">
+        <h1 className="form-title">Date</h1>
+        <form>
+          <div className="day-input-container">
+            <label className="day-label">
+              Day
+              <div className="day-options">
+                <select className="day"
+                value={this.state.day}
                 onChange={event => {
-                  const newSelectedYear = +event.target.value;
-                  const newDays = this.getDaysOfTheMonth(this.state.dayNames, this.state.selectedMonth, newSelectedYear);
                   this.setState({
-                    selectedYear: event.target.value,
+                    day: event.target.value
+                  });
+                }}>
+                  {this.state.days.map(day => {
+                    return (
+                      <option value={day.date} key={day.date}>{day.dayName.slice(0, 3)} {day.date} </option>
+                    );
+                  })}
+                </select>
+                <select
+                className="month"
+                value={this.state.selectedMonth}
+                onChange={event => {
+                  const newSelectedMonth = +event.target.value;
+                  const newDays = this.getDaysOfTheMonth(this.state.dayNames, newSelectedMonth, this.state.selectedYear);
+                  this.setState({
+                    selectedMonth: newSelectedMonth,
                     days: newDays
                   });
                 }}>
-                {this.state.years.map(year => {
-                  return (
-                    <option value={year} key={year}>{year}</option>
-                  );
-                })}
-              </select>
-            </div>
-          </label>
+                  {this.state.months.map(monthNum => {
+                    return (
+                      <option
+                        value={monthNum}
+                        key={monthNum}
+                      >
+                        {this.getMonthName(monthNum)}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="year"
+                  value={this.state.selectedYear}
+                  onChange={event => {
+                    const newSelectedYear = +event.target.value;
+                    const newDays = this.getDaysOfTheMonth(this.state.dayNames, this.state.selectedMonth, newSelectedYear);
+                    this.setState({
+                      selectedYear: event.target.value,
+                      days: newDays
+                    });
+                  }}>
+                  {this.state.years.map(year => {
+                    return (
+                      <option value={year} key={year}>{year}</option>
+                    );
+                  })}
+                </select>
+              </div>
+            </label>
+          </div>
+        </form>
         </div>
-      </form>
       </div>
     );
   }

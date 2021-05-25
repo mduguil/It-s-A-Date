@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+/* body {
+  padding-top: 43px;
+} */
+
+.container {
+  padding-top: 43px;
+  max-width: 992px;
+  margin: 0 auto;
+  height: 100vh;
+}
