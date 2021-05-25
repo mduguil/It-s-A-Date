@@ -23,19 +23,13 @@
   align-items: center;
   border-radius: 5px;
   width: 350px;
+  padding: 10px;
 }
 
 .day-label {
-  padding-left: 12px;
   font-size: 1.4rem;
   color: #8d8d8d;
   font-weight: bold;
-}
-
-.day-options {
-  display: inline-block;
-  position: relative;
-  left: 50px;
 }
 
 select {

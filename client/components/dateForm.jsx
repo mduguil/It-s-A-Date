@@ -57,13 +57,15 @@ export default class DateForm extends React.Component {
     return (
       <div className="container">
         <div className="form-container">
-        <h1 className="form-title row">Date</h1>
+          <h1 className="form-title center row">Date</h1>
         <form>
           <div className="input-container row">
-            <label className="day-label">
-              Day
-              <div className="day-options">
-                <select className="day"
+              <label className="day-label row">
+                <div className="day-label col-half row">
+                  Day
+                </div>
+              <div className="day-options col-half row">
+                  <select className="day col-third"
                 value={this.state.day}
                 onChange={event => {
                   this.setState({
@@ -77,7 +79,7 @@ export default class DateForm extends React.Component {
                   })}
                 </select>
                 <select
-                className="month"
+                    className="month col-third"
                 value={this.state.selectedMonth}
                 onChange={event => {
                   const newSelectedMonth = +event.target.value;
@@ -99,7 +101,7 @@ export default class DateForm extends React.Component {
                   })}
                 </select>
                 <select
-                  className="year"
+                    className="year col-third"
                   value={this.state.selectedYear}
                   onChange={event => {
                     const newSelectedYear = +event.target.value;
