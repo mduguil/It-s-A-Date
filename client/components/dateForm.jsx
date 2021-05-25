@@ -65,7 +65,7 @@ export default class DateForm extends React.Component {
         }}>
           {this.state.days.map(day => {
             return (
-              <option value={day.date} key={day.date}>{day.date} {day.dayName}</option>
+              <option value={day.date} key={day.date}>{day.dayName.slice(0, 3)} {day.date} </option>
             );
           })}
         </select>
