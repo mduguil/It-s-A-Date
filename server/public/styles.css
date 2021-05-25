@@ -51,6 +51,11 @@ select:hover {
   align-items: center;
 }
 
+.time-input {
+  display: flex;
+  justify-content: flex-end;
+}
+
 input[type=time] {
   outline: none;
   border: none;
