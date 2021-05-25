@@ -27,8 +27,8 @@ export default class InputTime extends React.Component {
             type="time"
             id="time"
             step="60"
-            value={this.state.time}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            value={this.state.time} />
           </div>
         </label>
       </div>

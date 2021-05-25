@@ -97,3 +97,7 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
   width: 70px;
   border-radius: 15px;
 }
+
+input:hover {
+  cursor: pointer;
+}
