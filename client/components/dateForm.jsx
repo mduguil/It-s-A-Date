@@ -57,9 +57,9 @@ export default class DateForm extends React.Component {
     return (
       <div className="container">
         <div className="form-container">
-        <h1 className="form-title">Date</h1>
+        <h1 className="form-title row">Date</h1>
         <form>
-          <div className="day-input-container">
+          <div className="input-container row">
             <label className="day-label">
               Day
               <div className="day-options">

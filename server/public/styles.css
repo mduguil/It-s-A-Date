@@ -17,21 +17,17 @@
   flex-direction: column;
 }
 
-form {
-  width: 340px;
-}
-
-.day-input-container {
+.input-container {
   background-color: #e9e7e7;
   height: 50px;
-  display: flex;
   align-items: center;
   border-radius: 5px;
+  width: 350px;
 }
 
 .day-label {
   padding-left: 12px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #8d8d8d;
   font-weight: bold;
 }
@@ -45,7 +41,6 @@ form {
 select {
   width: 75px;
   height: 28px;
-  text-align: center;
   color: #575757;
   margin: 0 2px;
   font-size: 1rem;
