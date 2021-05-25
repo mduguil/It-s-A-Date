@@ -1,0 +1,47 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
+.container {
+  box-shadow: 0 0 29px 8px #ababab;
+}
+
+.form-title {
+  font-size: 2.3rem;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input-container {
+  background-color: #e9e7e7;
+  height: 50px;
+  align-items: center;
+  border-radius: 5px;
+  width: 350px;
+  padding: 10px;
+}
+
+.day-label {
+  font-size: 1.4rem;
+  color: #8d8d8d;
+  font-weight: bold;
+}
+
+select {
+  width: 75px;
+  height: 28px;
+  color: #575757;
+  margin: 0 2px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+select:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding-top: 43px;
+  max-width: 992px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+}
+
+.col-half {
+  flex-basis: 50%;
+}
+
+.col-third {
+  flex-basis: calc(100% / 3);
+}
+
+@media screen and (min-width: 567px) {
+  .input-container {
+    padding: 0 30px;
+    width: 850px;
+    height: 60px;
+  }
+
+  .day-label {
+    font-size: 1.6rem;
+  }
+
+  select {
+    width: 120px;
+    height: 33px;
+    margin: 0 5px;
+    font-size: 1rem;
+  }
+}
