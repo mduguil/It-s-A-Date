@@ -1,0 +1,49 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
+.form-title {
+  margin-top: 43px;
+  font-size: 2.3rem;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  width: 340px;
+}
+
+.day-input-container {
+  background-color: #e9e7e7;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.day-label {
+  padding-left: 12px;
+  font-size: 1.3rem;
+  color: #8d8d8d;
+  font-weight: bold;
+}
+
+.day-options {
+  display: inline-block;
+  position: relative;
+  left: 50px;
+}
+
+select {
+  width: 73px;
+  height: 28px;
+  text-align: center;
+  color: #575757;
+  margin: 0 2px;
+  font-size: 1rem;
+}
