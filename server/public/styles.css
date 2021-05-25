@@ -24,9 +24,10 @@
   border-radius: 5px;
   width: 350px;
   padding: 10px;
+  margin: 10px 0;
 }
 
-.day-label {
+label {
   font-size: 1.4rem;
   color: #8d8d8d;
   font-weight: bold;
