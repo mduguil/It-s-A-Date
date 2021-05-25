@@ -6,12 +6,13 @@ export default class DateForm extends React.Component {
     const selectedMonth = new Date().getMonth();
     const selectedYear = new Date().getFullYear();
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.state = {
       selectedMonth,
       selectedYear,
       dayNames,
+      monthNames,
       day: new Date().getDate(),
-      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
       years: this.populateNumbers(2021, 2025)
