@@ -40,10 +40,14 @@ form {
 }
 
 select {
-  width: 73px;
+  width: 75px;
   height: 28px;
   text-align: center;
   color: #575757;
   margin: 0 2px;
   font-size: 1rem;
+}
+
+select:hover {
+  cursor: pointer;
 }
