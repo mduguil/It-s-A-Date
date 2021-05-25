@@ -55,6 +55,8 @@ export default class DateForm extends React.Component {
 
   render() {
     return (
+      <div>
+      <h1 className="form-title">Date</h1>
       <form>
         <select className="day"
         value={this.state.day}
@@ -109,6 +111,7 @@ export default class DateForm extends React.Component {
           })}
         </select>
       </form>
+      </div>
     );
   }
 }
