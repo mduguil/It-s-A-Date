@@ -3,20 +3,19 @@ import InputTime from './inputTime';
 import InputSelect from './inputSelect';
 import InputActivity from './inputActivity';
 
+const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 export default class DateForm extends React.Component {
   constructor(props) {
     super(props);
     const selectedMonth = new Date().getMonth();
     const selectedYear = new Date().getFullYear();
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
     this.state = {
       selectedMonth,
       selectedYear,
       dayNames,
-      monthNames,
-      activities,
       selectedActivity: 'Eating',
       day: new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
@@ -32,7 +31,7 @@ export default class DateForm extends React.Component {
   }
 
   getMonthName(monthNum) {
-    return this.state.monthNames[monthNum];
+    return monthNames[monthNum];
   }
 
   populateNumbers(min, max) {
@@ -79,7 +78,7 @@ export default class DateForm extends React.Component {
           <form>
             <InputActivity
               value={this.state.selectedActivity}
-              options={this.state.activities}
+              options={activities}
               handleChange={event => {
                 this.setState({
                   selectedActivity: event.target.value
