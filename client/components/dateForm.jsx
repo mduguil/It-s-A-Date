@@ -79,7 +79,7 @@ export default class DateForm extends React.Component {
                   Day
                 </div>
                 <div className="day-options col-half row">
-                    <select className="day col-third"
+                  <select className="day col-third"
                   value={this.state.day}
                   onChange={event => {
                     this.setState({
