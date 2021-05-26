@@ -10,7 +10,7 @@ export default class InputActivity extends React.Component {
           </div>
           <div className="activity-input col-half row">
             <select
-              className="activity col-third"
+              className="activity col-half"
               value={this.props.selectedActivity}
               onChange={this.props.handleChange}
             >

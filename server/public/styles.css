@@ -47,11 +47,13 @@ select:hover {
   cursor: pointer;
 }
 
-.time-label {
+.time-label,
+.activity-label {
   align-items: center;
 }
 
-.time-input {
+.time-input,
+.activity-input {
   display: flex;
   justify-content: flex-end;
 }
@@ -100,4 +102,10 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
 
 input:hover {
   cursor: pointer;
+}
+
+.activity {
+  font-size: 1.2rem;
+  height: 34px;
+  width: 235px;
 }
