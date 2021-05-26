@@ -10,19 +10,16 @@ export default class InputActivity extends React.Component {
           </div>
           <div className="activity-input col-half row">
             <select className="activity col-third"
-              value={this.state.activity}
-              onChange={event => {
-                this.setState({
-                  activity: event.target.value
-                });
-              }}>
-                {
-                this.state.activities.map(activity => {
-                  return (
-                    <option value={activity} key={activity}>{activity}</option>
-                  );
-                })
-                }
+              value={this.props.selectedActivity}
+              onChange={this.props.handleChange}
+            >
+              {
+              this.props.options.map(activity => {
+                return (
+                  <option value={activity} key={activity}>{activity}</option>
+                );
+              })
+              }
             </select>
           </div>
         </label>

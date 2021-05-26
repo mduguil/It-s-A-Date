@@ -1,6 +1,7 @@
 import React from 'react';
 import InputTime from './inputTime';
 import InputSelect from './inputSelect';
+import InputActivity from './inputActivity';
 
 export default class DateForm extends React.Component {
   constructor(props) {
@@ -110,6 +111,16 @@ export default class DateForm extends React.Component {
               </label>
             </div>
             <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, 'time')}/>
+            <InputActivity
+              value={this.state.selectedActivity}
+              options={this.state.activities}
+              handleChange={event => {
+                this.setState({
+                  selectedActivity: event.target.value
+                });
+              }
+              }
+            />
           </form>
         </div>
       </div>
