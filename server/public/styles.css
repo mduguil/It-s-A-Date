@@ -24,9 +24,10 @@
   border-radius: 5px;
   width: 350px;
   padding: 10px;
+  margin: 10px 0;
 }
 
-.day-label {
+label {
   font-size: 1.4rem;
   color: #8d8d8d;
   font-weight: bold;
@@ -43,5 +44,60 @@ select {
 }
 
 select:hover {
+  cursor: pointer;
+}
+
+.time-label {
+  align-items: center;
+}
+
+.time-input {
+  display: flex;
+  justify-content: flex-end;
+}
+
+input[type=time] {
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  width: 200px;
+  height: 38px;
+  background-color: #e9e7e7;
+}
+
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+  border-radius: 10px;
+}
+
+input[type=time]::-webkit-datetime-edit-text {
+  padding: 19px 4px;
+}
+
+input[type=time]::-webkit-datetime-edit-hour-field {
+  font-size: 1.1rem;
+  color: black;
+  background-color: #fff;
+  width: 70px;
+  padding: 19px 13px;
+  border-radius: 15px;
+}
+
+input[type=time]::-webkit-datetime-edit-minute-field {
+  background-color: #fff;
+  width: 70px;
+  padding: 19px 13px;
+  border-radius: 15px;
+}
+
+input[type=time]::-webkit-datetime-edit-ampm-field {
+  background-color: #4ad1d1;
+  color: #fff;
+  padding: 19px 13px;
+  width: 70px;
+  border-radius: 15px;
+}
+
+input:hover {
   cursor: pointer;
 }
