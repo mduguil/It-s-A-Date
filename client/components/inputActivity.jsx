@@ -9,14 +9,15 @@ export default class InputActivity extends React.Component {
             Activity
           </div>
           <div className="activity-input col-half row">
-            <select className="activity col-third"
+            <select
+              className="activity col-third"
               value={this.props.selectedActivity}
               onChange={this.props.handleChange}
             >
               {
               this.props.options.map(activity => {
                 return (
-                  <option value={activity} key={activity}>{activity}</option>
+                  <option value={activity} key={activity} className={activity}>{activity}</option>
                 );
               })
               }
