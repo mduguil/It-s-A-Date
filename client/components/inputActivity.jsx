@@ -16,6 +16,13 @@ export default class InputActivity extends React.Component {
                   activity: event.target.value
                 });
               }}>
+                {
+                this.state.activities.map(activity => {
+                  return (
+                    <option value={activity} key={activity}>{activity}</option>
+                  );
+                })
+                }
             </select>
           </div>
         </label>
