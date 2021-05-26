@@ -16,6 +16,7 @@ export default class DateForm extends React.Component {
       dayNames,
       monthNames,
       activities,
+      selectedActivity: 'Eating',
       day: new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
