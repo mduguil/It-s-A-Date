@@ -1,5 +1,6 @@
 import React from 'react';
 import InputTime from './inputTime';
+import InputSelect from './inputSelect';
 
 export default class DateForm extends React.Component {
   constructor(props) {
@@ -16,12 +17,14 @@ export default class DateForm extends React.Component {
       day: new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
-      years: this.populateNumbers(2021, 2025)
+      years: this.populateNumbers(2021, 2025),
+      time: '15:30'
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
     this.getDaysInAMonth = this.getDaysInAMonth.bind(this);
     this.getDaysOfTheMonth = this.getDaysOfTheMonth.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
   }
 
   getMonthName(monthNum) {
@@ -55,6 +58,15 @@ export default class DateForm extends React.Component {
     return result;
   }
 
+  onSelectChange({ target: { value } }, fieldName, isString) {
+    const newSelectedFieldValue = isString ? value : +value;
+    const newDays = this.getDaysOfTheMonth(this.state.dayNames, newSelectedFieldValue, this.state.selectedYear);
+    this.setState({
+      [fieldName]: newSelectedFieldValue,
+      days: newDays
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -80,49 +92,21 @@ export default class DateForm extends React.Component {
                       );
                     })}
                   </select>
-                  <select
-                      className="month col-third"
+                  <InputSelect
                   value={this.state.selectedMonth}
-                  onChange={event => {
-                    const newSelectedMonth = +event.target.value;
-                    const newDays = this.getDaysOfTheMonth(this.state.dayNames, newSelectedMonth, this.state.selectedYear);
-                    this.setState({
-                      selectedMonth: newSelectedMonth,
-                      days: newDays
-                    });
-                  }}>
-                    {this.state.months.map(monthNum => {
-                      return (
-                        <option
-                          value={monthNum}
-                          key={monthNum}
-                        >
-                          {this.getMonthName(monthNum)}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  <select
-                      className="year col-third"
+                  options={this.state.months}
+                  onChange={event => this.onSelectChange(event, 'selectedMonth')}
+                  formatFunction={this.getMonthName}
+                  />
+                  <InputSelect
                     value={this.state.selectedYear}
-                    onChange={event => {
-                      const newSelectedYear = +event.target.value;
-                      const newDays = this.getDaysOfTheMonth(this.state.dayNames, this.state.selectedMonth, newSelectedYear);
-                      this.setState({
-                        selectedYear: event.target.value,
-                        days: newDays
-                      });
-                    }}>
-                    {this.state.years.map(year => {
-                      return (
-                        <option value={year} key={year}>{year}</option>
-                      );
-                    })}
-                  </select>
+                    options={this.state.years}
+                    onChange={event => this.onSelectChange(event, 'selectedYear')}
+                  />
                 </div>
               </label>
             </div>
-            <InputTime />
+            <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, 'time')}/>
           </form>
         </div>
       </div>
