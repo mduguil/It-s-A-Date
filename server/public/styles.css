@@ -8,6 +8,7 @@
 
 .form-title {
   font-size: 2.3rem;
+  color: #3d3d3d;
 }
 
 .form-container {
@@ -34,7 +35,7 @@ label {
 }
 
 select {
-  width: 75px;
+  width: 80px;
   height: 28px;
   color: #575757;
   margin: 0 2px;
@@ -108,4 +109,5 @@ input:hover {
   font-size: 1.2rem;
   height: 34px;
   width: 235px;
+  padding-left: 8px;
 }

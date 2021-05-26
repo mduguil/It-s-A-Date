@@ -77,6 +77,16 @@ export default class DateForm extends React.Component {
         <div className="form-container">
           <h1 className="form-title center row">Date</h1>
           <form>
+            <InputActivity
+              value={this.state.selectedActivity}
+              options={this.state.activities}
+              handleChange={event => {
+                this.setState({
+                  selectedActivity: event.target.value
+                });
+              }
+              }
+            />
             <div className="input-container row">
               <label className="row">
                 <div className="col-half row">
@@ -112,16 +122,6 @@ export default class DateForm extends React.Component {
               </label>
             </div>
             <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, 'time')}/>
-            <InputActivity
-              value={this.state.selectedActivity}
-              options={this.state.activities}
-              handleChange={event => {
-                this.setState({
-                  selectedActivity: event.target.value
-                });
-              }
-              }
-            />
           </form>
         </div>
       </div>

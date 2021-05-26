@@ -17,7 +17,7 @@ export default class InputActivity extends React.Component {
               {
               this.props.options.map(activity => {
                 return (
-                  <option value={activity} key={activity} className={activity}>{activity}</option>
+                  <option value={activity} key={activity} className={activity.toLowerCase()}>{activity}</option>
                 );
               })
               }
