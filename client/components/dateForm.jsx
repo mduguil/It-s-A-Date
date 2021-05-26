@@ -1,6 +1,10 @@
 import React from 'react';
 import InputTime from './inputTime';
 import InputSelect from './inputSelect';
+import InputActivity from './inputActivity';
+
+const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 export default class DateForm extends React.Component {
   constructor(props) {
@@ -8,12 +12,11 @@ export default class DateForm extends React.Component {
     const selectedMonth = new Date().getMonth();
     const selectedYear = new Date().getFullYear();
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.state = {
       selectedMonth,
       selectedYear,
       dayNames,
-      monthNames,
+      selectedActivity: 'Eating',
       day: new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
@@ -28,7 +31,7 @@ export default class DateForm extends React.Component {
   }
 
   getMonthName(monthNum) {
-    return this.state.monthNames[monthNum];
+    return monthNames[monthNum];
   }
 
   populateNumbers(min, max) {
@@ -73,13 +76,24 @@ export default class DateForm extends React.Component {
         <div className="form-container">
           <h1 className="form-title center row">Date</h1>
           <form>
+            <InputActivity
+              value={this.state.selectedActivity}
+              options={activities}
+              handleChange={event => {
+                this.setState({
+                  selectedActivity: event.target.value
+                });
+              }
+              }
+            />
             <div className="input-container row">
               <label className="row">
                 <div className="col-half row">
                   Day
                 </div>
                 <div className="day-options col-half row">
-                    <select className="day col-third"
+                  <select
+                  className="day col-third"
                   value={this.state.day}
                   onChange={event => {
                     this.setState({
