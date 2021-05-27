@@ -29,11 +29,14 @@ export default class PlacesModal extends React.Component {
                 });
               });
           }}>
-          <input
-            type="text"
-            value={this.state.searchInput}
-            onChange={({ target }) => this.setState({ searchInput: target.value })}
-          />
+          <div className="search-container row">
+            <i className="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              value={this.state.searchInput}
+              onChange={({ target }) => this.setState({ searchInput: target.value })}
+            />
+          </div>
         </form>
           {this.state.isfetching
             ? <div>Loading...</div>

@@ -126,3 +126,25 @@ input:hover {
 .selected-address {
   color: #a1a1a1;
 }
+
+.search-container {
+  background-color: #e9e7e7;
+  height: 55px;
+  border-radius: 5px;
+  padding: 15px 20px;
+}
+
+.search-container > input {
+  border: none;
+  background-color: #e9e7e7;
+  color: #504f4f;
+  font-size: 1.2rem;
+  width: 260px;
+  outline: none;
+}
+
+.search-icon {
+  font-size: 1.7rem;
+  color: #808080;
+  margin-right: 10px;
+}
