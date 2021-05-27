@@ -2,7 +2,7 @@ import React from 'react';
 import InputTime from './inputTime';
 import InputSelect from './inputSelect';
 import InputActivity from './inputActivity';
-import GetPlaces from './getPlaces';
+import SelectAddress from './selectAddress';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -126,7 +126,7 @@ export default class DateForm extends React.Component {
               </label>
             </div>
             <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, timeInputName, false)}/>
-            <GetPlaces />
+            <SelectAddress />
           </form>
         </div>
       </div>

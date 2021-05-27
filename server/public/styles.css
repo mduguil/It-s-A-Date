@@ -111,3 +111,7 @@ input:hover {
   width: 235px;
   padding-left: 8px;
 }
+
+.selected-address {
+  color: #a1a1a1;
+}
