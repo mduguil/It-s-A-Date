@@ -3,6 +3,7 @@ import InputTime from './inputTime';
 import InputSelect from './inputSelect';
 import InputActivity from './inputActivity';
 import SelectAddress from './selectAddress';
+import PlacesModal from './placesModal';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -25,7 +26,8 @@ export default class DateForm extends React.Component {
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
       years: this.populateNumbers(2021, 2025),
-      [timeInputName]: '15:30'
+      [timeInputName]: '15:30',
+      searchIsOpen: false
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
@@ -78,9 +80,11 @@ export default class DateForm extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="form-container">
-          <h1 className="form-title center row">Date</h1>
-          <form>
+          {this.state.searchIsOpen
+            ? <PlacesModal />
+            : <div className="form-container">
+            <h1 className="form-title center row">Date</h1>
+            <form>
             <InputActivity
               value={this.state.selectedActivity}
               options={activities}
@@ -126,9 +130,14 @@ export default class DateForm extends React.Component {
               </label>
             </div>
             <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, timeInputName, false)}/>
-            <SelectAddress />
+            <SelectAddress handleClick={event => {
+              this.setState({
+                searchIsOpen: true
+              });
+            }}/>
           </form>
         </div>
+            }
       </div>
     );
   }

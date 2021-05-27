@@ -6,7 +6,8 @@
   box-shadow: 0 0 29px 8px #ababab;
 }
 
-.form-title {
+.form-title,
+.search-title {
   font-size: 2.3rem;
   color: #3d3d3d;
 }
@@ -110,6 +111,16 @@ input:hover {
   height: 34px;
   width: 235px;
   padding-left: 8px;
+}
+
+.location-container {
+  margin-top: 13px;
+}
+
+.location-label {
+  font-size: 1.4rem;
+  color: #616161;
+  font-weight: 600;
 }
 
 .selected-address {
