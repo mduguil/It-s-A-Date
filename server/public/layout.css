@@ -9,10 +9,10 @@
 }
 
 .container {
-  padding-top: 43px;
+  padding-top: 15px;
   max-width: 992px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .row {
@@ -28,10 +28,8 @@
   flex-basis: calc(100% / 3);
 }
 
-@media screen and (min-width: 567px) {
+@media screen and (min-width: 467px) {
   .input-container {
-    padding: 0 30px;
-    width: 850px;
     height: 60px;
   }
 
@@ -44,5 +42,17 @@
     height: 33px;
     margin: 0 5px;
     font-size: 1rem;
+  }
+
+  .place-info {
+    margin-left: 12px;
+  }
+
+  .place-rating {
+    padding-top: 5px;
+  }
+
+  .place-address {
+    padding: px 0;
   }
 }
