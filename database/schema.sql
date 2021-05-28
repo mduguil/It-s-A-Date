@@ -6,7 +6,7 @@ drop schema "public" cascade;
 
 create schema "public";
 
-create table "users" (
+create table "public"."users" (
   "userId"         serial,
   "name"           text           not null,
   "phoneNumber"    numeric        not null,
@@ -17,7 +17,7 @@ create table "users" (
 );
 
 
-create table "contacts" (
+create table "public"."contacts" (
   "friendId"    serial,
   "name"        text           not null,
   "phoneNumber" numeric        not null,
@@ -25,7 +25,7 @@ create table "contacts" (
   primary key ("friendId")
 );
 
-create table "dates" (
+create table "public"."dates" (
   "dateId"     serial,
   "location"   text           not null,
   "day"        text           not null,

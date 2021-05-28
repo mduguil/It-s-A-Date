@@ -34,6 +34,23 @@ app.get('/api/contacts', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/dates', (req, res, next) => {
+  const dates = `
+    select "location",
+           "day",
+           "time",
+           "activity",
+           "notes"
+      from "dates"
+  `;
+
+  db.query(dates)
+    .then(result => {
+      res.status(200).json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/places', function (req, res, next) {
   const { query } = req;
   if (!query) {
