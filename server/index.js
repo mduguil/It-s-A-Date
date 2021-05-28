@@ -24,8 +24,8 @@ app.get('/api/places', function (req, res, next) {
       }
     })
     .then(res => res.json())
-    .then(userData => {
-      res.status(201).json(userData);
+    .then(placesData => {
+      res.status(201).json(placesData);
     })
     .catch(err => next(err));
 

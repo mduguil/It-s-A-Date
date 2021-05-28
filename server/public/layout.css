@@ -9,10 +9,10 @@
 }
 
 .container {
-  padding-top: 43px;
+  padding-top: 15px;
   max-width: 992px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .row {
@@ -30,8 +30,6 @@
 
 @media screen and (min-width: 567px) {
   .input-container {
-    padding: 0 30px;
-    width: 850px;
     height: 60px;
   }
 
