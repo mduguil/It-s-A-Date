@@ -34,7 +34,7 @@ export default class PlacesModal extends React.Component {
 
   render() {
     return (
-      <div className="form-container">
+      <div className="form-container search-modal">
         <h1 className="search-title center row">Search</h1>
         <form
           onSubmit={e => {
@@ -55,22 +55,32 @@ export default class PlacesModal extends React.Component {
         </form>
           {this.state.isfetching
             ? <div>Loading...</div>
-            : <ul className="search-list">
+            : <div className="search-list">
               {
                 this.state.places.map(
                   (place, i) => {
                     return (
-                      <li className="search-result" key={i}>
-                        <span className="place-name">{place.name}</span>
-                        <span className="place-rating">{place.rating}</span>
-                        <span className="place-address">{place.formatted_address}</span>
-                        <button className="set-button" onClick={() => { this.props.handleClick(place); }}>Set</button>
-                      </li>
+                      <div className="search-result" key={i}>
+                        <div className="place-img-container">
+                          <img className="place-img" src="https://complianz.io/wp-content/uploads/2019/03/placeholder-300x202.jpg" />
+                        </div>
+                        <div className="place-info">
+                          <div className="place-name">{place.name}</div>
+                          <div className="place-rating">
+                            {place.rating}
+                            <i className="far fa-star rating-icon"></i>
+                          </div>
+                          <div className="place-address">{place.formatted_address}</div>
+                          <div className="set-button-container">
+                            <button className="set-button" onClick={() => { this.props.handleClick(place); }}>Set</button>
+                          </div>
+                        </div>
+                      </div>
                     );
                   }
                 )
               }
-            </ul>
+            </div>
           }
       </div >
     );

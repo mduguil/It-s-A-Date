@@ -78,23 +78,16 @@ export default class DateForm extends React.Component {
     });
   }
 
-  handleData(placesData) {
-    this.setState({
-      places: placesData.results,
-      isfetching: false
-    });
-  }
-
   render() {
     return (
       <div className="container">
-        {this.state.address}
           {this.state.searchIsOpen
             ? <PlacesModal
             defaultSearch={this.state.selectedActivity}
             handleClick={place => {
               this.setState({
-                address: place.formatted_address
+                address: place.formatted_address,
+                searchIsOpen: false
               });
             }}/>
             : <div className="form-container">
@@ -145,11 +138,13 @@ export default class DateForm extends React.Component {
                 </label>
               </div>
               <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, timeInputName, false)}/>
-              <SelectAddress handleClick={event => {
-                this.setState({
-                  searchIsOpen: true
-                });
-              }}/>
+              <SelectAddress
+                address={this.state.address}
+                handleClick={event => {
+                  this.setState({
+                    searchIsOpen: true
+                  });
+                }}/>
           </form>
         </div>
             }

@@ -124,6 +124,10 @@ input:hover {
   font-weight: 600;
 }
 
+.address-container:hover {
+  cursor: pointer;
+}
+
 .selected-address {
   color: #a1a1a1;
   white-space: nowrap;
@@ -133,11 +137,6 @@ input:hover {
 
 .search-container {
   position: relative;
-
-  /* background-color: #e9e7e7;
-  height: 55px;
-  border-radius: 5px;
-  padding: 15px 20px; */
 }
 
 .search-input {
@@ -152,6 +151,10 @@ input:hover {
   padding: 5px 5px 5px 50px;
   transition: 0.3s all ease;
   border: 1px solid #e9e7e7;
+}
+
+.search-input:hover {
+  cursor: pointer;
 }
 
 .search-input:focus {
@@ -191,16 +194,48 @@ input:hover {
 }
 
 .search-result {
-  list-style-type: none;
-  background-color: rgb(243, 243, 243);
-  height: 91px;
+  background-color: rgb(250 250 250);
   border-radius: 5px;
   box-shadow: 0 2px 5px 1px #d7d7d7;
   margin: 11px 0;
+  display: flex;
+}
+
+.place-img-container {
+  display: flex;
+  flex: 0 1 145px;
+}
+
+.place-img {
+  max-width: 145px;
+}
+
+.place-info {
+  color: #969696;
+  font-size: 0.9rem;
+  width: 100%;
 }
 
 .place-name {
   font-weight: bold;
+  color: #404040;
+  font-size: 1rem;
+  padding-top: 5px;
+}
+
+.place-rating,
+.place-address {
+  padding: 1px 0;
+}
+
+.place-address {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.set-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .set-button {
@@ -210,4 +245,9 @@ input:hover {
   width: 50px;
   height: 22px;
   color: #ececec;
+  margin: 4px 5px 4px 0;
+}
+
+.set-button:hover {
+  cursor: pointer;
 }

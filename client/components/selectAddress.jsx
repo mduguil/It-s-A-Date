@@ -7,9 +7,9 @@ export default class SelectAddress extends React.Component {
         <div className="location-label row">
           Location
         </div>
-        <div className="input-container row" onClick={this.props.handleClick}>
+        <div className="input-container address-container row" onClick={this.props.handleClick}>
             <div className="selected-address">
-              3422 Priscilla Dr. yada yada
+              {this.props.address}
             </div>
         </div>
       </div>
