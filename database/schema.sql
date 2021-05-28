@@ -9,18 +9,17 @@ create schema "public";
 create table "user" (
   "userId"   serial,
   "name"      text           not null,
-  "phoneNumber"    integer           not null,
-  "friendId"     serial        not null,
+  "phoneNumber"    numeric   not null,
+  "friendId"     serial      not null,
   "createdAt" timestamptz(6) not null default now(),
   primary key ("userId")
 );
 
 
--- create table "contacts" (
---   "userId"   serial,
---   "name"      text           not null,
---   "phoneNumber"    integer           not null,
---   "friendId"     integer        not null,
---   "createdAt" timestamptz(6) not null default now(),
---   primary key ("userId")
--- );
+create table "contacts" (
+  "friendId"   serial,
+  "name"      text           not null,
+  "phoneNumber"    numeric   not null,
+  "createdAt" timestamptz(6) not null default now(),
+  primary key ("friendId")
+);
