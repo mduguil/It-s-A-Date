@@ -11,6 +11,7 @@ create table "users" (
   "name"           text           not null,
   "phoneNumber"    numeric        not null,
   "friendId"       serial         not null,
+  "dateId"         serial         not null,
   "createdAt"      timestamptz(6) not null default now(),
   primary key ("userId")
 );
