@@ -193,6 +193,12 @@ input:hover {
   overflow: hidden;
 }
 
+.loading-placeholder {
+  font-size: 1.3rem;
+  color: #969696;
+  margin: 18px auto;
+}
+
 .search-result {
   background-color: rgb(250 250 250);
   border-radius: 5px;

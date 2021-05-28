@@ -54,7 +54,7 @@ export default class PlacesModal extends React.Component {
           </div>
         </form>
           {this.state.isfetching
-            ? <div>Loading...</div>
+            ? <div className="loading-placeholder center">Loading...</div>
             : <div className="search-list">
               {
                 this.state.places.map(
