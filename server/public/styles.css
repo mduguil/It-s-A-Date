@@ -7,12 +7,14 @@
 }
 
 .form-title,
-.search-title {
+.search-title,
+.contacts-title {
   font-size: 2.3rem;
   color: #3d3d3d;
 }
 
-.form-container {
+.form-container,
+.contacts-container {
   padding: 0 16px;
 }
 
@@ -196,15 +198,17 @@ input:hover {
   margin: 18px auto;
 }
 
-.search-result {
+.search-result,
+.contact-list {
   background-color: rgb(250 250 250);
   border-radius: 5px;
-  box-shadow: 0 2px 5px 1px #d7d7d7;
+  box-shadow: 0 2px 2px 1px #d7d7d7;
   margin: 11px 0;
   display: flex;
 }
 
-.place-img-container {
+.place-img-container,
+.contact-img-container {
   display: flex;
   flex: 0 1 145px;
 }
@@ -213,13 +217,15 @@ input:hover {
   max-width: 145px;
 }
 
-.place-info {
+.place-info,
+.contact-info {
   color: #969696;
   font-size: 0.9rem;
   width: 100%;
 }
 
-.place-name {
+.place-name,
+.contact-name {
   font-weight: bold;
   color: #404040;
   font-size: 1rem;
@@ -270,4 +276,31 @@ input:hover {
   padding: 7px 14px;
   font-size: 1.2rem;
   color: #ededed;
+}
+
+.contacts-title-container {
+  display: flex;
+}
+
+.back-icon,
+.add-icon {
+  font-size: 1.5rem;
+  color: #908f8f;
+}
+
+.contact-img {
+  max-width: 75px;
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-size: 1.2rem;
+  margin-bottom: 3px;
 }

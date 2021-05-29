@@ -5,6 +5,7 @@ import InputActivity from './inputActivity';
 import SelectAddress from './selectAddress';
 import PlacesModal from './placesModal';
 import AddInvites from './addInvites';
+import ContactsListModal from './contactsListModal';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -29,6 +30,7 @@ export default class DateForm extends React.Component {
       years: this.populateNumbers(2021, 2025),
       [timeInputName]: '15:30',
       searchIsOpen: false,
+      contactsIsOpen: false,
       address: '',
       invitees: ['Me', 'Myself', 'I']
     };
@@ -81,37 +83,49 @@ export default class DateForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="container">
-          {this.state.searchIsOpen
-            ? <PlacesModal
+    if (this.state.searchIsOpen) {
+      return (
+        <div className="container">
+          <PlacesModal
             defaultSearch={this.state.selectedActivity}
             handleClick={place => {
               this.setState({
                 address: place.formatted_address,
                 searchIsOpen: false
               });
-            }}/>
-            : <div className="form-container">
-            <h1 className="form-title center row">Date</h1>
-            <form>
-              <InputActivity
-                value={this.state.selectedActivity}
-                options={activities}
-                handleChange={event => {
-                  this.setState({
-                    selectedActivity: event.target.value
-                  });
-                }
-                }
-              />
-              <div className="input-container row">
-                <label className="row">
-                  <div className="col-half row">
-                    Day
-                  </div>
-                  <div className="day-options col-half row">
-                    <select
+            }}
+          />
+        </div>
+      );
+    }
+
+    if (this.state.contactsIsOpen) {
+      return (
+        <ContactsListModal />
+      );
+    }
+    return (
+      <div className="container">
+        <div className="form-container">
+          <h1 className="form-title center row">Date</h1>
+          <form>
+            <InputActivity
+              value={this.state.selectedActivity}
+              options={activities}
+              handleChange={event => {
+                this.setState({
+                  selectedActivity: event.target.value
+                });
+              }
+              }
+            />
+            <div className="input-container row">
+              <label className="row">
+                <div className="col-half row">
+                  Day
+              </div>
+                <div className="day-options col-half row">
+                  <select
                     className="day col-third"
                     value={this.state.day}
                     onChange={event => {
@@ -119,39 +133,39 @@ export default class DateForm extends React.Component {
                         day: event.target.value
                       });
                     }}>
-                      {this.state.days.map(day => {
-                        return (
-                          <option value={day.date} key={day.date}>{day.dayName.slice(0, 3)} {day.date} </option>
-                        );
-                      })}
-                    </select>
-                    <InputSelect
-                      value={this.state.selectedMonth}
-                      options={this.state.months}
-                      onChange={event => this.onSelectChange(event, selectedMonthInputName, true)}
-                      formatFunction={this.getMonthName}
-                    />
-                    <InputSelect
-                      value={this.state.selectedYear}
-                      options={this.state.years}
-                      onChange={event => this.onSelectChange(event, selectedYearInputName, true)}
-                    />
-                  </div>
-                </label>
-              </div>
-              <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, timeInputName, false)}/>
-              <SelectAddress
-                address={this.state.address}
-                handleClick={event => {
-                  this.setState({
-                    searchIsOpen: true
-                  });
-                }}/>
-              <AddInvites invitees={this.state.invitees} />
+                    {this.state.days.map(day => {
+                      return (
+                        <option value={day.date} key={day.date}>{day.dayName.slice(0, 3)} {day.date} </option>
+                      );
+                    })}
+                  </select>
+                  <InputSelect
+                    value={this.state.selectedMonth}
+                    options={this.state.months}
+                    onChange={event => this.onSelectChange(event, selectedMonthInputName, true)}
+                    formatFunction={this.getMonthName}
+                  />
+                  <InputSelect
+                    value={this.state.selectedYear}
+                    options={this.state.years}
+                    onChange={event => this.onSelectChange(event, selectedYearInputName, true)}
+                  />
+                </div>
+              </label>
+            </div>
+            <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, timeInputName, false)} />
+            <SelectAddress
+              address={this.state.address}
+              handleClick={event => {
+                this.setState({
+                  searchIsOpen: true
+                });
+              }} />
+            <AddInvites invitees={this.state.invitees} />
           </form>
         </div>
-            }
       </div>
     );
   }
+
 }

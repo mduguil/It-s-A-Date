@@ -34,7 +34,7 @@ export default class PlacesModal extends React.Component {
 
   render() {
     return (
-      <div className="form-container search-modal">
+      <div className="form-container">
         <h1 className="search-title center row">Search</h1>
         <form
           onSubmit={e => {
