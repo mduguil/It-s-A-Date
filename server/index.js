@@ -51,6 +51,25 @@ app.get('/api/dates', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/dates', (req, res, next) => {
+  const { location, day, time, activity, notes } = req.body;
+  if (!location || !day || !time || !activity) {
+    throw new ClientError(400, 'Location, day, time, and activity are required fields');
+  }
+  const dates = `
+    insert into "dates" ("location", "day", "time", "activity", "notes")
+    values ($1, $2, $3, $4, $5)
+    returning *
+  `;
+  const params = [location, day, time, activity, notes];
+  db.query(dates, params)
+    .then(result => {
+      const [date] = result.rows;
+      res.status(201).json(date);
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/places', function (req, res, next) {
   const { query } = req;
   if (!query) {

@@ -229,6 +229,10 @@ input:hover {
   padding: 1px 0;
 }
 
+.rating-icon {
+  padding-left: 6px;
+}
+
 .place-address {
   overflow: hidden;
   text-overflow: ellipsis;

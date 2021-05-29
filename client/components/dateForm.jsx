@@ -4,6 +4,7 @@ import InputSelect from './inputSelect';
 import InputActivity from './inputActivity';
 import SelectAddress from './selectAddress';
 import PlacesModal from './placesModal';
+import AddInvites from './addInvites';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -28,7 +29,8 @@ export default class DateForm extends React.Component {
       years: this.populateNumbers(2021, 2025),
       [timeInputName]: '15:30',
       searchIsOpen: false,
-      address: ''
+      address: '',
+      invitees: ['Me', 'Myself', 'I']
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
@@ -145,6 +147,7 @@ export default class DateForm extends React.Component {
                     searchIsOpen: true
                   });
                 }}/>
+              <AddInvites invitees={this.state.invitees} />
           </form>
         </div>
             }
