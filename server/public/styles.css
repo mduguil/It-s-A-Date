@@ -109,11 +109,13 @@ input:hover {
   padding-left: 8px;
 }
 
-.location-container {
+.location-container,
+.invite-container {
   margin-top: 13px;
 }
 
-.location-label {
+.location-label,
+.invite-label {
   font-size: 1.4rem;
   color: #616161;
   font-weight: 600;
@@ -255,4 +257,17 @@ input:hover {
 
 .set-button:hover {
   cursor: pointer;
+}
+
+.invitees-container:hover {
+  cursor: pointer;
+}
+
+.invited-contact {
+  background-color: #4ad1d1;
+  margin: 0 4px;
+  border-radius: 11px;
+  padding: 7px 14px;
+  font-size: 1.2rem;
+  color: #ededed;
 }

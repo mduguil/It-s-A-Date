@@ -8,10 +8,10 @@ export default class AddInvites extends React.Component {
           Add Invites
         </div>
         <div className="input-container invitees-container row" onClick={this.props.handleClick}>
-          <div className="invitees">
+          <div className="invitees center">
             {this.props.invitees.map(invitee => {
               return (
-                <span key={invitee}>{invitee}</span>
+                <span className="invited-contact center" key={invitee}>{invitee}</span>
               );
             })}
           </div>
