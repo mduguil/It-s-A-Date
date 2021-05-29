@@ -19,7 +19,7 @@
 }
 
 .input-container {
-  background-color: #e9e7e7;
+  background-color: #f7f6f6;
   height: 50px;
   align-items: center;
   border-radius: 5px;
@@ -303,4 +303,38 @@ input:hover {
 .contact-name {
   font-size: 1.2rem;
   margin-bottom: 3px;
+}
+
+.notes {
+  width: 100%;
+  height: 120px;
+  border-radius: 5px;
+  background-color: #ddfffd;
+  border: none;
+  color: #21b4ab;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  outline-color: #21b4ab;
+}
+
+.decisions-container {
+  justify-content: space-between;
+}
+
+.decisions-btn {
+  width: 160px;
+  height: 35px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #8d8d8d;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #f7f6f6;
+}
+
+.no-button {
+  background-color: #ffc8c8;
+  color: #e03939;
 }

@@ -6,6 +6,8 @@ import SelectAddress from './selectAddress';
 import PlacesModal from './placesModal';
 import AddInvites from './addInvites';
 import ContactsListModal from './contactsListModal';
+import MakeDecisions from './makeDecisions';
+import Navbar from './navbar';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -32,13 +34,15 @@ export default class DateForm extends React.Component {
       searchIsOpen: false,
       contactsIsOpen: false,
       address: '',
-      invitees: ['Me', 'Myself', 'I']
+      invitees: ['Me', 'Myself', 'I'],
+      notes: ''
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
     this.getDaysInAMonth = this.getDaysInAMonth.bind(this);
     this.getDaysOfTheMonth = this.getDaysOfTheMonth.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
+    this.handleNotesChange = this.handleNotesChange.bind(this);
   }
 
   getMonthName(monthNum) {
@@ -82,6 +86,12 @@ export default class DateForm extends React.Component {
     });
   }
 
+  handleNotesChange(event) {
+    this.setState({
+      notes: event.target.value
+    });
+  }
+
   render() {
     if (this.state.searchIsOpen) {
       return (
@@ -101,7 +111,14 @@ export default class DateForm extends React.Component {
 
     if (this.state.contactsIsOpen) {
       return (
-        <ContactsListModal />
+        <ContactsListModal
+          handleClick={contact => {
+            this.setState({
+              invitees: this.state.invitees.push(contact),
+              contactsIsOpen: false
+            });
+          }}
+        />
       );
     }
     return (
@@ -161,7 +178,20 @@ export default class DateForm extends React.Component {
                   searchIsOpen: true
                 });
               }} />
-            <AddInvites invitees={this.state.invitees} />
+            <AddInvites
+              invitees={this.state.invitees}
+              // handleClick={this.setState({ contactsIsOpen: true })}
+            />
+            <div className="notes-container">
+              <textarea
+                className="notes"
+                defaultValue="Write a note ..."
+                onChange={this.handleNotesChange}
+              >
+              </textarea>
+            </div>
+            <MakeDecisions />
+            <Navbar />
           </form>
         </div>
       </div>
