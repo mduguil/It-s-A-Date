@@ -7,11 +7,24 @@ export default class AddInvites extends React.Component {
         <div className="invite-label row">
           Add Invites
         </div>
-        <div className="input-container invitees-container row" onClick={this.props.handleClick}>
+        <div
+          className="input-container invitees-container row"
+          onClick={event => {
+            if (event.target.matches('.invitees-container')) {
+              this.props.handleClick();
+            }
+          }}
+        >
           <div className="invitees center">
             {this.props.invitees.map(invitee => {
               return (
-                <span className="invited-contact center" key={invitee.friendId}>{invitee.name}</span>
+                <span
+                  className="invited-contact center"
+                  key={invitee.friendId}
+                  value={invitee.name}
+                >
+                  {invitee.name}
+                </span>
               );
             })
           }
