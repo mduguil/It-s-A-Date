@@ -34,7 +34,7 @@ export default class DateForm extends React.Component {
       searchIsOpen: false,
       contactsIsOpen: false,
       address: '',
-      invitees: ['Me', 'Myself', 'I'],
+      invitees: [],
       notes: ''
     };
     this.populateDays = this.populateNumbers.bind(this);
@@ -114,7 +114,7 @@ export default class DateForm extends React.Component {
         <ContactsListModal
           handleClick={contact => {
             this.setState({
-              invitees: this.state.invitees.push(contact),
+              invitees: this.state.invitees.concat(contact),
               contactsIsOpen: false
             });
           }}

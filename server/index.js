@@ -23,7 +23,8 @@ const db = new pg.Pool({
 app.get('/api/contacts', (req, res, next) => {
   const contacts = `
     select "name",
-           "phoneNumber"
+           "phoneNumber",
+           "friendId"
       from "contacts"
   `;
 
