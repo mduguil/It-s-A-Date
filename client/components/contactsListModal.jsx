@@ -30,18 +30,20 @@ export default class ContactsListModal extends React.Component {
           this.state.contacts.map(
             (contact, i) => {
               return (
-                  <div className="contact-list" key={i}>
-                    <div className="contact-img-container">
-                      <img className="contact-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
-                    </div>
-                    <div className="contact-info">
-                      <div className="contact-name">{contact.name}</div>
-                    <div className="contact-number">{`(${contact.phoneNumber.slice(0, 3)}) ${contact.phoneNumber.slice(3, 6)} - ${contact.phoneNumber.slice(6, 10)}`}</div>
-                      {/* <div className="set-button-container">
-                        <button className="set-button" onClick={() => { this.props.handleClick(contact); }}>Add</button>
-                      </div> */}
+                <div
+                  className="contact-list"
+                  onClick={() => { this.props.handleClick(contact); }}
+                  key={i}
+                >
+                  <div className="contact-img-container">
+                    <img className="contact-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+                  </div>
+                  <div className="contact-info">
+                    <div className="contact-name">{contact.name}</div>
+                    <div className="contact-number">{`(${contact.phoneNumber.slice(0, 3)}) ${contact.phoneNumber.slice(3, 6)} - ${contact.phoneNumber.slice(6, 10)}`}
                     </div>
                   </div>
+                </div>
               );
             }
           )
