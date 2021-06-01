@@ -32,7 +32,7 @@ export default class DateForm extends React.Component {
       years: this.populateNumbers(2021, 2025),
       [timeInputName]: '15:30',
       searchIsOpen: false,
-      contactsIsOpen: false,
+      contactsIsOpen: true,
       address: '',
       invitees: ['Me', 'Myself', 'I'],
       notes: ''
@@ -111,14 +111,7 @@ export default class DateForm extends React.Component {
 
     if (this.state.contactsIsOpen) {
       return (
-        <ContactsListModal
-          handleClick={contact => {
-            this.setState({
-              invitees: this.state.invitees.push(contact),
-              contactsIsOpen: false
-            });
-          }}
-        />
+        <ContactsListModal />
       );
     }
     return (
@@ -180,15 +173,14 @@ export default class DateForm extends React.Component {
               }} />
             <AddInvites
               invitees={this.state.invitees}
-              // handleClick={this.setState({ contactsIsOpen: true })}
+              handleClick={this.setState({ contactsIsOpen: true })}
             />
             <div className="notes-container">
               <textarea
                 className="notes"
                 defaultValue="Write a note ..."
                 onChange={this.handleNotesChange}
-              >
-              </textarea>
+              />
             </div>
             <MakeDecisions />
             <Navbar />

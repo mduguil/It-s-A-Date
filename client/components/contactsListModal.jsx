@@ -6,10 +6,9 @@ export default class ContactsListModal extends React.Component {
     this.state = {
       contacts: []
     };
-    this.fetchContacts = this.fetchContacts.bind(this);
   }
 
-  fetchContacts() {
+  componentDidMount() {
     fetch('/api/contacts')
       .then(res => res.json())
       .then(contactsData => {
@@ -20,8 +19,6 @@ export default class ContactsListModal extends React.Component {
   }
 
   render() {
-    window.addEventListener('onLoad', this.fetchContacts());
-
     return (
       <div className="contacts-container">
         <div className="contacts-title-container">
@@ -37,7 +34,7 @@ export default class ContactsListModal extends React.Component {
                     <div className="contact-img-container">
                       <img className="contact-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
                     </div>
-                    <div className="contact-info" onClick={this.props.handleClick(contact.name)}>
+                    <div className="contact-info">
                       <div className="contact-name">{contact.name}</div>
                     <div className="contact-number">{`(${contact.phoneNumber.slice(0, 3)}) ${contact.phoneNumber.slice(3, 6)} - ${contact.phoneNumber.slice(6, 10)}`}</div>
                       {/* <div className="set-button-container">
