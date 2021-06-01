@@ -1,4 +1,5 @@
 import React from 'react';
+import MakeDecisions from './makeDecisions';
 
 export default class AddContactsForm extends React.Component {
   constructor(props) {
@@ -8,7 +9,6 @@ export default class AddContactsForm extends React.Component {
       number: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -59,6 +59,7 @@ export default class AddContactsForm extends React.Component {
               />
             </div>
           </label>
+          <MakeDecisions yes="Add" />
         </form>
       </div>
     );

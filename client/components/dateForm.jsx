@@ -193,7 +193,7 @@ export default class DateForm extends React.Component {
                 onChange={this.handleNotesChange}
               />
             </div>
-            <MakeDecisions />
+            <MakeDecisions yes="Invite"/>
             <Navbar />
           </form>
         </div>
