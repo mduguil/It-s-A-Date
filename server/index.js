@@ -37,11 +37,11 @@ app.get('/api/contacts', (req, res, next) => {
 
 app.post('/api/contacts', (req, res, next) => {
   const { name, phoneNumber } = req.body;
-  const phoneNumberNum = parseInt(phoneNumber, 10);
+  const phoneNumberInt = parseInt(phoneNumber, 10);
   if (!name || !phoneNumber) {
     throw new ClientError(400, 'phoneNumber and name are required fields');
   }
-  if (isNaN(phoneNumberNum)) {
+  if (isNaN(phoneNumberInt)) {
     throw new ClientError(400, 'phoneNumber must be a number');
   }
   const contacts = `
@@ -49,7 +49,7 @@ app.post('/api/contacts', (req, res, next) => {
          values ($1, $2)
       returning *
   `;
-  const params = [name, phoneNumberNum];
+  const params = [name, phoneNumberInt];
 
   db.query(contacts, params)
     .then(result => {
