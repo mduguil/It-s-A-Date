@@ -35,6 +35,29 @@ app.get('/api/contacts', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/contacts', (req, res, next) => {
+  const { name, phoneNumber } = req.body;
+  const phoneNumberNum = parseInt(phoneNumber, 10);
+  if (!name || !phoneNumber) {
+    throw new ClientError(400, 'phoneNumber and name are required fields');
+  }
+  if (isNaN(phoneNumberNum)) {
+    throw new ClientError(400, 'phoneNumber must be a number');
+  }
+  const contacts = `
+    insert into "contacts" ("name", "phoneNumber")
+         values ($1, $2)
+      returning *
+  `;
+  const params = [name, phoneNumberNum];
+
+  db.query(contacts, params)
+    .then(result => {
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/dates', (req, res, next) => {
   const dates = `
     select "location",
