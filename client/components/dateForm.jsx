@@ -35,7 +35,8 @@ export default class DateForm extends React.Component {
       contactsIsOpen: false,
       address: '',
       invitees: [],
-      notes: ''
+      notes: '',
+      dates: []
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
@@ -43,6 +44,7 @@ export default class DateForm extends React.Component {
     this.getDaysOfTheMonth = this.getDaysOfTheMonth.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
     this.handleNotesChange = this.handleNotesChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getMonthName(monthNum) {
@@ -92,6 +94,33 @@ export default class DateForm extends React.Component {
     });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    const newDate = {
+      location: this.state.address,
+      day: this.state.day + ' ' + this.state.selectedMonth + ' ' + this.state.selectedYear,
+      time: this.state.[timeInputName],
+      activity: this.state.selectedActivity,
+      notes: this.state.notes
+    };
+
+    fetch('/api/dates', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newDate)
+    })
+      .then(res => res.json())
+      .then(date => {
+        const newDate = this.state.dates.slice();
+        newDate.push(date);
+        this.setState({
+          dates: newDate
+        });
+      });
+  }
+
   render() {
     if (this.state.searchIsOpen) {
       return (
@@ -125,7 +154,7 @@ export default class DateForm extends React.Component {
       <div className="container">
         <div className="form-container">
           <h1 className="form-title center row">Date</h1>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <InputActivity
               value={this.state.selectedActivity}
               options={activities}
