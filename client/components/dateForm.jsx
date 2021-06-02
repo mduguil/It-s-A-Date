@@ -218,7 +218,7 @@ export default class DateForm extends React.Component {
             <div className="notes-container">
               <textarea
                 className="notes"
-                defaultValue="Write a note ..."
+                placeholder="Write a note..."
                 onChange={this.handleNotesChange}
               />
             </div>

@@ -318,6 +318,10 @@ input:hover {
   outline-color: #21b4ab;
 }
 
+.notes::placeholder {
+  color: #21b4ab;
+}
+
 .decisions-container {
   justify-content: space-between;
 }
