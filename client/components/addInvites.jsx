@@ -20,7 +20,7 @@ export default class AddInvites extends React.Component {
               return (
                 <span
                   className="invited-contact center"
-                  key={invitee.friendId}
+                  key={invitee.contactId}
                   value={invitee.name}
                 >
                   {invitee.name}

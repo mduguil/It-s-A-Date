@@ -24,7 +24,7 @@ app.get('/api/contacts', (req, res, next) => {
   const contacts = `
     select "name",
            "phoneNumber",
-           "friendId"
+           "contactId"
       from "contacts"
   `;
 
@@ -45,11 +45,11 @@ app.post('/api/contacts', (req, res, next) => {
     throw new ClientError(400, 'number must be a 10 digit number');
   }
   const contacts = `
-    insert into "contacts" ("name", "phoneNumber")
-         values ($1, $2)
+    insert into "contacts" ("name", "phoneNumber", "userId")
+         values ($1, $2, $3)
       returning *
   `;
-  const params = [name, phoneNumberInt];
+  const params = [name, phoneNumberInt, 1];
 
   db.query(contacts, params)
     .then(result => {

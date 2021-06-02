@@ -199,7 +199,7 @@ input:hover {
 }
 
 .search-result,
-.contact-list {
+.contact-container {
   background-color: rgb(250 250 250);
   border-radius: 5px;
   box-shadow: 0 2px 2px 1px #d7d7d7;

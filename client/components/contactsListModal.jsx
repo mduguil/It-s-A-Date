@@ -8,7 +8,8 @@ export default class ContactsListModal extends React.Component {
       contacts: [],
       addContactFormIsOpen: false,
       name: '',
-      number: ''
+      number: '',
+      contactId: ''
     };
     this.closeAddForm = this.closeAddForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +20,8 @@ export default class ContactsListModal extends React.Component {
       .then(res => res.json())
       .then(contactsData => {
         this.setState({
-          contacts: contactsData
+          contacts: contactsData,
+          contactId: contactsData.contactId
         });
       });
   }
@@ -36,13 +38,14 @@ export default class ContactsListModal extends React.Component {
       name: this.state.name,
       number: this.state.number
     };
-    fetch('/api/contacts', {
+    const init = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newContact)
-    })
+    };
+    fetch('/api/contacts', init)
       .then(res => res.json())
       .then(contact => {
         const newContacts = this.state.contacts.slice();
@@ -89,12 +92,12 @@ export default class ContactsListModal extends React.Component {
               />
             </div>
               {this.state.contacts.map(
-                (contact, i) => {
+                contact => {
                   return (
                     <div
-                      className="contact-list"
+                      className="contact-container"
                       onClick={() => { this.props.handleClick(contact); }}
-                      key={i}
+                      key={contact.contactId}
                     >
                       <div className="contact-img-container">
                         <img className="contact-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />

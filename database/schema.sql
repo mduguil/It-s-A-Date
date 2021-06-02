@@ -6,26 +6,26 @@ drop schema "public" cascade;
 
 create schema "public";
 
-create table "public"."users" (
+create table "users" (
   "userId"         serial,
   "name"           text           not null,
   "phoneNumber"    numeric        not null,
-  "friendId"       serial         not null,
-  "dateId"         serial         not null,
   "createdAt"      timestamptz(6) not null default now(),
   primary key ("userId")
 );
 
-
-create table "public"."contacts" (
-  "friendId"    serial,
+create table "contacts" (
+  "contactId"    serial,
+  "userId"      integer        not null,
   "name"        text           not null,
   "phoneNumber" numeric        not null,
   "createdAt"   timestamptz(6) not null default now(),
-  primary key ("friendId")
+  primary key ("contactId"),
+  foreign key ("userId")
+    references "users" ("userId")
 );
 
-create table "public"."dates" (
+create table "dates" (
   "dateId"     serial,
   "location"   text           not null,
   "day"        text           not null,
@@ -35,3 +35,10 @@ create table "public"."dates" (
   "createdAt"  timestamptz(6) not null default now(),
   primary key ("dateId")
 );
+
+create table "dateList" (
+  "userId" smallint not null,
+  "contactId" smallint not null,
+  "dateId" smallint not null,
+  "updatedAt" timestamp with time zone DEFAULT now() not null
+)
