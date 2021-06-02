@@ -36,13 +36,13 @@ app.get('/api/contacts', (req, res, next) => {
 });
 
 app.post('/api/contacts', (req, res, next) => {
-  const { name, phoneNumber } = req.body;
-  const phoneNumberInt = parseInt(phoneNumber, 10);
-  if (!name || !phoneNumber) {
-    throw new ClientError(400, 'phoneNumber and name are required fields');
+  const { name, number } = req.body;
+  const phoneNumberInt = parseInt(number, 10);
+  if (!name || !phoneNumberInt) {
+    throw new ClientError(400, 'number and name are required fields');
   }
-  if (isNaN(phoneNumberInt) || phoneNumberInt.length !== 10) {
-    throw new ClientError(400, 'phoneNumber must be a 10 digit number');
+  if (isNaN(phoneNumberInt)) {
+    throw new ClientError(400, 'number must be a 10 digit number');
   }
   const contacts = `
     insert into "contacts" ("name", "phoneNumber")
