@@ -48,7 +48,7 @@ export default class ContactsListModal extends React.Component {
   }
 
   render() {
-    if (this.state.addContactIsOpen) {
+    if (this.state.addContactIsOpen === true) {
       return (
         <AddContactsForm
           handleAdd={event => {

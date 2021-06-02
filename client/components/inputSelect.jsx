@@ -6,7 +6,9 @@ export default class InputSelect extends React.Component {
       <select
         className="month col-third"
         value={this.props.value}
-        onChange={this.props.onChange}>
+        onChange={this.props.onChange}
+        required
+      >
         {this.props.options.map(option => {
           return (
             <option
