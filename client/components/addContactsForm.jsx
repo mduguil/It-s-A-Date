@@ -29,12 +29,8 @@ export default class AddContactsForm extends React.Component {
               <input
                 type="text"
                 className="new-contact-name"
-                value={this.state.name}
-                onChange={event => {
-                  this.setState({
-                    name: event.target.value
-                  });
-                }}
+                name={this.props.name}
+                onChange={this.props.handleNameChange}
                 required
               />
             </div>
@@ -47,12 +43,8 @@ export default class AddContactsForm extends React.Component {
               <input
                 type="number"
                 className="new-contact-number"
-                value={this.state.number}
-                onChange={event => {
-                  this.setState({
-                    number: event.target.value
-                  });
-                }}
+                number={this.props.number}
+                onChange={this.props.handleNumChange}
                 required
               />
             </div>
@@ -60,7 +52,7 @@ export default class AddContactsForm extends React.Component {
           <MakeDecisions
             yes="Add"
             handleYesSubmit={this.props.handleAdd}
-            handleCancelSubmit={this.props.handleCancel}
+            handleCancelBtn={this.props.handleCancel}
            />
         </form>
       </div>

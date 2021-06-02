@@ -15,9 +15,8 @@ export default class MakeDecisions extends React.Component {
         </div>
         <div className="cancel-container">
           <button
-            type="submit"
             className="no-button decisions-btn"
-            onSubmit={this.props.handleCancelSubmit}
+            onClick={this.props.handleCancelBtn}
           >
             Cancel
           </button>
