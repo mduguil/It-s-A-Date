@@ -12,8 +12,12 @@ export default class AddContactsForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event, labelName) {
+  handleSubmit(event) {
     event.preventDefault();
+    // const newContact = {
+    //   name: this.state.name,
+    //   number: this.state.number
+    // };
   }
 
   render() {
@@ -23,6 +27,9 @@ export default class AddContactsForm extends React.Component {
           <h1 className="add-contacts-title center row">Add Contact</h1>
         </div>
         <form className="add-contact-form" onSubmit={this.handleSubmit}>
+          <div className="new-contact-img-container">
+            <img className="new-contact-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+          </div>
           <label>
             <div className="add-contact-name-label">
               Name
@@ -59,7 +66,11 @@ export default class AddContactsForm extends React.Component {
               />
             </div>
           </label>
-          <MakeDecisions yes="Add" />
+          <MakeDecisions
+            yes="Add"
+            handleYesSubmit={this.props.handleAdd}
+            handleCancelSubmit={this.props.handleCancel}
+           />
         </form>
       </div>
     );

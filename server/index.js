@@ -41,8 +41,8 @@ app.post('/api/contacts', (req, res, next) => {
   if (!name || !phoneNumber) {
     throw new ClientError(400, 'phoneNumber and name are required fields');
   }
-  if (isNaN(phoneNumberInt)) {
-    throw new ClientError(400, 'phoneNumber must be a number');
+  if (isNaN(phoneNumberInt) || phoneNumberInt.length !== 10) {
+    throw new ClientError(400, 'phoneNumber must be a 10 digit number');
   }
   const contacts = `
     insert into "contacts" ("name", "phoneNumber")
