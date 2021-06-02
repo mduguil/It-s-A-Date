@@ -31,9 +31,12 @@ create table "dates" (
   "day"        text           not null,
   "time"       text           not null,
   "activity"   text           not null,
+  "userId"     integer        not null,
   "notes"      text,
   "createdAt"  timestamptz(6) not null default now(),
-  primary key ("dateId")
+  primary key ("dateId"),
+  foreign key ("userId")
+    references "users" ("userId")
 );
 
 create table "dateList" (
