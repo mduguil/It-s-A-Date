@@ -4,20 +4,11 @@ import MakeDecisions from './makeDecisions';
 export default class AddContactsForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      number: ''
-    };
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    // const newContact = {
-    //   name: this.state.name,
-    //   number: this.state.number
-    // };
   }
 
   render() {
