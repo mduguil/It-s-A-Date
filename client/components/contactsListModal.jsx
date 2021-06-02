@@ -11,6 +11,7 @@ export default class ContactsListModal extends React.Component {
       number: ''
     };
     this.closeAddForm = this.closeAddForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +30,12 @@ export default class ContactsListModal extends React.Component {
     });
   }
 
-  postContact(newContact) {
+  handleSubmit(event) {
+    event.preventDefault();
+    const newContact = {
+      name: this.state.name,
+      number: this.state.number
+    };
     fetch('/api/contacts', {
       method: 'POST',
       headers: {
@@ -54,6 +60,7 @@ export default class ContactsListModal extends React.Component {
           ? <AddContactsForm
             name={this.state.name}
             number={this.state.number}
+            handleSubmit={event => this.handleSubmit(event)}
             handleNameChange={event => {
               this.setState({
                 name: event.target.value
@@ -65,11 +72,6 @@ export default class ContactsListModal extends React.Component {
               });
             }}
             handleAdd={event => {
-              const contactInfo = {
-                name: this.state.name,
-                number: this.state.number
-              };
-              this.postContact(contactInfo);
               this.closeAddForm();
             }}
             handleCancel={event => {

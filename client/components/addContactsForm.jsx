@@ -2,22 +2,13 @@ import React from 'react';
 import MakeDecisions from './makeDecisions';
 
 export default class AddContactsForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
   render() {
     return (
       <div className="add-contacts-container">
         <div className="add-contacts-title-container">
           <h1 className="add-contacts-title center row">Add Contact</h1>
         </div>
-        <form className="add-contact-form" onSubmit={this.handleSubmit}>
+        <form className="add-contact-form" onSubmit={this.props.handleSubmit}>
           <div className="new-contact-img-container">
             <img className="new-contact-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
           </div>
