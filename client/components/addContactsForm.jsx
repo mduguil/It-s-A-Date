@@ -42,7 +42,6 @@ export default class AddContactsForm extends React.Component {
           </label>
           <MakeDecisions
             yes="Add"
-            handleYesSubmit={this.props.handleAdd}
             handleCancelBtn={this.props.handleCancel}
            />
         </form>

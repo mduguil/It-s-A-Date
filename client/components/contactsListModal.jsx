@@ -51,6 +51,7 @@ export default class ContactsListModal extends React.Component {
           contacts: newContacts
         });
       });
+    this.closeAddForm();
   }
 
   render() {
@@ -70,9 +71,6 @@ export default class ContactsListModal extends React.Component {
               this.setState({
                 number: event.target.value
               });
-            }}
-            handleAdd={event => {
-              this.closeAddForm();
             }}
             handleCancel={event => {
               this.closeAddForm();
