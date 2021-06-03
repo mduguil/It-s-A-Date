@@ -452,3 +452,13 @@ button:hover {
 i:hover {
   cursor: pointer;
 }
+
+.month-name-container {
+  display: flex;
+  justify-content: center;
+}
+
+.days-of-the-week {
+  display: flex;
+  justify-content: space-evenly;
+}
