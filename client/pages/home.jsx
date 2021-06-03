@@ -1,8 +1,10 @@
 import React from 'react';
+import Calendar from '../components/calendar';
 
-export default function Home(props) {
-  return (
-    <>
-    </>
-  );
+export default class Home extends React.Component {
+  render() {
+    return (
+      <Calendar />
+    );
+  }
 }

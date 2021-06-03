@@ -235,7 +235,7 @@ export default class DateForm extends React.Component {
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
             />
-            <Navbar />
+            <Navbar calendarIcon="far fa-calendar nav-icon"/>
           </form>
         </div>
       </div>

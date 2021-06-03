@@ -5,7 +5,7 @@ export default class Navbar extends React.Component {
     return (
       <div className="navbar-container">
         <div className="navbar">
-          <i className="far fa-calendar nav-icon"></i>
+          <i className={this.props.calendarIcon}></i>
           <i className="fas fa-clipboard-list nav-icon"></i>
           <i className="fas fa-plus-circle nav-icon new-date-icon"></i>
           <i className="far fa-envelope nav-icon"></i>
