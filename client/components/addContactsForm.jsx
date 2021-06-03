@@ -4,7 +4,7 @@ import MakeDecisions from './makeDecisions';
 export default class AddContactsForm extends React.Component {
   render() {
     return (
-      <div className="add-contacts-container">
+      <div className="add-contacts-container container">
         <div className="add-contacts-title-container">
           <h1 className="add-contacts-title center row">Add Contact</h1>
         </div>
@@ -34,7 +34,7 @@ export default class AddContactsForm extends React.Component {
               <input
                 type="number"
                 className="new-contact-number"
-                placeholder='1234567890'
+                placeholder='(123) 456 - 7890'
                 number={this.props.number}
                 onChange={this.props.handleNumChange}
                 required
