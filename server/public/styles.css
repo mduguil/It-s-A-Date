@@ -460,5 +460,21 @@ i:hover {
 
 .days-of-the-week {
   display: flex;
-  justify-content: space-evenly;
+}
+
+.day-name {
+  width: calc(100% / 7);
+  text-align: center;
+}
+
+.day-number {
+  position: relative;
+  width: calc(100% / 7);
+  height: 44px;
+  display: inline-block;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  text-align: center;
 }

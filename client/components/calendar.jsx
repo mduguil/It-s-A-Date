@@ -40,25 +40,25 @@ export default class Calendar extends React.Component {
           <div className="days-of-the-week">
             {this.state.daysOfTheWeek.map(day => {
               return (
-                <div className="weekday" key={day}>{day}</div>
+                <div className="day-name" key={day}>{day}</div>
               );
             })}
           </div>
-              <div>
-                {this.state.calendar.map((week, wi) => {
-                  return (
-                    <div key={wi}>
-                      {week.map((day, di) => {
-                        return (
-                          <div key={di}>
-                            {day.format('D')}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-              </div>
+          <div className="calendar">
+            {this.state.calendar.map((week, wi) => {
+              return (
+                <div key={wi} className="week">
+                  {week.map((day, di) => {
+                    return (
+                      <div key={di} className="day-number">
+                        {day.format('D')}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
         </div>
         <Navbar calendarIcon="far fa-calendar nav-icon home-calendar-icon"/>
       </div>
