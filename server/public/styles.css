@@ -494,3 +494,7 @@ i:hover {
   justify-content: center;
   align-items: center;
 }
+
+.selected-day {
+  /* border: 2px solid pink; */
+}
