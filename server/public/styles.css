@@ -444,3 +444,7 @@ button:hover {
 .new-date-decisions-btn {
   width: 158px;
 }
+
+i:hover {
+  cursor: pointer;
+}
