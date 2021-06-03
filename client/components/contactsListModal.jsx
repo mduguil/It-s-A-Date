@@ -6,7 +6,7 @@ export default class ContactsListModal extends React.Component {
     super(props);
     this.state = {
       contacts: [],
-      addContactFormIsOpen: true,
+      addContactFormIsOpen: false,
       name: '',
       number: '',
       contactId: ''
@@ -79,7 +79,7 @@ export default class ContactsListModal extends React.Component {
               this.closeAddForm();
             }}
           />
-          : <div className="contacts-container">
+          : <div className="contacts-container container">
             <div className="contacts-title-container">
               <i className="fas fa-arrow-left center back-icon"/>
               <h1 className="contacts-title center row">Contacts</h1>
