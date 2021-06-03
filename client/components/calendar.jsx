@@ -18,6 +18,8 @@ export default class Calendar extends React.Component {
       calendar: []
     };
     this.getWeeklyDates = this.getWeeklyDates.bind(this);
+    this.isToday = this.isToday.bind(this);
+
   }
 
   getWeeklyDates() {
@@ -26,6 +28,15 @@ export default class Calendar extends React.Component {
         Array(7).fill('dayOfTheWeek').map(() => this.state.day.add(1, 'day').clone())
       );
     }
+  }
+
+  isToday(day) {
+    return moment(new Date()).isSame(day, 'day');
+  }
+
+  dayStyle(day) {
+    if (this.isToday(day)) return 'today';
+    return '';
   }
 
   render() {
@@ -51,7 +62,9 @@ export default class Calendar extends React.Component {
                   {week.map((day, di) => {
                     return (
                       <div key={di} className="day-number">
-                        {day.format('D')}
+                        <div className={this.dayStyle(day)}>
+                          {day.format('D')}
+                        </div>
                       </div>
                     );
                   })}

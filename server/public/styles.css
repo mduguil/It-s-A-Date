@@ -467,14 +467,30 @@ i:hover {
   text-align: center;
 }
 
+.week {
+  display: flex;
+}
+
 .day-number {
   position: relative;
   width: calc(100% / 7);
   height: 44px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   padding: 0;
   margin: 0;
   z-index: 1;
   text-align: center;
+}
+
+.today {
+  border-radius: 50%;
+  border: 4px solid #5cffff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
