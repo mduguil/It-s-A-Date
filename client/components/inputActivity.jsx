@@ -13,6 +13,7 @@ export default class InputActivity extends React.Component {
               className="activity col-half"
               value={this.props.selectedActivity}
               onChange={this.props.handleChange}
+              required
             >
               {
               this.props.options.map(activity => {

@@ -34,8 +34,13 @@ export default class PlacesModal extends React.Component {
 
   render() {
     return (
-      <div className="form-container search-modal">
-        <h1 className="search-title center row">Search</h1>
+      <div className="form-container">
+        <div className="search-title-container row">
+          <i className="fas fa-arrow-left back-icon"
+            onClick={this.props.handleBackBtn}
+          />
+          <h1 className="search-title center row">Search</h1>
+        </div>
         <form
           onSubmit={e => {
             e.preventDefault();

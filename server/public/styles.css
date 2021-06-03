@@ -7,17 +7,21 @@
 }
 
 .form-title,
-.search-title {
+.search-title,
+.contacts-title,
+.add-contacts-title {
   font-size: 2.3rem;
   color: #3d3d3d;
 }
 
-.form-container {
+.form-container,
+.contacts-container,
+.add-contacts-container {
   padding: 0 16px;
 }
 
 .input-container {
-  background-color: #e9e7e7;
+  background-color: #f7f6f6;
   height: 50px;
   align-items: center;
   border-radius: 5px;
@@ -62,7 +66,7 @@ input[type=time] {
   font-size: 1rem;
   width: 200px;
   height: 38px;
-  background-color: #e9e7e7;
+  background-color: #f7f6f6;
 }
 
 input[type=time]::-webkit-datetime-edit-fields-wrapper {
@@ -109,11 +113,13 @@ input:hover {
   padding-left: 8px;
 }
 
-.location-container {
-  margin-top: 13px;
+.location-container,
+.invite-container {
+  margin-top: 20px;
 }
 
-.location-label {
+.location-label,
+.invite-label {
   font-size: 1.4rem;
   color: #616161;
   font-weight: 600;
@@ -194,15 +200,17 @@ input:hover {
   margin: 18px auto;
 }
 
-.search-result {
+.search-result,
+.contact-container {
   background-color: rgb(250 250 250);
   border-radius: 5px;
-  box-shadow: 0 2px 5px 1px #d7d7d7;
+  box-shadow: 0 2px 2px 1px #d7d7d7;
   margin: 11px 0;
   display: flex;
 }
 
-.place-img-container {
+.place-img-container,
+.contact-img-container {
   display: flex;
   flex: 0 1 145px;
 }
@@ -211,13 +219,15 @@ input:hover {
   max-width: 145px;
 }
 
-.place-info {
+.place-info,
+.contact-info {
   color: #969696;
   font-size: 0.9rem;
   width: 100%;
 }
 
-.place-name {
+.place-name,
+.contact-name {
   font-weight: bold;
   color: #404040;
   font-size: 1rem;
@@ -227,6 +237,10 @@ input:hover {
 .place-rating,
 .place-address {
   padding: 1px 0;
+}
+
+.rating-icon {
+  padding-left: 6px;
 }
 
 .place-address {
@@ -250,5 +264,187 @@ input:hover {
 }
 
 .set-button:hover {
+  cursor: pointer;
+}
+
+.invitees-container:hover {
+  cursor: pointer;
+}
+
+.invited-contact {
+  background-color: #4ad1d1;
+  margin: 0 4px;
+  border-radius: 11px;
+  padding: 7px 14px;
+  font-size: 1.2rem;
+  color: #ededed;
+}
+
+.contacts-title-container,
+.search-title-container {
+  display: flex;
+  align-items: center;
+}
+
+.back-icon,
+.add-icon {
+  font-size: 1.5rem;
+  color: #908f8f;
+}
+
+.contact-img {
+  max-width: 75px;
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+
+.notes-container {
+  margin: 20px 0;
+}
+
+.notes {
+  width: 100%;
+  height: 120px;
+  border-radius: 5px;
+  background-color: #ddfffd;
+  border: none;
+  color: #21b4ab;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  outline-color: #21b4ab;
+}
+
+.notes::placeholder {
+  color: #21b4ab;
+}
+
+.add-contact-decisions-container {
+  justify-content: space-between;
+  margin-bottom: 37px;
+  padding: 0 18px;
+}
+
+.add-contact-decisions-btn,
+.new-date-decisions-btn {
+  width: 138px;
+  height: 35px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #8d8d8d;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #f7f6f6;
+}
+
+.no-button {
+  background-color: #ffc8c8;
+  color: #e03939;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.add-contacts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-contact-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 2px 3px 3px #dedede;
+  border-radius: 2px;
+  max-width: 425px;
+  min-width: 330px;
+}
+
+.new-contact-img-container {
+  margin: 37px;
+}
+
+.new-contact-img {
+  max-width: 170px;
+  border-radius: 50%;
+}
+
+.add-contacts-label {
+  width: 100%;
+  padding: 18px;
+}
+
+.add-contact-number-label,
+.add-contact-name-label {
+  padding-left: 10px;
+  color: #6b6b6b;
+}
+
+.new-contact-name,
+.new-contact-number {
+  width: 100%;
+  background-color: #f3f3f3;
+  border: none;
+  height: 40px;
+  outline-color: grey;
+  font-size: 1.2rem;
+  padding-left: 10px;
+  color: #5e5e5e;
+}
+
+.navbar-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  box-shadow: 0 -2px 6px 0 #dadada;
+  max-width: 992px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.nav-icon {
+  font-size: 2rem;
+  color: #9f9f9f;
+}
+
+.new-date-icon {
+  font-size: 3.4rem;
+  color: #4ad1d1;
+}
+
+.new-date-decisions-container {
+  justify-content: space-between;
+}
+
+.new-date-decisions-btn {
+  width: 158px;
+}
+
+i:hover {
   cursor: pointer;
 }

@@ -4,6 +4,10 @@ import InputSelect from './inputSelect';
 import InputActivity from './inputActivity';
 import SelectAddress from './selectAddress';
 import PlacesModal from './placesModal';
+import AddInvites from './addInvites';
+import ContactsListModal from './contactsListModal';
+import MakeDecisions from './makeDecisions';
+import Navbar from './navbar';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -28,13 +32,19 @@ export default class DateForm extends React.Component {
       years: this.populateNumbers(2021, 2025),
       [timeInputName]: '15:30',
       searchIsOpen: false,
-      address: ''
+      contactsIsOpen: false,
+      address: '',
+      invitees: [],
+      notes: '',
+      dates: []
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
     this.getDaysInAMonth = this.getDaysInAMonth.bind(this);
     this.getDaysOfTheMonth = this.getDaysOfTheMonth.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
+    this.handleNotesChange = this.handleNotesChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getMonthName(monthNum) {
@@ -78,38 +88,95 @@ export default class DateForm extends React.Component {
     });
   }
 
+  handleNotesChange(event) {
+    this.setState({
+      notes: event.target.value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const newDate = {
+      location: this.state.address,
+      day: this.state.day + ' ' + this.state.selectedMonth + ' ' + this.state.selectedYear,
+      time: this.state.[timeInputName],
+      activity: this.state.selectedActivity,
+      notes: this.state.notes
+    };
+
+    fetch('/api/dates', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newDate)
+    })
+      .then(res => res.json())
+      .then(date => {
+        const newDate = this.state.dates.slice();
+        newDate.push(date);
+        this.setState({
+          dates: newDate
+        });
+      });
+  }
+
   render() {
-    return (
-      <div className="container">
-          {this.state.searchIsOpen
-            ? <PlacesModal
+    if (this.state.searchIsOpen) {
+      return (
+        <div className="container">
+          <PlacesModal
             defaultSearch={this.state.selectedActivity}
+            handleBackBtn={event => {
+              this.setState({
+                searchIsOpen: false
+              });
+            }}
             handleClick={place => {
               this.setState({
                 address: place.formatted_address,
                 searchIsOpen: false
               });
-            }}/>
-            : <div className="form-container">
-            <h1 className="form-title center row">Date</h1>
-            <form>
-              <InputActivity
-                value={this.state.selectedActivity}
-                options={activities}
-                handleChange={event => {
-                  this.setState({
-                    selectedActivity: event.target.value
-                  });
-                }
-                }
-              />
-              <div className="input-container row">
-                <label className="row">
-                  <div className="col-half row">
-                    Day
-                  </div>
-                  <div className="day-options col-half row">
-                    <select
+            }}
+          />
+        </div>
+      );
+    }
+
+    if (this.state.contactsIsOpen) {
+      return (
+        <ContactsListModal
+          handleClick={contact => {
+            this.setState({
+              invitees: this.state.invitees.concat(contact),
+              contactsIsOpen: false
+            });
+          }}
+        />
+      );
+    }
+    return (
+      <div className="container">
+        <div className="form-container">
+          <h1 className="form-title center row">Date</h1>
+          <form onSubmit={this.handleSubmit}>
+            <InputActivity
+              value={this.state.selectedActivity}
+              options={activities}
+              handleChange={event => {
+                this.setState({
+                  selectedActivity: event.target.value
+                });
+              }
+              }
+            />
+            <div className="input-container row">
+              <label className="row">
+                <div className="col-half row">
+                  Day
+              </div>
+                <div className="day-options col-half row">
+                  <select
                     className="day col-third"
                     value={this.state.day}
                     onChange={event => {
@@ -117,38 +184,62 @@ export default class DateForm extends React.Component {
                         day: event.target.value
                       });
                     }}>
-                      {this.state.days.map(day => {
-                        return (
-                          <option value={day.date} key={day.date}>{day.dayName.slice(0, 3)} {day.date} </option>
-                        );
-                      })}
-                    </select>
-                    <InputSelect
-                      value={this.state.selectedMonth}
-                      options={this.state.months}
-                      onChange={event => this.onSelectChange(event, selectedMonthInputName, true)}
-                      formatFunction={this.getMonthName}
-                    />
-                    <InputSelect
-                      value={this.state.selectedYear}
-                      options={this.state.years}
-                      onChange={event => this.onSelectChange(event, selectedYearInputName, true)}
-                    />
-                  </div>
-                </label>
-              </div>
-              <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, timeInputName, false)}/>
-              <SelectAddress
-                address={this.state.address}
-                handleClick={event => {
-                  this.setState({
-                    searchIsOpen: true
-                  });
-                }}/>
+                    {this.state.days.map(day => {
+                      return (
+                        <option value={day.date} key={day.date}>{day.dayName.slice(0, 3)} {day.date} </option>
+                      );
+                    })}
+                  </select>
+                  <InputSelect
+                    value={this.state.selectedMonth}
+                    options={this.state.months}
+                    onChange={event => this.onSelectChange(event, selectedMonthInputName, true)}
+                    formatFunction={this.getMonthName}
+                  />
+                  <InputSelect
+                    value={this.state.selectedYear}
+                    options={this.state.years}
+                    onChange={event => this.onSelectChange(event, selectedYearInputName, true)}
+                  />
+                </div>
+              </label>
+            </div>
+            <InputTime time={this.state.time} handleChange={event => this.onSelectChange(event, timeInputName, false)} />
+            <SelectAddress
+              address={this.state.address}
+              handleClick={event => {
+                this.setState({
+                  searchIsOpen: true
+                });
+              }} />
+            <AddInvites
+              invitees={this.state.invitees}
+              handleClick={event => {
+                this.setState({
+                  contactsIsOpen: true
+                });
+              }}
+            />
+            <div className="notes-container">
+              <textarea
+                className="notes"
+                placeholder="Write a note..."
+                onChange={this.handleNotesChange}
+              />
+            </div>
+            <MakeDecisions
+              yes="Invite"
+              decisionsContainer="new-date-decisions-container row"
+              yesBtnContainer="new-date-yes-btn-container"
+              noBtnContainer="new-date-no-btn-container"
+              yesBtn="invite-button new-date-decisions-btn"
+              noBtn="no-button new-date-decisions-btn"
+            />
+            <Navbar />
           </form>
         </div>
-            }
       </div>
     );
   }
+
 }
