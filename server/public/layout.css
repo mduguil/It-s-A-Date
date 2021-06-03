@@ -55,4 +55,12 @@
   .place-address {
     padding: px 0;
   }
+
+  .new-date-decisions-container {
+    padding-bottom: 100px;
+  }
+
+  .new-date-decisions-btn {
+    width: 220px;
+  }
 }

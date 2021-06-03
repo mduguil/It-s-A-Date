@@ -280,7 +280,8 @@ input:hover {
   color: #ededed;
 }
 
-.contacts-title-container {
+.contacts-title-container,
+.search-title-container {
   display: flex;
   align-items: center;
 }
@@ -329,14 +330,15 @@ input:hover {
   color: #21b4ab;
 }
 
-.decisions-container {
+.add-contact-decisions-container {
   justify-content: space-between;
   margin-bottom: 37px;
   padding: 0 18px;
 }
 
-.decisions-btn {
-  width: 145px;
+.add-contact-decisions-btn,
+.new-date-decisions-btn {
+  width: 138px;
   height: 35px;
   font-size: 1.3rem;
   font-weight: bold;
@@ -370,6 +372,7 @@ button:hover {
   box-shadow: 0 2px 3px 3px #dedede;
   border-radius: 2px;
   max-width: 425px;
+  min-width: 330px;
 }
 
 .new-contact-img-container {
@@ -432,4 +435,12 @@ button:hover {
 .new-date-icon {
   font-size: 3.4rem;
   color: #21b4ab;
+}
+
+.new-date-decisions-container {
+  justify-content: space-between;
+}
+
+.new-date-decisions-btn {
+  width: 158px;
 }

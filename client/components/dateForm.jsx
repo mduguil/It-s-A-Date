@@ -127,6 +127,11 @@ export default class DateForm extends React.Component {
         <div className="container">
           <PlacesModal
             defaultSearch={this.state.selectedActivity}
+            handleBackBtn={event => {
+              this.setState({
+                searchIsOpen: false
+              });
+            }}
             handleClick={place => {
               this.setState({
                 address: place.formatted_address,
@@ -222,7 +227,14 @@ export default class DateForm extends React.Component {
                 onChange={this.handleNotesChange}
               />
             </div>
-            <MakeDecisions yes="Invite"/>
+            <MakeDecisions
+              yes="Invite"
+              decisionsContainer="new-date-decisions-container row"
+              yesBtnContainer="new-date-yes-btn-container"
+              noBtnContainer="new-date-no-btn-container"
+              yesBtn="invite-button new-date-decisions-btn"
+              noBtn="no-button new-date-decisions-btn"
+            />
             <Navbar />
           </form>
         </div>

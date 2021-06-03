@@ -3,19 +3,19 @@ import React from 'react';
 export default class MakeDecisions extends React.Component {
   render() {
     return (
-      <div className="decisions-container row">
-        <div className="accept-container">
+      <div className={this.props.decisionsContainer}>
+        <div className={this.props.yesBtnContainer}>
           <button
             type="submit"
-            className="yes-button decisions-btn"
+            className={this.props.yesBtn}
             onSubmit={this.props.handleYesSubmit}
           >
             {this.props.yes}
           </button>
         </div>
-        <div className="cancel-container">
+        <div className={this.props.noBtnContainer}>
           <button
-            className="no-button decisions-btn"
+            className={this.props.noBtn}
             onClick={this.props.handleCancelBtn}
           >
             Cancel
