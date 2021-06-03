@@ -12,11 +12,11 @@ export default class AddContactsForm extends React.Component {
           <div className="new-contact-img-container">
             <img className="new-contact-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
           </div>
-          <label>
+          <label className="add-contacts-label">
             <div className="add-contact-name-label">
               Name
             </div>
-            <div className="add-contact-name-input ">
+            <div className="add-contact-name-input">
               <input
                 type="text"
                 className="new-contact-name"
@@ -26,14 +26,15 @@ export default class AddContactsForm extends React.Component {
               />
             </div>
           </label>
-          <label>
+          <label className="add-contacts-label">
             <div className="add-contact-number-label">
               Number
             </div>
-            <div className="add-contact-number-input ">
+            <div className="add-contact-number-input">
               <input
                 type="number"
                 className="new-contact-number"
+                placeholder='1234567890'
                 number={this.props.number}
                 onChange={this.props.handleNumChange}
                 required

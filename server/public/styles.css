@@ -8,13 +8,15 @@
 
 .form-title,
 .search-title,
-.contacts-title {
+.contacts-title,
+.add-contacts-title {
   font-size: 2.3rem;
   color: #3d3d3d;
 }
 
 .form-container,
-.contacts-container {
+.contacts-container,
+.add-contacts-container {
   padding: 0 16px;
 }
 
@@ -113,7 +115,7 @@ input:hover {
 
 .location-container,
 .invite-container {
-  margin-top: 13px;
+  margin-top: 20px;
 }
 
 .location-label,
@@ -305,6 +307,10 @@ input:hover {
   margin-bottom: 3px;
 }
 
+.notes-container {
+  margin: 20px 0;
+}
+
 .notes {
   width: 100%;
   height: 120px;
@@ -324,10 +330,12 @@ input:hover {
 
 .decisions-container {
   justify-content: space-between;
+  margin-bottom: 37px;
+  padding: 0 18px;
 }
 
 .decisions-btn {
-  width: 160px;
+  width: 145px;
   height: 35px;
   font-size: 1.3rem;
   font-weight: bold;
@@ -341,4 +349,79 @@ input:hover {
 .no-button {
   background-color: #ffc8c8;
   color: #e03939;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.add-contact-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10%;
+  box-shadow: 0 2px 3px 3px #dedede;
+  border-radius: 2px;
+}
+
+.new-contact-img-container {
+  margin: 37px;
+}
+
+.new-contact-img {
+  max-width: 170px;
+  border-radius: 50%;
+}
+
+.add-contacts-label {
+  width: 100%;
+  padding: 18px;
+}
+
+.add-contact-number-label,
+.add-contact-name-label {
+  padding-left: 10px;
+  color: #6b6b6b;
+}
+
+.new-contact-name,
+.new-contact-number {
+  width: 100%;
+  background-color: #f3f3f3;
+  border: none;
+  height: 40px;
+  outline-color: grey;
+  font-size: 1.2rem;
+  padding-left: 10px;
+  color: #5e5e5e;
+}
+
+.navbar-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  box-shadow: 0 -2px 6px 0 #dadada;
+  max-width: 992px;
+  margin: 0 auto;
+}
+
+.nav-icon {
+  font-size: 2rem;
+  color: #9f9f9f;
+}
+
+.new-date-icon {
+  font-size: 3.4rem;
+  color: #21b4ab;
 }

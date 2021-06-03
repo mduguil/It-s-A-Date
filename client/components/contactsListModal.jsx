@@ -6,7 +6,7 @@ export default class ContactsListModal extends React.Component {
     super(props);
     this.state = {
       contacts: [],
-      addContactFormIsOpen: false,
+      addContactFormIsOpen: true,
       name: '',
       number: '',
       contactId: ''
