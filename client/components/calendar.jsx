@@ -97,8 +97,10 @@ export default class Calendar extends React.Component {
     dates.forEach(date => {
       const dayArr = date.day.split(' ');
       dayArr[1] = +dayArr[1] + 1;
-      const dateDay = dayArr.join(' ');
-      return dateDay === day.format('D M Y');
+      // const dateDay = dayArr.join(' ');
+      // console.log('new Date(str)', new Date('6 2 2021'));
+      // console.log('dateDay', dateDay);
+      // console.log('new Date(day)', new Date(day));
     });
   }
 
