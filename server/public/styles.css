@@ -456,17 +456,18 @@ i:hover {
 .month-name-container {
   display: flex;
   justify-content: space-between;
+  margin: 15px;
 }
 
 .month-controls,
 .days-of-the-week {
-  color: #a4a4a4;
+  color: #969696;
 }
 
 .month-name {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #3d3d3d;
+  color: #464646;
 }
 
 .days-of-the-week {
@@ -476,6 +477,10 @@ i:hover {
 .day-name {
   width: calc(100% / 7);
   text-align: center;
+}
+
+.calendar-numbers {
+  margin-top: 4px;
 }
 
 .week {
@@ -489,11 +494,11 @@ i:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
   padding: 0;
   margin: 0;
   z-index: 1;
   text-align: center;
+  font-weight: bold;
 }
 
 .today {
