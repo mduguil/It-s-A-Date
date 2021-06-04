@@ -432,6 +432,10 @@ button:hover {
   color: #9f9f9f;
 }
 
+.home-calendar-icon {
+  color: #4ad1d1;
+}
+
 .new-date-icon {
   font-size: 3.4rem;
   color: #4ad1d1;
@@ -447,4 +451,80 @@ button:hover {
 
 i:hover {
   cursor: pointer;
+}
+
+.month-name-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+}
+
+.month-controls,
+.days-of-the-week {
+  color: #969696;
+}
+
+.month-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #464646;
+}
+
+.days-of-the-week {
+  display: flex;
+}
+
+.day-name {
+  width: calc(100% / 7);
+  text-align: center;
+}
+
+.calendar-numbers {
+  margin-top: 4px;
+}
+
+.week {
+  display: flex;
+}
+
+.day-number {
+  position: relative;
+  width: calc(100% / 7);
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.today {
+  border-radius: 50%;
+  border: 4px solid #5cffff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.extra-days {
+  color: #a4a4a4;
+}
+
+.selected-day {
+  border: 2px solid pink;
+}
+
+.scheduled-date {
+  border-radius: 50%;
+  border: 22px solid #e93d3d;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

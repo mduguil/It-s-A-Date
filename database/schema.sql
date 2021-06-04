@@ -38,10 +38,3 @@ create table "dates" (
   foreign key ("userId")
     references "users" ("userId")
 );
-
-create table "dateList" (
-  "userId" smallint not null,
-  "contactId" smallint not null,
-  "dateId" smallint not null,
-  "updatedAt" timestamp with time zone DEFAULT now() not null
-)

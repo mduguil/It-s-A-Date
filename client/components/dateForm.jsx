@@ -98,7 +98,7 @@ export default class DateForm extends React.Component {
     event.preventDefault();
     const newDate = {
       location: this.state.address,
-      day: this.state.day + ' ' + this.state.selectedMonth + ' ' + this.state.selectedYear,
+      day: (+this.state.selectedMonth + 1) + ' ' + this.state.day + ' ' + this.state.selectedYear,
       time: this.state.[timeInputName],
       activity: this.state.selectedActivity,
       notes: this.state.notes
@@ -235,7 +235,7 @@ export default class DateForm extends React.Component {
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
             />
-            <Navbar />
+            <Navbar calendarIcon="far fa-calendar nav-icon"/>
           </form>
         </div>
       </div>
