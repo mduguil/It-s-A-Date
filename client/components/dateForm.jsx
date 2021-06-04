@@ -7,7 +7,6 @@ import PlacesModal from './placesModal';
 import AddInvites from './addInvites';
 import ContactsListModal from './contactsListModal';
 import MakeDecisions from './makeDecisions';
-import Navbar from './navbar';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -235,7 +234,6 @@ export default class DateForm extends React.Component {
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
             />
-            <Navbar calendarIcon="far fa-calendar nav-icon"/>
           </form>
         </div>
       </div>

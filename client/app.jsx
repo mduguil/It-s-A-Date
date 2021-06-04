@@ -16,14 +16,27 @@ export default class App extends React.Component {
       return (
         <>
         <DateForm />
-        <Navbar />
+          <Navbar
+            calendarIcon="far fa-calendar nav-icon"
+            handleHomeClick={event => {
+              this.setState({
+                dateFormIsOpen: false
+              });
+            }}/>
         </>
       );
     }
     return (
       <>
         <Home />
-        <Navbar calendarIcon="far fa-calendar nav-icon home-calendar-icon" />
+        <Navbar
+          calendarIcon="far fa-calendar nav-icon home-calendar-icon"
+          handleDateClick={event => {
+            this.setState({
+              dateFormIsOpen: true
+            });
+          }}
+        />
       </>
     );
   }
