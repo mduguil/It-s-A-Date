@@ -44,7 +44,6 @@ export default class Calendar extends React.Component {
     this.nextMonth = this.nextMonth.bind(this);
     this.isNotCurrMonthNums = this.isNotCurrMonthNums.bind(this);
     this.hasDateScheduled = this.hasDateScheduled.bind(this);
-
   }
 
   prevMonth() {
@@ -92,14 +91,17 @@ export default class Calendar extends React.Component {
 
   hasDateScheduled(day) {
     const dates = this.state.dates.slice();
-
-    dates.forEach(date => {
+    let hasDateScheduled = false;
+    dates.some(date => {
       const dayArr = date.day.split(' ');
-      dayArr[0] = +dayArr[1];
-      dayArr[1] = +dayArr[0];
-      // const dateDay = dayArr.join(' ');
-      // console.log('dateDay', new Date(dateDay));
-      // console.log('new Date(day)', new Date(day));
+      const [a, b] = dayArr;
+      dayArr[0] = +b + 1;
+      dayArr[1] = +a;
+      const dateDay = dayArr.join(' ');
+      if (moment(new Date(dateDay)).isSame(new Date(day))) {
+        hasDateScheduled = true;
+      }
+      return hasDateScheduled;
     });
   }
 

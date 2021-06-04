@@ -520,5 +520,5 @@ i:hover {
 }
 
 .scheduled-date {
-  border: yellow;
+  color: red;
 }
