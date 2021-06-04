@@ -97,16 +97,11 @@ export default class Calendar extends React.Component {
     fetch('api/dates')
       .then(res => res.json())
       .then(dates => {
-        const byDate = {};
-        dates.forEach(item => {
-          if (!byDate[item.day]) {
-            byDate[item.day] = [item];
-          } else {
-            byDate[item.day].push(item);
-          }
-        });
         this.setState({
-          byDate: byDate
+          byDate: dates.reduce((acc, item) => ({
+            ...acc,
+            [item.day]: acc[item.day] ? [...acc[item.day], item] : [item]
+          }), {})
         });
       });
   }
