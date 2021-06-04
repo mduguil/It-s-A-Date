@@ -37,12 +37,14 @@ export default class Calendar extends React.Component {
       calendar: [],
       selectedDay: null,
       currMonth: currMonth,
-      calendarDays: generateCalendarDays(startDay, endDay)
+      calendarDays: generateCalendarDays(startDay, endDay),
+      dates: []
     };
 
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
     this.isNotCurrMonthNums = this.isNotCurrMonthNums.bind(this);
+    this.hasDateScheduled = this.hasDateScheduled.bind(this);
 
   }
 
@@ -83,14 +85,31 @@ export default class Calendar extends React.Component {
   }
 
   dayStyle(day) {
+    if (this.hasDateScheduled(day)) return 'scheduled-date';
     if (this.isToday(day)) return 'today';
     if (this.isNotCurrMonthNums(day)) return 'extra-days';
     return '';
   }
 
+  hasDateScheduled(day) {
+    const dates = this.state.dates.slice();
+
+    dates.forEach(date => {
+      const dayArr = date.day.split(' ');
+      dayArr[1] = +dayArr[1] + 1;
+      const dateDay = dayArr.join(' ');
+      return dateDay === day.format('D M Y');
+    });
+  }
+
   componentDidMount() {
     fetch('api/dates')
-      .then(res => res.json());
+      .then(res => res.json())
+      .then(dates => {
+        this.setState({
+          dates: dates
+        });
+      });
   }
 
   render() {
@@ -124,7 +143,7 @@ export default class Calendar extends React.Component {
                             this.isSelected(day);
                           }}
                         >
-                          <div value={day.format('D, M, Y')} className={this.dayStyle(day)}>
+                          <div value={day.format('D M Y')} className={this.dayStyle(day)}>
                             {day.format('D')}
                           </div>
                         </div>

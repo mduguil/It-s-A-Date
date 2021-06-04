@@ -518,3 +518,7 @@ i:hover {
 .selected-day {
   border: 2px solid pink;
 }
+
+.scheduled-date {
+  border: yellow;
+}
