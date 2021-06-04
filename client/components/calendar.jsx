@@ -42,6 +42,7 @@ export default class Calendar extends React.Component {
 
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
+    this.isNotCurrMonthNums = this.isNotCurrMonthNums.bind(this);
 
   }
 
@@ -66,56 +67,73 @@ export default class Calendar extends React.Component {
   }
 
   isSelected(day) {
-    return moment(day).isSame(day, 'day');
+    if (moment(day).isSame(day, 'day')) {
+      return 'selected-day';
+    }
   }
 
   isToday(day) {
     return moment(new Date()).isSame(day, 'day');
   }
 
+  isNotCurrMonthNums(day) {
+    const firstDay = this.state.currMonth.clone().startOf('month');
+    const lastDay = this.state.currMonth.clone().endOf('month');
+    return !moment(day).isBetween(firstDay - 1, lastDay + 1);
+  }
+
   dayStyle(day) {
     if (this.isToday(day)) return 'today';
-    if (this.isSelected(day)) return 'selected-day';
+    if (this.isNotCurrMonthNums(day)) return 'extra-days';
     return '';
+  }
+
+  componentDidMount() {
+    fetch('api/dates')
+      .then(res => res.json());
   }
 
   render() {
     return (
       <div className="container">
-        <div className="calendar -container">
+        <div className="calendar-container">
           <h1 className="calendar-title center row">Calendar</h1>
-          <div className="month-name-container">
-            <i className="fas fa-chevron-left" onClick={() => this.prevMonth()}></i>
-            <div className="month-name">{this.state.currMonth.format('MMMM')}</div>
-            <i className="fas fa-chevron-right" onClick={() => this.nextMonth()}></i>
-          </div>
-          <div className="days-of-the-week">
-            {this.state.daysOfTheWeek.map(day => {
-              return (
-                <div className="day-name" key={day}>{day}</div>
-              );
-            })}
-          </div>
           <div className="calendar">
-            {this.state.calendarDays.map((week, wi) => {
-              return (
-                <div key={wi} className="week">
-                  {week.map((day, di) => {
-                    return (
-                      <div
-                        key={di}
-                        className="day-number"
-                        onClick={event => { this.isSelected(day); }}
-                      >
-                        <div value={day.format('D')} className={this.dayStyle(day)}>
-                          {day.format('D')}
+            <div className="month-name-container">
+              <i className="fas fa-chevron-left month-controls" onClick={() => this.prevMonth()}></i>
+              <div className="month-name">{this.state.currMonth.format('MMMM')}</div>
+              <i className="fas fa-chevron-right month-controls" onClick={() => this.nextMonth()}></i>
+            </div>
+            <div className="days-of-the-week">
+              {this.state.daysOfTheWeek.map(day => {
+                return (
+                  <div className="day-name" key={day}>{day}</div>
+                );
+              })}
+            </div>
+            <div className="calendar-numbers">
+              {this.state.calendarDays.map((week, wi) => {
+                return (
+                  <div key={wi} className="week">
+                    {week.map((day, di) => {
+                      return (
+                        <div
+                          key={di}
+                          className="day-number"
+                          onClick={event => {
+                            this.isSelected(day);
+                          }}
+                        >
+                          <div value={day.format('D, M, Y')} className={this.dayStyle(day)}>
+                            {day.format('D')}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
         <Navbar calendarIcon="far fa-calendar nav-icon home-calendar-icon" />
