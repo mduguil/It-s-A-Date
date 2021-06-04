@@ -520,5 +520,11 @@ i:hover {
 }
 
 .scheduled-date {
-  color: red;
+  border-radius: 50%;
+  border: 22px solid #e93d3d;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
