@@ -44,6 +44,7 @@ export default class Calendar extends React.Component {
     this.nextMonth = this.nextMonth.bind(this);
     this.isNotCurrMonthNums = this.isNotCurrMonthNums.bind(this);
     this.hasDateScheduled = this.hasDateScheduled.bind(this);
+    this.isSelected = this.isSelected.bind(this);
   }
 
   prevMonth() {
@@ -67,9 +68,9 @@ export default class Calendar extends React.Component {
   }
 
   isSelected(day) {
-    if (moment(day).isSame(day, 'day')) {
-      return 'selected-day';
-    }
+    this.setState({
+      selectedDay: day
+    });
   }
 
   isToday(day) {
