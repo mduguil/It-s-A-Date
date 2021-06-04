@@ -22,8 +22,8 @@ export default class App extends React.Component {
     }
     return (
       <>
-      <Home />
-      <Navbar />
+        <Home />
+        <Navbar calendarIcon="far fa-calendar nav-icon home-calendar-icon" />
       </>
     );
   }

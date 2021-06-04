@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './navbar';
 import moment from 'moment';
 
 function generateCalendarDays(startDay, endDay) {
@@ -96,10 +95,10 @@ export default class Calendar extends React.Component {
 
     dates.forEach(date => {
       const dayArr = date.day.split(' ');
-      dayArr[1] = +dayArr[1] + 1;
+      dayArr[0] = +dayArr[1];
+      dayArr[1] = +dayArr[0];
       // const dateDay = dayArr.join(' ');
-      // console.log('new Date(str)', new Date('6 2 2021'));
-      // console.log('dateDay', dateDay);
+      // console.log('dateDay', new Date(dateDay));
       // console.log('new Date(day)', new Date(day));
     });
   }
@@ -157,7 +156,6 @@ export default class Calendar extends React.Component {
             </div>
           </div>
         </div>
-        <Navbar calendarIcon="far fa-calendar nav-icon home-calendar-icon" />
       </div>
     );
   }
