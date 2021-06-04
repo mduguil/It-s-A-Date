@@ -14,7 +14,7 @@ app.use(JSONParser);
 app.use(errorMiddleware);
 
 const db = new pg.Pool({
-  connectionString: 'postgres://dev:dev@localhost/its-a-date',
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
