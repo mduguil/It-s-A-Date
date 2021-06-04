@@ -37,7 +37,7 @@ export default class Calendar extends React.Component {
       selectedDay: null,
       currMonth: currMonth,
       calendarDays: generateCalendarDays(startDay, endDay),
-      dates: []
+      byDate: []
     };
 
     this.prevMonth = this.prevMonth.bind(this);
@@ -90,19 +90,7 @@ export default class Calendar extends React.Component {
   }
 
   hasDateScheduled(day) {
-    const dates = this.state.dates.slice();
-    let hasDateScheduled = false;
-    dates.some(date => {
-      const dayArr = date.day.split(' ');
-      const [a, b] = dayArr;
-      dayArr[0] = +b + 1;
-      dayArr[1] = +a;
-      const dateDay = dayArr.join(' ');
-      if (moment(new Date(dateDay)).isSame(new Date(day))) {
-        hasDateScheduled = true;
-      }
-      return hasDateScheduled;
-    });
+    return this.state.byDate[day.format('M D YYYY')];
   }
 
   componentDidMount() {
@@ -111,10 +99,10 @@ export default class Calendar extends React.Component {
       .then(dates => {
         const byDate = {};
         dates.forEach(item => {
-          if (!byDate[item.date]) {
-            byDate[item.date] = [item];
+          if (!byDate[item.day]) {
+            byDate[item.day] = [item];
           } else {
-            byDate[item.date].push(item);
+            byDate[item.day].push(item);
           }
         });
         this.setState({
