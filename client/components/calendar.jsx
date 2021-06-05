@@ -34,7 +34,6 @@ export default class Calendar extends React.Component {
       startDay,
       endDay,
       calendar: [],
-      selectedDay: null,
       currMonth: currMonth,
       calendarDays: generateCalendarDays(startDay, endDay),
       byDate: []
@@ -44,7 +43,6 @@ export default class Calendar extends React.Component {
     this.nextMonth = this.nextMonth.bind(this);
     this.isNotCurrMonthNums = this.isNotCurrMonthNums.bind(this);
     this.hasDateScheduled = this.hasDateScheduled.bind(this);
-    this.isSelected = this.isSelected.bind(this);
   }
 
   prevMonth() {
@@ -64,12 +62,6 @@ export default class Calendar extends React.Component {
     this.setState({
       currMonth,
       calendarDays: generateCalendarDays(startDay, endDay)
-    });
-  }
-
-  isSelected(day) {
-    this.setState({
-      selectedDay: day
     });
   }
 
@@ -134,9 +126,7 @@ export default class Calendar extends React.Component {
                         <div
                           key={di}
                           className="day-number"
-                          onClick={event => {
-                            this.isSelected(day);
-                          }}
+                          onClick={event => this.props.handleDayClick(event, day)}
                         >
                           <div value={day.format('D M Y')} className={this.dayStyle(day)}>
                             {day.format('D')}
