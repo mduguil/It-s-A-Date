@@ -1,25 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-
-function generateCalendarDays(startDay, endDay) {
-  const calendarDays = [];
-
-  const day = startDay.clone().subtract(1, 'day');
-  while (day.isBefore(endDay, 'day')) {
-    calendarDays.push(
-      Array(7).fill('dayOfTheWeek').map(() => day.add(1, 'day').clone())
-    );
-  }
-
-  return calendarDays;
-}
-
-function getStartEndDay(currMonth) {
-  return {
-    startDay: currMonth.clone().startOf('month').startOf('week'),
-    endDay: currMonth.clone().endOf('month').endOf('week')
-  };
-}
+import { generateCalendarDays, getStartEndDay, dayStyle } from './utils';
+import { API_URLS } from '../../constants';
 
 export default class Calendar extends React.Component {
   constructor(props) {
@@ -41,8 +23,19 @@ export default class Calendar extends React.Component {
 
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
-    this.isNotCurrMonthNums = this.isNotCurrMonthNums.bind(this);
-    this.hasDateScheduled = this.hasDateScheduled.bind(this);
+  }
+
+  componentDidMount() {
+    fetch(API_URLS.getDate)
+      .then(res => res.json())
+      .then(dates => {
+        this.setState({
+          byDate: dates.reduce((acc, item) => ({
+            ...acc,
+            [item.day]: acc[item.day] ? [...acc[item.day], item] : [item]
+          }), {})
+        });
+      });
   }
 
   prevMonth() {
@@ -63,40 +56,6 @@ export default class Calendar extends React.Component {
       currMonth,
       calendarDays: generateCalendarDays(startDay, endDay)
     });
-  }
-
-  isToday(day) {
-    return moment(new Date()).isSame(day, 'day');
-  }
-
-  isNotCurrMonthNums(day) {
-    const firstDay = this.state.currMonth.clone().startOf('month');
-    const lastDay = this.state.currMonth.clone().endOf('month');
-    return !moment(day).isBetween(firstDay - 1, lastDay + 1);
-  }
-
-  dayStyle(day) {
-    if (this.hasDateScheduled(day)) return 'scheduled-date';
-    if (this.isToday(day)) return 'today';
-    if (this.isNotCurrMonthNums(day)) return 'extra-days';
-    return '';
-  }
-
-  hasDateScheduled(day) {
-    return this.state.byDate[day.format('M D YYYY')];
-  }
-
-  componentDidMount() {
-    fetch('api/dates')
-      .then(res => res.json())
-      .then(dates => {
-        this.setState({
-          byDate: dates.reduce((acc, item) => ({
-            ...acc,
-            [item.day]: acc[item.day] ? [...acc[item.day], item] : [item]
-          }), {})
-        });
-      });
   }
 
   render() {
@@ -128,7 +87,15 @@ export default class Calendar extends React.Component {
                           className="day-number"
                           onClick={event => this.props.handleDayClick(event, day)}
                         >
-                          <div value={day.format('D M Y')} className={this.dayStyle(day)}>
+                          <div
+                            value={day.format('D M Y')}
+                            className={dayStyle(
+                              {
+                                day,
+                                currMonth: this.state.currMonth,
+                                byDate: this.state.byDate
+                              })}
+                          >
                             {day.format('D')}
                           </div>
                         </div>

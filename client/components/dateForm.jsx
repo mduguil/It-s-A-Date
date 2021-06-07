@@ -34,8 +34,7 @@ export default class DateForm extends React.Component {
       contactsIsOpen: false,
       address: '',
       invitees: [],
-      notes: '',
-      dates: []
+      notes: ''
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
@@ -111,13 +110,7 @@ export default class DateForm extends React.Component {
       body: JSON.stringify(newDate)
     })
       .then(res => res.json())
-      .then(date => {
-        const newDate = this.state.dates.slice();
-        newDate.push(date);
-        this.setState({
-          dates: newDate
-        });
-      });
+      .then(this.props.onSubmitSuccess);
   }
 
   render() {

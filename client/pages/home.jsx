@@ -1,39 +1,31 @@
+import moment from 'moment';
 import React from 'react';
-import Calendar from '../components/calendar';
-import WeeklyView from '../components/weeklyView';
+import { useHistory, useParams } from 'react-router-dom';
+import Calendar from '../components/calendar/calendar';
+import WeeklyView from '../components/calendar/weeklyView';
 
-export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      weeklyViewIsOpen: false,
-      selectedDay: null
-    };
-    this.isSelected = this.isSelected.bind(this);
+export default function Home(props) {
+  const history = useHistory();
+
+  function handleClick(day) {
+    history.push(`/weekly-view/${day.format('M D YYYY')}`);
   }
 
-  isSelected(day) {
-    this.setState({
-      selectedDay: day,
-      weeklyViewIsOpen: true
-    });
-  }
+  const { day } = useParams();
 
-  render() {
-    if (this.state.weeklyViewIsOpen) {
-      return (
-      <WeeklyView
-        selectedDay={this.state.selectedDay}/>
-      );
-    }
-
+  if (props.weeklyView) {
     return (
-      <Calendar
-        handleDayClick={(event, day) => {
-          this.isSelected(day);
-        }}
+      <WeeklyView
+        selectedDay={moment(day)}
       />
     );
-
   }
+
+  return (
+      <Calendar
+        handleDayClick={(event, day) => {
+          handleClick(day);
+        }}
+      />
+  );
 }
