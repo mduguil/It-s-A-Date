@@ -6,12 +6,18 @@ const staticMiddleware = require('./static-middleware');
 const ClientError = require('./client-error');
 const JSONParser = express.json();
 const pg = require('pg');
+const path = require('path');
 
 const app = express();
 
 app.use(staticMiddleware);
 app.use(JSONParser);
 app.use(errorMiddleware);
+app.use((req, res) => {
+  res.sendFile('/index.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
