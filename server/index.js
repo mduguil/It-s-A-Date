@@ -13,11 +13,6 @@ const app = express();
 app.use(staticMiddleware);
 app.use(JSONParser);
 app.use(errorMiddleware);
-app.use((req, res) => {
-  res.sendFile('/index.html', {
-    root: path.join(__dirname, 'public')
-  });
-});
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -117,6 +112,12 @@ app.get('/api/places', function (req, res, next) {
       res.status(201).json(placesData);
     })
     .catch(err => next(err));
+});
+
+app.use((req, res) => {
+  res.sendFile('/index.html', {
+    root: path.join(__dirname, 'public')
+  });
 });
 
 app.listen(process.env.PORT, () => {
