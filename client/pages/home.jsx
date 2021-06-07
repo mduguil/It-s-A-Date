@@ -1,10 +1,31 @@
+import moment from 'moment';
 import React from 'react';
-import Calendar from '../components/calendar';
+import { useHistory, useParams } from 'react-router-dom';
+import Calendar from '../components/calendar/calendar';
+import WeeklyView from '../components/calendar/weeklyView';
 
-export default class Home extends React.Component {
-  render() {
+export default function Home(props) {
+  const history = useHistory();
+
+  function handleClick(day) {
+    history.push(`/weekly-view/${day.format('M D YYYY')}`);
+  }
+
+  const { day } = useParams();
+
+  if (props.weeklyView) {
     return (
-      <Calendar />
+      <WeeklyView
+        selectedDay={moment(day)}
+      />
     );
   }
+
+  return (
+      <Calendar
+        handleDayClick={(event, day) => {
+          handleClick(day);
+        }}
+      />
+  );
 }

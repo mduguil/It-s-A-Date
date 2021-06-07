@@ -7,7 +7,6 @@ import PlacesModal from './placesModal';
 import AddInvites from './addInvites';
 import ContactsListModal from './contactsListModal';
 import MakeDecisions from './makeDecisions';
-import Navbar from './navbar';
 
 const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -35,8 +34,7 @@ export default class DateForm extends React.Component {
       contactsIsOpen: false,
       address: '',
       invitees: [],
-      notes: '',
-      dates: []
+      notes: ''
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
@@ -112,13 +110,7 @@ export default class DateForm extends React.Component {
       body: JSON.stringify(newDate)
     })
       .then(res => res.json())
-      .then(date => {
-        const newDate = this.state.dates.slice();
-        newDate.push(date);
-        this.setState({
-          dates: newDate
-        });
-      });
+      .then(this.props.onSubmitSuccess);
   }
 
   render() {
@@ -235,7 +227,6 @@ export default class DateForm extends React.Component {
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
             />
-            <Navbar calendarIcon="far fa-calendar nav-icon"/>
           </form>
         </div>
       </div>

@@ -1,7 +1,12 @@
 import React from 'react';
-import DateForm from '../client/components/dateForm';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 import Home from './pages/home';
 import Navbar from '../client/components/navbar';
+import Date from './pages/date';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,22 +14,31 @@ export default class App extends React.Component {
     this.state = {
       dateFormIsOpen: false
     };
+
   }
 
   render() {
-    if (this.state.dateFormIsOpen) {
-      return (
-        <>
-        <DateForm />
-        <Navbar />
-        </>
-      );
-    }
     return (
-      <>
-        <Home />
-        <Navbar calendarIcon="far fa-calendar nav-icon home-calendar-icon" />
-      </>
+      <Router>
+        <div>
+          <Navbar />
+
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/weekly-view/:day">
+              <Home weeklyView={true}/>
+            </Route>
+            <Route path="/weekly-view">
+              <Home weeklyView={true} />
+            </Route>
+            <Route path="/date-form">
+              <Date />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
