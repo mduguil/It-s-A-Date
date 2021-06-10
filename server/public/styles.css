@@ -29,7 +29,8 @@
   padding: 0 15px;
 }
 
-label {
+label,
+.scheduled-date-placeholder-container {
   font-size: 1.4rem;
   color: #8d8d8d;
   font-weight: bold;
@@ -531,4 +532,8 @@ i:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.scheduled-date-placeholder-container {
+  margin-top: 9%;
 }

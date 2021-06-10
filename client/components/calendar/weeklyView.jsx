@@ -2,6 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { API_URLS } from '../../constants';
 import { generateWeeklyCalendarDays, getStartEndWeekDay, dayStyle } from './utils';
+import ShowDatesScheduled from './showDatesScheduled';
 
 export default class WeeklyView extends React.Component {
   constructor(props) {
@@ -73,6 +74,9 @@ export default class WeeklyView extends React.Component {
             </div>
           </div>
         </div>
+        <ShowDatesScheduled
+          byDate={this.state.byDate}
+          selectedDay={this.state.currMonth}/>
       </div>
     );
   }
