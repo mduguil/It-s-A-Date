@@ -516,12 +516,19 @@ i:hover {
   align-items: center;
 }
 
-.extra-days {
-  color: #a4a4a4;
+.weekly-day-number-container {
+  display: flex;
 }
 
-.selected-day {
-  border: 2px solid pink;
+.weekly-scheduled-date {
+  background-color: green;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.extra-days {
+  color: #a4a4a4;
 }
 
 .scheduled-date {

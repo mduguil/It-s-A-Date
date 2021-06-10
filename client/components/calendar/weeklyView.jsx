@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import { API_URLS } from '../../constants';
-import { generateWeeklyCalendarDays, getStartEndWeekDay, dayStyle } from './utils';
+import { generateWeeklyCalendarDays, getStartEndWeekDay, weeklyViewDayStyle, hasDateScheduled } from './utils';
 import ShowDatesScheduled from './showDatesScheduled';
 
 export default class WeeklyView extends React.Component {
@@ -57,15 +57,21 @@ export default class WeeklyView extends React.Component {
                       className="day-number"
                       onClick={this.props.handleDayClick}
                     >
-                      <div
-                        className={dayStyle(
-                          {
-                            day,
-                            currMonth: this.state.currMonth,
-                            byDate: this.state.byDate
+                      <div className="weekly-day-number-container">
+                        <div
+                          className={weeklyViewDayStyle(
+                            {
+                              day,
+                              currMonth: this.state.currMonth,
+                              byDate: this.state.byDate
+                            }
+                          )}>
+                          {day.format('D')}
+                          </div>
+                          {hasDateScheduled(day, this.state.byDate)
+                            ? <div className="weekly-scheduled-date"></div>
+                            : ''
                           }
-                        )}>
-                        {day.format('D')}
                       </div>
                     </div>
                   );

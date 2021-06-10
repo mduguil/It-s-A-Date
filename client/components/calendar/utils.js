@@ -52,6 +52,12 @@ export function dayStyle({ day, currMonth, byDate }) {
   return '';
 }
 
+export function weeklyViewDayStyle({ day, currMonth, byDate }) {
+  if (isToday(day)) return 'today';
+  if (isNotCurrMonthNums(day, currMonth)) return 'extra-days';
+  return '';
+}
+
 export function hasDateScheduled(day, byDate) {
   return byDate[day.format('M D YYYY')];
 }
