@@ -30,9 +30,9 @@ export default class Calendar extends React.Component {
       .then(res => res.json())
       .then(dates => {
         this.setState({
-          byDate: dates.reduce((acc, item) => ({
+          byDate: dates.reduce((acc, date) => ({
             ...acc,
-            [item.day]: acc[item.day] ? [...acc[item.day], item] : [item]
+            [date.day]: acc[date.day] ? [...acc[date.day], date] : [date]
           }), {})
         });
       });
