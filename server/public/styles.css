@@ -521,7 +521,8 @@ i:hover {
 }
 
 .weekly-scheduled-date {
-  background-color: green;
+  margin-left: 1px;
+  background-color: #00ff29;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -549,12 +550,12 @@ i:hover {
   font-size: 1.3rem;
   font-weight: bold;
   color: #303030;
-  margin: 25px 15px 14px;
+  margin: 25px 15px 0;
 }
 
 .schedule {
   display: flex;
-  padding: 15px;
+  padding: 10px 15px;
   margin-bottom: 10px;
 }
 
