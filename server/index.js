@@ -78,16 +78,16 @@ app.get('/api/dates', (req, res, next) => {
 });
 
 app.post('/api/dates', (req, res, next) => {
-  const { location, day, time, activity, notes } = req.body;
+  const { location, day, time, activity, invites, notes } = req.body;
   if (!location || !day || !time || !activity) {
     throw new ClientError(400, 'Location, day, time, and activity are required fields');
   }
   const dates = `
     insert into "dates" ("location", "day", "time", "activity", "invites", "notes", "userId")
-    values ($1, $2, $3, $4, $5, $6)
+    values ($1, $2, $3, $4, $5, $6, $7)
     returning *
   `;
-  const params = [location, day, time, activity, notes, 1];
+  const params = [location, day, time, activity, invites, notes, 1];
   db.query(dates, params)
     .then(result => {
       const [date] = result.rows;

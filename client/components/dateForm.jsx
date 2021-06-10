@@ -43,6 +43,7 @@ export default class DateForm extends React.Component {
     this.onSelectChange = this.onSelectChange.bind(this);
     this.handleNotesChange = this.handleNotesChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.turnInvitesIntoStr = this.turnInvitesIntoStr.bind(this);
   }
 
   getMonthName(monthNum) {
@@ -92,6 +93,14 @@ export default class DateForm extends React.Component {
     });
   }
 
+  turnInvitesIntoStr(invitees) {
+    const invites = '';
+    invitees.forEach(invited => {
+      invitees += invited;
+    });
+    return invites;
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const newDate = {
@@ -100,7 +109,7 @@ export default class DateForm extends React.Component {
       time: this.state.[timeInputName],
       activity: this.state.selectedActivity,
       notes: this.state.notes,
-      invites: this.state.invitees
+      invites: this.turnInvitesIntoStr(this.state.invitees)
     };
 
     fetch('/api/dates', {
