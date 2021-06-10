@@ -537,3 +537,68 @@ i:hover {
 .scheduled-date-placeholder-container {
   margin-top: 9%;
 }
+
+.scheduled-date-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #303030;
+  margin: 25px 15px 14px;
+}
+
+.schedule {
+  display: flex;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.activity-decor {
+  height: 60%;
+  background-color: #e1e1e1;
+  margin: 10px 26px;
+}
+
+.scheduled-activity {
+  background-color: #e93d3d;
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.scheduled-invitees-container {
+  display: flex;
+}
+
+.scheduled-invitees-img {
+  width: 52px;
+  border-radius: 50%;
+}
+
+.scheduled-invitees-time-container {
+  flex-direction: column;
+}
+
+.scheduled-invitees {
+  font-weight: bold;
+}
+
+.scheduled-time {
+  margin-bottom: 10px;
+}
+
+.scheduled-location {
+  font-weight: bold;
+  background-color: #ffe9e9;
+  color: #f44343;
+  padding: 10px;
+}
+
+.scheduled-note {
+  margin-top: 5px;
+  color: #8b8b8b;
+}
+
+.note-label {
+  font-weight: bold;
+}
