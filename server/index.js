@@ -82,7 +82,7 @@ app.post('/api/dates', (req, res, next) => {
     throw new ClientError(400, 'Location, day, time, and activity are required fields');
   }
   const dates = `
-    insert into "dates" ("location", "day", "time", "activity", "notes", "userId")
+    insert into "dates" ("location", "day", "time", "activity", "invites", "notes", "userId")
     values ($1, $2, $3, $4, $5, $6)
     returning *
   `;

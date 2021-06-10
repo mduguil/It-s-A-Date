@@ -32,6 +32,7 @@ create table "dates" (
   "time"       text           not null,
   "activity"   text           not null,
   "userId"     integer        not null,
+  "invites"    text           not null,
   "notes"      text,
   "createdAt"  timestamptz(6) not null default now(),
   primary key ("dateId"),

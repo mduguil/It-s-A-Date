@@ -99,7 +99,8 @@ export default class DateForm extends React.Component {
       day: (+this.state.selectedMonth + 1) + ' ' + this.state.day + ' ' + this.state.selectedYear,
       time: this.state.[timeInputName],
       activity: this.state.selectedActivity,
-      notes: this.state.notes
+      notes: this.state.notes,
+      invites: this.state.invitees
     };
 
     fetch('/api/dates', {
