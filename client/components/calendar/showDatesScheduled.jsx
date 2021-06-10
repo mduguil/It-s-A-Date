@@ -15,6 +15,9 @@ export default class ShowDatesScheduled extends React.Component {
                   .map((date, i) => {
                     return (
                       <>
+                        <div className="scheduled-invitees" key={i}>
+                          {date.invites.toString()}
+                        </div>
                         <div className="scheduled-time" key={i}>
                           {date.time}
                         </div>
