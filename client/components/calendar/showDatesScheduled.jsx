@@ -5,15 +5,15 @@ export default class ShowDatesScheduled extends React.Component {
   render() {
     return (
       <div className="day-scheduled-date-container">
-        {hasDateScheduled(this.props.selectedDay, this.props.byDate)
+        {hasDateScheduled(this.props.currMonth, this.props.byDate)
           ? <>
               <div className="scheduled-date-title">
                 Dates Today
               </div>
               <div className="schedule-container">
-                {this.props.byDate[this.props.selectedDay.format('M D YYYY')]
-                  .map((date, i) => {
-                    return (
+              {this.props.byDate[this.props.selectedDay.format('M D YYYY')]
+                .map((date, i) => {
+                  return (
                       <div className="schedule" key={i}>
                         <div className="scheduled-activity-container">
                           <div className="scheduled-activity"></div>
@@ -44,8 +44,8 @@ export default class ShowDatesScheduled extends React.Component {
                           }
                         </div>
                       </div>
-                    );
-                  })
+                  );
+                })
                 }
               </div>
             </>

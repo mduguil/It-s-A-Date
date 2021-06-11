@@ -9,7 +9,9 @@ export default class WeeklyView extends React.Component {
     super(props);
     const daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const { startDay, endDay } = getStartEndWeekDay(this.props.selectedDay);
+    const selectedDay = this.props.selectedDay;
     this.state = {
+      selectedDay,
       daysOfTheWeek,
       calendarDays: generateWeeklyCalendarDays(startDay, endDay),
       currMonth: moment(this.props.selectedDay),
@@ -18,6 +20,13 @@ export default class WeeklyView extends React.Component {
     };
     this.prevWeek = this.prevWeek.bind(this);
     this.nextWeek = this.nextWeek.bind(this);
+    this.updateSelectedDay = this.updateSelectedDay.bind(this);
+  }
+
+  updateSelectedDay(day) {
+    this.setState({
+      selectedDay: day
+    });
   }
 
   prevWeek() {
@@ -80,13 +89,17 @@ export default class WeeklyView extends React.Component {
                       className="day-number"
                       onClick={this.props.handleDayClick}
                     >
-                      <div className="weekly-day-number-container">
+                      <div
+                      className="weekly-day-number-container"
+                      onClick={event => this.updateSelectedDay(day)}
+                      >
                         <div
                           className={weeklyViewDayStyle(
                             {
                               day,
                               currMonth: this.state.currMonth,
-                              byDate: this.state.byDate
+                              byDate: this.state.byDate,
+                              selectedDay: this.props.selectedDay
                             }
                           )}>
                           {day.format('D')}
@@ -105,7 +118,9 @@ export default class WeeklyView extends React.Component {
         </div>
         <ShowDatesScheduled
           byDate={this.state.byDate}
-          selectedDay={this.state.currMonth}/>
+          currMonth={this.state.currMonth}
+          selectedDay={this.state.selectedDay}
+        />
       </div>
     );
   }

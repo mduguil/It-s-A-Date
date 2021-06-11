@@ -39,6 +39,10 @@ export function isToday(day) {
   return moment(new Date()).isSame(day, 'day');
 }
 
+export function isSelected(selectedDay, day) {
+  return moment(selectedDay).isSame(day, 'day');
+}
+
 export function isNotCurrMonthNums(day, currMonth) {
   const firstDay = currMonth.clone().startOf('month');
   const lastDay = currMonth.clone().endOf('month');
@@ -52,8 +56,9 @@ export function dayStyle({ day, currMonth, byDate }) {
   return '';
 }
 
-export function weeklyViewDayStyle({ day, currMonth, byDate }) {
+export function weeklyViewDayStyle({ day, currMonth, byDate, selectedDay }) {
   if (isToday(day)) return 'today';
+  if (isSelected(selectedDay, day)) return 'selected-day';
   if (isNotCurrMonthNums(day, currMonth)) return 'extra-days';
   return '';
 }
