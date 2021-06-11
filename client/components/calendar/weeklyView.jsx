@@ -15,6 +15,28 @@ export default class WeeklyView extends React.Component {
       currMonth: moment(this.props.selectedDay),
       byDate: []
     };
+    this.prevWeek = this.prevWeek.bind(this);
+    this.nextWeek = this.nextWeek.bind(this);
+  }
+
+  prevWeek() {
+    const currMonth = this.state.currMonth.clone().subtract(1, 'week');
+    const { startDay, endDay } = getStartEndWeekDay(this.props.selectedDay);
+
+    this.setState({
+      currMonth,
+      calendarDays: generateWeeklyCalendarDays(startDay, endDay)
+    });
+  }
+
+  nextWeek() {
+    const currMonth = this.state.currMonth.clone().add(1, 'week');
+    const { startDay, endDay } = getStartEndWeekDay(this.props.selectedDay);
+
+    this.setState({
+      currMonth,
+      calendarDays: generateWeeklyCalendarDays(startDay, endDay)
+    });
   }
 
   componentDidMount() {
@@ -34,7 +56,7 @@ export default class WeeklyView extends React.Component {
     return (
       <div className="container">
         <div className="calendar-container">
-          <h1 className="calendar-title center row">Calendar</h1>
+          <h1 className="calendar-title center row">Schedule</h1>
           <div className="calendar">
             <div className="month-name-container">
               <i className="fas fa-chevron-left week-controls" onClick={() => this.prevWeek()}></i>
