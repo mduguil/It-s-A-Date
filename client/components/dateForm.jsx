@@ -95,9 +95,18 @@ export default class DateForm extends React.Component {
 
   turnInvitesIntoStr(invitees) {
     let invites = '';
-    invitees.forEach(invited => {
-      invites += invited.name;
-    });
+    const inviteLength = invitees.length;
+    let count = 0;
+    if (inviteLength === 1) {
+      return invitees[0].name;
+    }
+    if (inviteLength === 2) {
+      return `${invitees[0].name} & ${invitees[1].name}`;
+    }
+    for (count; count < inviteLength - 1; count++) {
+      invites += `${invitees[count].name}, `;
+    }
+    invites += `& ${invitees[count].name}`;
     return invites;
   }
 
