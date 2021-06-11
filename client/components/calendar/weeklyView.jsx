@@ -13,6 +13,7 @@ export default class WeeklyView extends React.Component {
       daysOfTheWeek,
       calendarDays: generateWeeklyCalendarDays(startDay, endDay),
       currMonth: moment(this.props.selectedDay),
+      currWeek: moment(this.props.selectedDay),
       byDate: []
     };
     this.prevWeek = this.prevWeek.bind(this);
@@ -20,21 +21,21 @@ export default class WeeklyView extends React.Component {
   }
 
   prevWeek() {
-    const currMonth = this.state.currMonth.clone().subtract(1, 'week');
-    const { startDay, endDay } = getStartEndWeekDay(this.props.selectedDay);
+    const currWeek = this.state.currWeek.clone().subtract(1, 'week');
+    const { startDay, endDay } = getStartEndWeekDay(currWeek);
 
     this.setState({
-      currMonth,
+      currWeek,
       calendarDays: generateWeeklyCalendarDays(startDay, endDay)
     });
   }
 
   nextWeek() {
-    const currMonth = this.state.currMonth.clone().add(1, 'week');
-    const { startDay, endDay } = getStartEndWeekDay(this.props.selectedDay);
+    const currWeek = this.state.currWeek.clone().add(1, 'week');
+    const { startDay, endDay } = getStartEndWeekDay(currWeek);
 
     this.setState({
-      currMonth,
+      currWeek,
       calendarDays: generateWeeklyCalendarDays(startDay, endDay)
     });
   }
