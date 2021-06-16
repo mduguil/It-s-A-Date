@@ -5,7 +5,7 @@ export default class ShowDatesScheduled extends React.Component {
   render() {
     return (
       <div className="day-scheduled-date-container">
-        {hasDateScheduled(this.props.currMonth, this.props.byDate)
+        {hasDateScheduled(this.props.selectedDay, this.props.byDate)
           ? <>
               <div className="scheduled-date-title">
                 Dates Today

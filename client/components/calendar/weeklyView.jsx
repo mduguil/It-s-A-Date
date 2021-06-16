@@ -25,7 +25,7 @@ export default class WeeklyView extends React.Component {
 
   updateSelectedDay(day) {
     this.setState({
-      selectedDay: day
+      selectedDay: moment(day._d)
     });
   }
 
@@ -99,7 +99,7 @@ export default class WeeklyView extends React.Component {
                               day,
                               currMonth: this.state.currMonth,
                               byDate: this.state.byDate,
-                              selectedDay: this.props.selectedDay
+                              selectedDay: this.state.selectedDay
                             }
                           )}>
                           {day.format('D')}
