@@ -1,19 +1,52 @@
 import moment from 'moment';
 import React from 'react';
 import { API_URLS } from '../../constants';
-import { generateWeeklyCalendarDays, getStartEndWeekDay, dayStyle } from './utils';
+import { generateWeeklyCalendarDays, getStartEndWeekDay, weeklyViewDayStyle, hasDateScheduled } from './utils';
+import ShowDatesScheduled from './showDatesScheduled';
 
 export default class WeeklyView extends React.Component {
   constructor(props) {
     super(props);
     const daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const { startDay, endDay } = getStartEndWeekDay(this.props.selectedDay);
+    const selectedDay = this.props.selectedDay;
     this.state = {
+      selectedDay,
       daysOfTheWeek,
       calendarDays: generateWeeklyCalendarDays(startDay, endDay),
       currMonth: moment(this.props.selectedDay),
+      currWeek: moment(this.props.selectedDay),
       byDate: []
     };
+    this.prevWeek = this.prevWeek.bind(this);
+    this.nextWeek = this.nextWeek.bind(this);
+    this.updateSelectedDay = this.updateSelectedDay.bind(this);
+  }
+
+  updateSelectedDay(day) {
+    this.setState({
+      selectedDay: moment(day._d)
+    });
+  }
+
+  prevWeek() {
+    const currWeek = this.state.currWeek.clone().subtract(1, 'week');
+    const { startDay, endDay } = getStartEndWeekDay(currWeek);
+
+    this.setState({
+      currWeek,
+      calendarDays: generateWeeklyCalendarDays(startDay, endDay)
+    });
+  }
+
+  nextWeek() {
+    const currWeek = this.state.currWeek.clone().add(1, 'week');
+    const { startDay, endDay } = getStartEndWeekDay(currWeek);
+
+    this.setState({
+      currWeek,
+      calendarDays: generateWeeklyCalendarDays(startDay, endDay)
+    });
   }
 
   componentDidMount() {
@@ -33,7 +66,7 @@ export default class WeeklyView extends React.Component {
     return (
       <div className="container">
         <div className="calendar-container">
-          <h1 className="calendar-title center row">Calendar</h1>
+          <h1 className="calendar-title center row">Schedule</h1>
           <div className="calendar">
             <div className="month-name-container">
               <i className="fas fa-chevron-left week-controls" onClick={() => this.prevWeek()}></i>
@@ -57,14 +90,24 @@ export default class WeeklyView extends React.Component {
                       onClick={this.props.handleDayClick}
                     >
                       <div
-                        className={dayStyle(
-                          {
-                            day,
-                            currMonth: this.state.currMonth,
-                            byDate: this.state.byDate
+                      className="weekly-day-number-container"
+                      onClick={event => this.updateSelectedDay(day)}
+                      >
+                        <div
+                          className={weeklyViewDayStyle(
+                            {
+                              day,
+                              currMonth: this.state.currMonth,
+                              byDate: this.state.byDate,
+                              selectedDay: this.state.selectedDay
+                            }
+                          )}>
+                          {day.format('D')}
+                          </div>
+                          {hasDateScheduled(day, this.state.byDate)
+                            ? <div className="weekly-scheduled-date"></div>
+                            : ''
                           }
-                        )}>
-                        {day.format('D')}
                       </div>
                     </div>
                   );
@@ -73,6 +116,11 @@ export default class WeeklyView extends React.Component {
             </div>
           </div>
         </div>
+        <ShowDatesScheduled
+          byDate={this.state.byDate}
+          currMonth={this.state.currMonth}
+          selectedDay={this.state.selectedDay}
+        />
       </div>
     );
   }

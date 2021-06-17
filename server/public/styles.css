@@ -29,7 +29,8 @@
   padding: 0 15px;
 }
 
-label {
+label,
+.scheduled-date-placeholder-container {
   font-size: 1.4rem;
   color: #8d8d8d;
   font-weight: bold;
@@ -505,6 +506,17 @@ i:hover {
   cursor: pointer;
 }
 
+.selected-day {
+  background-color: #5cffff;
+  border-radius: 50%;
+  border: 22px solid #5cffff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .today {
   border-radius: 50%;
   border: 4px solid #5cffff;
@@ -515,20 +527,140 @@ i:hover {
   align-items: center;
 }
 
+.weekly-day-number-container {
+  display: flex;
+}
+
+.weekly-scheduled-date {
+  margin-left: 1px;
+  background-color: #00ff29;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
 .extra-days {
   color: #a4a4a4;
 }
 
-.selected-day {
-  border: 2px solid pink;
-}
-
 .scheduled-date {
   border-radius: 50%;
-  border: 22px solid #e93d3d;
   width: 44px;
   height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.scheduled-date-placeholder-container {
+  margin-top: 9%;
+}
+
+.scheduled-date-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #303030;
+  margin: 25px 15px 0;
+}
+
+.schedule {
+  display: flex;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.activity-decor {
+  height: 60%;
+  background-color: #e1e1e1;
+  margin: 10px 26px;
+}
+
+.scheduled-activity {
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.activity-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.4rem;
+  color: rgb(255, 247, 247);
+}
+
+.scheduled-invitees-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.scheduled-invitees-img {
+  width: 52px;
+  border-radius: 50%;
+}
+
+.scheduled-invitees-time-container {
+  flex-direction: column;
+  padding-left: 10px;
+  padding-top: 17px;
+}
+
+.scheduled-invitees {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.scheduled-time {
+  color: #717171;
+}
+
+.scheduled-location {
+  font-weight: bold;
+  background-color: #ffe9e9;
+  color: #f44343;
+  padding: 10px;
+}
+
+.scheduled-note {
+  margin-top: 5px;
+  color: #8b8b8b;
+}
+
+.note-label {
+  font-weight: bold;
+}
+
+.eat {
+  background-color: #fefb52;
+}
+
+.hike {
+  background-color: #e93d3d;
+}
+
+.shop {
+  background-color: #ca49ec;
+}
+
+.picnic {
+  background-color: #38cf75;
+}
+
+.movies {
+  background-color: #3f4ee6;
+}
+
+.bowling {
+  background-color: #e956b0;
+}
+
+.spa {
+  background-color: #11cdde;
+}
+
+.other {
+  background-color: #f76039;
 }

@@ -39,6 +39,10 @@ export function isToday(day) {
   return moment(new Date()).isSame(day, 'day');
 }
 
+export function isSelected(selectedDay, day) {
+  return moment(selectedDay).isSame(day, 'day');
+}
+
 export function isNotCurrMonthNums(day, currMonth) {
   const firstDay = currMonth.clone().startOf('month');
   const lastDay = currMonth.clone().endOf('month');
@@ -47,11 +51,54 @@ export function isNotCurrMonthNums(day, currMonth) {
 
 export function dayStyle({ day, currMonth, byDate }) {
   if (isToday(day)) return 'today';
-  if (hasDateScheduled(day, byDate)) return 'scheduled-date';
+  if (hasDateScheduled(day, byDate)) {
+    return styleCaldendarDate(day, byDate);
+  }
+  if (isNotCurrMonthNums(day, currMonth)) return 'extra-days';
+  return '';
+}
+
+export function weeklyViewDayStyle({ day, currMonth, byDate, selectedDay }) {
+  if (isToday(day)) return 'today';
+  if (isSelected(selectedDay, day)) return 'selected-day';
   if (isNotCurrMonthNums(day, currMonth)) return 'extra-days';
   return '';
 }
 
 export function hasDateScheduled(day, byDate) {
   return byDate[day.format('M D YYYY')];
+}
+
+function styleCaldendarDate(day, byDate) {
+  const activity = byDate[day.format('M D YYYY')][0].activity;
+  const dayStyle = 'scheduled-date ';
+
+  return dayStyle + checkActivity(activity);
+}
+
+export function styleDailyScheduleActivity(activity) {
+  const activityStyle = 'scheduled-activity ';
+  return activityStyle + checkActivity(activity);
+}
+
+function checkActivity(activity) {
+  const activityLowerCase = activity.toLowerCase();
+  switch (activityLowerCase) {
+    case 'eating':
+      return 'eat';
+    case 'hiking':
+      return 'hike';
+    case 'picnic':
+      return 'pinic';
+    case 'movies':
+      return 'movies';
+    case 'shopping':
+      return 'shop';
+    case 'spa day':
+      return 'spa';
+    case 'bowling':
+      return 'bowling';
+    case 'other':
+      return 'other';
+  }
 }
