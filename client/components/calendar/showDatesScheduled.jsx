@@ -16,7 +16,9 @@ export default class ShowDatesScheduled extends React.Component {
                   return (
                       <div className="schedule" key={i}>
                         <div className="scheduled-activity-container">
-                        <div className={styleDailyScheduleActivity(date.activity)}></div>
+                        <div className={styleDailyScheduleActivity(date.activity)}>
+                          <i className="fas fa-utensils activity-icon"></i>
+                        </div>
                           <div className="activity-decor"></div>
                         </div>
                           <div className="scheduled-date-info-container">
@@ -25,19 +27,19 @@ export default class ShowDatesScheduled extends React.Component {
                                 <img className="scheduled-invitees-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"></img>
                               </div>
                               <div className="scheduled-invitees-time-container">
-                                <div className="scheduled-invitees" key={i}>
+                                <div className="scheduled-invitees" key="invite">
                                   {date.invites}
                                 </div>
-                                <div className="scheduled-time" key={i}>
+                                <div className="scheduled-time" key="time">
                                   {date.time}
                                 </div>
                               </div>
                             </div>
-                            <div className="scheduled-location" key={i}>
+                            <div className="scheduled-location" key="location">
                               {date.location}
                           </div>
                           {date.notes
-                            ? <div className="scheduled-note" key={i}>
+                            ? <div className="scheduled-note" key="note">
                               <span className="note-label">NOTE:</span> {date.notes}
                               </div>
                             : ''
