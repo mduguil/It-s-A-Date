@@ -51,7 +51,9 @@ export function isNotCurrMonthNums(day, currMonth) {
 
 export function dayStyle({ day, currMonth, byDate }) {
   if (isToday(day)) return 'today';
-  if (hasDateScheduled(day, byDate)) return 'scheduled-date';
+  if (hasDateScheduled(day, byDate)) {
+    return checkActivity(day, byDate);
+  }
   if (isNotCurrMonthNums(day, currMonth)) return 'extra-days';
   return '';
 }
@@ -65,4 +67,38 @@ export function weeklyViewDayStyle({ day, currMonth, byDate, selectedDay }) {
 
 export function hasDateScheduled(day, byDate) {
   return byDate[day.format('M D YYYY')];
+}
+
+function checkActivity(day, byDate) {
+  const activity = byDate[day.format('M D YYYY')][0].activity.toLowerCase();
+  let dayStyle = 'scheduled-date ';
+
+  switch (activity) {
+    case 'eating':
+      dayStyle += 'eat';
+      break;
+    case 'hiking':
+      dayStyle += 'hike';
+      break;
+    case 'picnic':
+      dayStyle += 'pinic';
+      break;
+    case 'movies':
+      dayStyle += 'movies';
+      break;
+    case 'shopping':
+      dayStyle += 'shop';
+      break;
+    case 'spa day':
+      dayStyle += 'spa';
+      break;
+    case 'bowling':
+      dayStyle += 'bowling';
+      break;
+    case 'other':
+      dayStyle += 'other';
+      break;
+  }
+
+  return dayStyle;
 }

@@ -545,12 +545,43 @@ i:hover {
 
 .scheduled-date {
   border-radius: 50%;
-  border: 22px solid #e93d3d;
   width: 44px;
   height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.eat {
+  border: 22px solid #fefb52;
+}
+
+.hike {
+  border: 22px solid #e93d3d;
+}
+
+.shop {
+  border: 22px solid #ca49ec;
+}
+
+.picnic {
+  border: 22px solid #38cf75;
+}
+
+.movies {
+  border: 22px solid #3f4ee6;
+}
+
+.bowling {
+  border: 22px solid #e956b0;
+}
+
+.spa {
+  border: 22px solid #11cdde;
+}
+
+.other {
+  border: 22px solid #f76039;
 }
 
 .scheduled-date-placeholder-container {
