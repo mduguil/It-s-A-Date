@@ -1,5 +1,5 @@
 import React from 'react';
-import { hasDateScheduled } from './utils';
+import { hasDateScheduled, styleDailyScheduleActivity } from './utils';
 
 export default class ShowDatesScheduled extends React.Component {
   render() {
@@ -16,7 +16,7 @@ export default class ShowDatesScheduled extends React.Component {
                   return (
                       <div className="schedule" key={i}>
                         <div className="scheduled-activity-container">
-                          <div className="scheduled-activity"></div>
+                        <div className={styleDailyScheduleActivity(date.activity)}></div>
                           <div className="activity-decor"></div>
                         </div>
                           <div className="scheduled-date-info-container">

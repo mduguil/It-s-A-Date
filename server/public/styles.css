@@ -552,38 +552,6 @@ i:hover {
   align-items: center;
 }
 
-.eat {
-  border: 22px solid #fefb52;
-}
-
-.hike {
-  border: 22px solid #e93d3d;
-}
-
-.shop {
-  border: 22px solid #ca49ec;
-}
-
-.picnic {
-  border: 22px solid #38cf75;
-}
-
-.movies {
-  border: 22px solid #3f4ee6;
-}
-
-.bowling {
-  border: 22px solid #e956b0;
-}
-
-.spa {
-  border: 22px solid #11cdde;
-}
-
-.other {
-  border: 22px solid #f76039;
-}
-
 .scheduled-date-placeholder-container {
   margin-top: 9%;
 }
@@ -608,7 +576,7 @@ i:hover {
 }
 
 .scheduled-activity {
-  background-color: #e93d3d;
+  background-color: pink;
   min-width: 50px;
   width: 50px;
   height: 50px;
@@ -655,4 +623,36 @@ i:hover {
 
 .note-label {
   font-weight: bold;
+}
+
+.eat {
+  background-color: #fefb52;
+}
+
+.hike {
+  background-color: #e93d3d;
+}
+
+.shop {
+  background-color: #ca49ec;
+}
+
+.picnic {
+  background-color: #38cf75;
+}
+
+.movies {
+  background-color: #3f4ee6;
+}
+
+.bowling {
+  background-color: #e956b0;
+}
+
+.spa {
+  background-color: #11cdde;
+}
+
+.other {
+  background-color: #f76039;
 }

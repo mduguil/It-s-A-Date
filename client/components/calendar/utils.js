@@ -52,7 +52,7 @@ export function isNotCurrMonthNums(day, currMonth) {
 export function dayStyle({ day, currMonth, byDate }) {
   if (isToday(day)) return 'today';
   if (hasDateScheduled(day, byDate)) {
-    return checkActivity(day, byDate);
+    return styleCaldendarDate(day, byDate);
   }
   if (isNotCurrMonthNums(day, currMonth)) return 'extra-days';
   return '';
@@ -69,36 +69,36 @@ export function hasDateScheduled(day, byDate) {
   return byDate[day.format('M D YYYY')];
 }
 
-function checkActivity(day, byDate) {
-  const activity = byDate[day.format('M D YYYY')][0].activity.toLowerCase();
-  let dayStyle = 'scheduled-date ';
+function styleCaldendarDate(day, byDate) {
+  const activity = byDate[day.format('M D YYYY')][0].activity;
+  const dayStyle = 'scheduled-date ';
 
-  switch (activity) {
+  return dayStyle + checkActivity(activity);
+}
+
+export function styleDailyScheduleActivity(activity) {
+  const activityStyle = 'scheduled-activity ';
+  return activityStyle + checkActivity(activity);
+}
+
+function checkActivity(activity) {
+  const activityLowerCase = activity.toLowerCase();
+  switch (activityLowerCase) {
     case 'eating':
-      dayStyle += 'eat';
-      break;
+      return 'eat';
     case 'hiking':
-      dayStyle += 'hike';
-      break;
+      return 'hike';
     case 'picnic':
-      dayStyle += 'pinic';
-      break;
+      return 'pinic';
     case 'movies':
-      dayStyle += 'movies';
-      break;
+      return 'movies';
     case 'shopping':
-      dayStyle += 'shop';
-      break;
+      return 'shop';
     case 'spa day':
-      dayStyle += 'spa';
-      break;
+      return 'spa';
     case 'bowling':
-      dayStyle += 'bowling';
-      break;
+      return 'bowling';
     case 'other':
-      dayStyle += 'other';
-      break;
+      return 'other';
   }
-
-  return dayStyle;
 }
