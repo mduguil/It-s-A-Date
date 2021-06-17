@@ -486,6 +486,7 @@ i:hover {
 
 .week {
   display: flex;
+  margin: 3px 0;
 }
 
 .day-number {
@@ -581,13 +582,12 @@ i:hover {
   height: 50px;
   border-radius: 50%;
   margin-right: 5px;
-}
-
-.activity-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+}
+
+.activity-icon {
   font-size: 1.4rem;
   color: rgb(255, 247, 247);
 }
@@ -633,34 +633,38 @@ i:hover {
   font-weight: bold;
 }
 
-.eat {
+.eat-bubble {
   background-color: #fefb52;
 }
 
-.hike {
+.hike-bubble {
   background-color: #e93d3d;
 }
 
-.shop {
+.shop-bubble {
   background-color: #ca49ec;
 }
 
-.picnic {
+.picnic-bubble {
   background-color: #38cf75;
 }
 
-.movies {
+.movies-bubble {
   background-color: #3f4ee6;
 }
 
-.bowling {
+.bowling-bubble {
   background-color: #e956b0;
 }
 
-.spa {
+.spa-bubble {
   background-color: #11cdde;
 }
 
-.other {
+.other-bubble {
   background-color: #f76039;
+}
+
+.dark-icon {
+  color: #474747;
 }

@@ -85,20 +85,20 @@ function checkActivity(activity) {
   const activityLowerCase = activity.toLowerCase();
   switch (activityLowerCase) {
     case 'eating':
-      return 'eat';
+      return 'eat-bubble';
     case 'hiking':
-      return 'hike';
+      return 'hike-bubble';
     case 'picnic':
-      return 'pinic';
+      return 'picnic-bubble';
     case 'movies':
-      return 'movies';
+      return 'movies-bubble';
     case 'shopping':
-      return 'shop';
+      return 'shop-bubble';
     case 'spa day':
-      return 'spa';
+      return 'spa-bubble';
     case 'bowling':
-      return 'bowling';
+      return 'bowling-bubble';
     case 'other':
-      return 'other';
+      return 'other-bubble';
   }
 }
