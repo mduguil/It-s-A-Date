@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { generateCalendarDays, getStartEndDay, dayStyle } from './utils';
+import UpcomingDates from './upcomingDates';
 import { API_URLS } from '../../constants';
 
 export default class Calendar extends React.Component {
@@ -107,6 +108,10 @@ export default class Calendar extends React.Component {
             </div>
           </div>
         </div>
+        <UpcomingDates
+          selectedDay={this.state.selectedDay}
+          byDate={this.state.byDate}
+        />
       </div>
     );
   }

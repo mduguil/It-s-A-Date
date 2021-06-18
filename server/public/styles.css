@@ -557,11 +557,16 @@ i:hover {
   margin-top: 9%;
 }
 
-.scheduled-date-title {
+.scheduled-date-title,
+.upcoming-date-title {
   font-size: 1.3rem;
   font-weight: bold;
   color: #303030;
   margin: 25px 15px 0;
+}
+
+.upcoming-date-title {
+  margin: 10px 15px;
 }
 
 .schedule {
