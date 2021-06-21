@@ -102,3 +102,32 @@ function checkActivity(activity) {
       return 'other-bubble';
   }
 }
+
+export function hasFutureDates(byDate) {
+  const days = Object.keys(byDate);
+  return days.some(day => {
+    return moment(day).isAfter(moment());
+  });
+}
+
+export function getFutureDates(byDate) {
+  const days = Object.keys(byDate);
+  const futureDates = [];
+  days.forEach(day => {
+    if (moment(day).isAfter(moment())) {
+      futureDates.push(byDate[day]);
+    }
+  });
+  return futureDates.flat().slice(0, 3);
+}
+
+export const activityIcons = {
+  eating: 'fas fa-utensils activity-icon dark-icon',
+  shopping: 'fas fa-shopping-bag activity-icon',
+  hiking: 'fas fa-hiking activity-icon dark-icon',
+  bowling: 'fas fa-bowling-ball activity-icon',
+  picnic: 'fas fa-tree activity-icon',
+  movies: 'fas fa-ticket-alt activity-icon',
+  spa: 'fas fa-spa activity-icon',
+  other: 'fas fa-ellipsis-h activity-icon'
+};
