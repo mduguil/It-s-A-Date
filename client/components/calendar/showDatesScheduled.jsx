@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { hasDateScheduled, styleDailyScheduleActivity, activityIcons } from './utils';
 
 export default class ShowDatesScheduled extends React.Component {
@@ -31,7 +32,7 @@ export default class ShowDatesScheduled extends React.Component {
                                   {date.invites}
                                 </div>
                                 <div className="scheduled-time" key="time">
-                                  {date.time}
+                                  {moment(date.day + ' ' + date.time).format('h:m a')}
                                 </div>
                               </div>
                             </div>
