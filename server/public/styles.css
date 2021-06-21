@@ -575,6 +575,11 @@ i:hover {
   margin-bottom: 10px;
 }
 
+.upcoming-date-schedule {
+  display: flex;
+  padding: 6px 15px;
+}
+
 .activity-decor {
   height: 60%;
   background-color: #e1e1e1;

@@ -14,7 +14,7 @@ export default class UpcomingDates extends React.Component {
             <div className="upcoming-dates-container">
               {getFutureDates(this.props.byDate).map((date, i) => {
                 return (
-                  <div className="schedule" key={i}>
+                  <div className="upcoming-date-schedule" key={i}>
                     <div className="scheduled-activity-container">
                       <div className={styleDailyScheduleActivity(date.activity)}>
                         <i className={activityIcons[date.activity.split(' ')[0].toLowerCase()]}></i>
@@ -22,7 +22,7 @@ export default class UpcomingDates extends React.Component {
                     </div>
                     <div className="scheduled-date-info-container">
                       <div className="scheduled-invitees-container">
-                        <div className="scheduled-invitees-time-container">
+                        <div className="upcoming-date-info-container">
                           <div className="scheduled-invitees" key="invite">
                             {date.activity} <span className="filler-word">on</span> {date.day}
                           </div>
