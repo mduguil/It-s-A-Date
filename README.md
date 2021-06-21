@@ -10,7 +10,7 @@ A scheduling app for hangouts with friends
 6. User can see marked dates on calendar
 7. User can click on a date on calendar, calendar changes to weekly view
 8. User can view daily schedule
+9. User can view upcoming dates
 
 ### Additional Features
-1 User can view upcoming dates
-2. User can view sent invites
+1. User can view sent invites
