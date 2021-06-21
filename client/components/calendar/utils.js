@@ -103,6 +103,13 @@ function checkActivity(activity) {
   }
 }
 
+export function hasFutureDates(byDate) {
+  const days = Object.keys(byDate);
+  return days.some(day => {
+    return moment(day).isAfter(moment());
+  });
+}
+
 export function getFutureDates(byDate) {
   const days = Object.keys(byDate);
   const futureDates = [];

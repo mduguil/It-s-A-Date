@@ -569,6 +569,14 @@ i:hover {
   margin: 10px 15px;
 }
 
+.upcoming-dates-container {
+  padding-bottom: 90px;
+}
+
+.schedule-container {
+  padding-bottom: 90px;
+}
+
 .schedule {
   display: flex;
   padding: 10px 15px;

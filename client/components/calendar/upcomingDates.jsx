@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import { getFutureDates, styleDailyScheduleActivity, activityIcons } from './utils';
+import { getFutureDates, styleDailyScheduleActivity, activityIcons, hasFutureDates } from './utils';
 
 export default class UpcomingDates extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class UpcomingDates extends React.Component {
         <div className="upcoming-date-title">
           Upcoming Dates
         </div>
-        {this.props.byDate
+        {hasFutureDates(this.props.byDate)
           ? <>
             <div className="upcoming-dates-container">
               {getFutureDates(this.props.byDate).map((date, i) => {
@@ -39,7 +39,7 @@ export default class UpcomingDates extends React.Component {
           : <div className="scheduled-date-placeholder-container center">
               No Upcoming Dates
             </div>
-  }
+        }
       </div>
     );
   }
