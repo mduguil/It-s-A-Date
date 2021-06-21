@@ -109,7 +109,6 @@ export default class Calendar extends React.Component {
           </div>
         </div>
         <UpcomingDates
-          selectedDay={this.state.selectedDay}
           byDate={this.state.byDate}
         />
       </div>

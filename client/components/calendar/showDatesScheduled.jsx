@@ -1,16 +1,5 @@
 import React from 'react';
-import { hasDateScheduled, styleDailyScheduleActivity } from './utils';
-
-const activityIcons = {
-  eating: 'fas fa-utensils activity-icon dark-icon',
-  shopping: 'fas fa-shopping-bag activity-icon',
-  hiking: 'fas fa-hiking activity-icon dark-icon',
-  bowling: 'fas fa-bowling-ball activity-icon',
-  picnic: 'fas fa-tree activity-icon',
-  movies: 'fas fa-ticket-alt activity-icon',
-  spa: 'fas fa-spa activity-icon',
-  other: 'fas fa-ellipsis-h activity-icon'
-};
+import { hasDateScheduled, styleDailyScheduleActivity, activityIcons } from './utils';
 
 export default class ShowDatesScheduled extends React.Component {
   render() {
