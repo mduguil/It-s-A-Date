@@ -580,6 +580,20 @@ i:hover {
   padding: 6px 15px;
 }
 
+.upcoming-date-activity-container {
+  display: flex;
+  align-items: center;
+}
+
+.upcoming-date-info-container {
+  margin-left: 5px;
+  line-height: 1.2;
+}
+
+.upcoming-dates-invitees {
+  font-weight: bold;
+}
+
 .activity-decor {
   height: 60%;
   background-color: #e1e1e1;
