@@ -132,10 +132,10 @@ function sortFutureDates(dates) {
 export const activityIcons = {
   eating: 'fas fa-utensils activity-icon dark-icon',
   shopping: 'fas fa-shopping-bag activity-icon',
-  hiking: 'fas fa-walking activity-icon',
+  hiking: 'fas fa-leaf activity-icon',
   bowling: 'fas fa-bowling-ball activity-icon',
   picnic: 'fas fa-tree activity-icon',
   movies: 'fas fa-ticket-alt activity-icon',
-  spa: 'fas fa-hand-sparkles activity-icon',
+  spa: 'fas fa-heart activity-icon',
   other: 'fas fa-ellipsis-h activity-icon'
 };
