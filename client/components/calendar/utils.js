@@ -118,16 +118,24 @@ export function getFutureDates(byDate) {
       futureDates.push(byDate[day]);
     }
   });
-  return futureDates.flat().slice(0, 3);
+  const flatArr = futureDates.flat();
+  const sortedDates = sortFutureDates(flatArr);
+  return sortedDates.slice(0, 4);
+}
+
+function sortFutureDates(dates) {
+  return dates.sort((a, b) => {
+    return moment(a.day) - moment(b.day);
+  });
 }
 
 export const activityIcons = {
   eating: 'fas fa-utensils activity-icon dark-icon',
   shopping: 'fas fa-shopping-bag activity-icon',
-  hiking: 'fas fa-hiking activity-icon dark-icon',
+  hiking: 'fas fa-walking activity-icon',
   bowling: 'fas fa-bowling-ball activity-icon',
   picnic: 'fas fa-tree activity-icon',
   movies: 'fas fa-ticket-alt activity-icon',
-  spa: 'fas fa-spa activity-icon',
+  spa: 'fas fa-hand-sparkles activity-icon',
   other: 'fas fa-ellipsis-h activity-icon'
 };
