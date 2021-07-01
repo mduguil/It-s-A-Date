@@ -172,11 +172,11 @@ export default class DateForm extends React.Component {
           <h1 className="form-title center row">Date</h1>
           <form onSubmit={this.handleSubmit}>
             <InputActivity
-              value={this.state.selectedActivity}
+              selectedActivity={this.state.selectedActivity}
               options={activities}
               handleChange={event => {
                 this.setState({
-                  selectedActivity: event.target.value
+                  selectedActivity: event.target.innerHTML
                 });
               }
               }
