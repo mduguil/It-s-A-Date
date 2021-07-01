@@ -29,8 +29,8 @@ const Activity = ({ options, selectedActivity, handleChange, label }) => {
       <div
         value={activity}
         key={activity}
-        className="item"
         onClick={handleChange}
+        className={`${activity.toLowerCase()} item`}
       >
         {activity}
       </div>
@@ -40,15 +40,21 @@ const Activity = ({ options, selectedActivity, handleChange, label }) => {
   return (
     <div ref={ref} className="ui form">
       <div className="field input-container row">
-        <label className="label">Activity</label>
-        <div
-          onClick={() => setOpen(!open)}
-          className={`ui selection dropdown ${open ? 'visible active' : ''}`}
-        >
-          <i className="dropdown icon"></i>
-          <div className="text">{selectedActivity}</div>
-          <div className={`menu ${open ? 'visible transition' : ''}`}>
-            {renderActivities}
+        <label className="row">
+          <div className="activity-label col-half row">
+             Activity
+           </div>
+        </label>
+        <div className="activity-input col-half row">
+          <div
+            onClick={() => setOpen(!open)}
+            className={`ui selection dropdown activity col-half ${open ? 'visible active' : ''}`}
+          >
+            <i className="dropdown icon"></i>
+            <div className="text">{selectedActivity}</div>
+            <div className={`menu ${open ? 'visible transition' : ''}`}>
+              {renderActivities}
+            </div>
           </div>
         </div>
       </div>
@@ -57,33 +63,3 @@ const Activity = ({ options, selectedActivity, handleChange, label }) => {
 };
 
 export default Activity;
-
-// export default class InputActivity extends React.Component {
-//   render() {
-//     return (
-//       <div className="input-container row">
-//         <label className="row">
-//           <div className="activity-label col-half row">
-//             Activity
-//           </div>
-//           <div className="activity-input col-half row">
-//             <select
-//               className="activity col-half"
-//               value={this.props.selectedActivity}
-//               onChange={this.props.handleChange}
-//               required
-//             >
-//               {
-//               this.props.options.map(activity => {
-//                 return (
-//                   <activity value={activity} key={activity} className={activity.toLowerCase()}>{activity}</activity>
-//                 );
-//               })
-//               }
-//             </select>
-//           </div>
-//         </label>
-//       </div>
-//     );
-//   }
-// }
