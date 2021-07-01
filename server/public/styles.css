@@ -30,7 +30,8 @@
 }
 
 label,
-.scheduled-date-placeholder-container {
+.scheduled-date-placeholder-container,
+.activity-label {
   font-size: 1.4rem;
   color: #8d8d8d;
   font-weight: bold;
@@ -59,6 +60,26 @@ select:hover {
 .activity-input {
   display: flex;
   justify-content: flex-end;
+}
+
+.selection {
+  border: none;
+}
+
+.bubble {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.text {
+  font-size: 1.3rem;
+}
+
+.item {
+  font-size: 1.4rem;
+  margin: 4px 0;
 }
 
 input[type=time] {
@@ -633,15 +654,15 @@ i:hover {
   font-weight: bold;
 }
 
-.eat-bubble {
+.eating-bubble {
   background-color: #fefb52;
 }
 
-.hike-bubble {
+.hiking-bubble {
   background-color: #e93d3d;
 }
 
-.shop-bubble {
+.shopping-bubble {
   background-color: #ca49ec;
 }
 

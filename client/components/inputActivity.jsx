@@ -26,19 +26,21 @@ const Activity = ({ options, selectedActivity, handleChange, label }) => {
     }
 
     return (
-      <div
-        value={activity}
-        key={activity}
-        onClick={handleChange}
-        className={`${activity.toLowerCase()} item`}
-      >
-        {activity}
+      <div className="row" key={activity}>
+        <div className={activity === 'Spa Day' ? 'spa-bubble bubble' : `${activity.toLowerCase()}-bubble bubble`}></div>
+        <div
+          value={activity}
+          onClick={handleChange}
+          className="item"
+        >
+          {activity}
+        </div>
       </div>
     );
   });
 
   return (
-    <div ref={ref} className="ui form">
+    <div ref={ref}>
       <div className="field input-container row">
         <label className="row">
           <div className="activity-label col-half row">
