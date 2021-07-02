@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { generateCalendarDays, getStartEndDay, dayStyle } from './utils';
 import { API_URLS } from '../../constants';
+import Legend from './legend';
 
 export default class Calendar extends React.Component {
   constructor(props) {
@@ -18,11 +19,13 @@ export default class Calendar extends React.Component {
       calendar: [],
       currMonth: currMonth,
       calendarDays: generateCalendarDays(startDay, endDay),
-      byDate: []
+      byDate: [],
+      legendModalIsOpen: false
     };
 
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
+    this.handleLegendModalClick = this.handleLegendModalClick.bind(this);
   }
 
   componentDidMount() {
@@ -58,11 +61,22 @@ export default class Calendar extends React.Component {
     });
   }
 
+  handleLegendModalClick() {
+    this.setState({
+      legendModalIsOpen: !this.state.legendModalIsOpen
+    });
+  }
+
   render() {
     return (
       <div className="container">
         <div className="calendar-container">
           <h1 className="calendar-title center row">Calendar</h1>
+          <i
+          className="fas fa-question-circle legend-icon"
+          onClick={this.handleLegendModalClick}
+          />
+          {this.state.legendModalIsOpen ? <Legend /> : ''}
           <div className="calendar">
             <div className="month-name-container">
               <i className="fas fa-chevron-left month-controls" onClick={() => this.prevMonth()}></i>

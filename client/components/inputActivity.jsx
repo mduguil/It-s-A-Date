@@ -26,7 +26,7 @@ const Activity = ({ options, selectedActivity, handleChange, label }) => {
     }
 
     return (
-      <div className="row" key={activity}>
+      <div className="row activity-options" key={activity}>
         <div className={activity === 'Spa Day' ? 'spa-bubble bubble' : `${activity.toLowerCase()}-bubble bubble`}></div>
         <div
           value={activity}
@@ -53,7 +53,10 @@ const Activity = ({ options, selectedActivity, handleChange, label }) => {
             className={`ui selection dropdown activity col-half ${open ? 'visible active' : ''}`}
           >
             <i className="dropdown icon"></i>
-            <div className="text">{selectedActivity}</div>
+            <div className="selected-activity-dropdown-container row">
+              <div className={selectedActivity === 'Spa Day' ? 'spa-bubble bubble' : `${selectedActivity.toLowerCase()}-bubble bubble`}></div>
+              <div className="text">{selectedActivity}</div>
+            </div>
             <div className={`menu ${open ? 'visible transition' : ''}`}>
               {renderActivities}
             </div>

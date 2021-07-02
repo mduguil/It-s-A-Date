@@ -41,7 +41,7 @@ select {
   width: 80px;
   height: 28px;
   color: #575757;
-  margin: 0 2px;
+  margin: 0 4px;
   font-size: 1rem;
   border-radius: 5px;
   border: none;
@@ -70,16 +70,24 @@ select:hover {
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  margin: 0 5px;
+  margin: 0 6px;
 }
 
 .text {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.activity-options {
+  margin: 0 18px;
 }
 
 .item {
-  font-size: 1.4rem;
-  margin: 4px 0;
+  font-size: 1.6rem;
+  margin: 8px 0;
+}
+
+.item:hover {
+  cursor: pointer;
 }
 
 input[type=time] {
@@ -314,6 +322,10 @@ input:hover {
   color: #908f8f;
 }
 
+.contact-container:hover {
+  cursor: pointer;
+}
+
 .contact-img {
   max-width: 75px;
   border-radius: 50%;
@@ -473,6 +485,10 @@ button:hover {
 
 i:hover {
   cursor: pointer;
+}
+
+.calendar-container {
+  position: relative;
 }
 
 .month-name-container {
@@ -688,4 +704,13 @@ i:hover {
 
 .dark-icon {
   color: #474747;
+}
+
+.legend-icon {
+  font-size: 1.5rem;
+  color: #1141de;
+}
+
+.activity-legend-container {
+  position: fixed;
 }
