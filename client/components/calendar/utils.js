@@ -102,3 +102,40 @@ function checkActivity(activity) {
       return 'other-bubble';
   }
 }
+
+export function hasFutureDates(byDate) {
+  const days = Object.keys(byDate);
+  return days.some(day => {
+    return moment(day).isAfter(moment());
+  });
+}
+
+export function getFutureDates(byDate) {
+  const days = Object.keys(byDate);
+  const futureDates = [];
+  days.forEach(day => {
+    if (moment(day).isAfter(moment())) {
+      futureDates.push(byDate[day]);
+    }
+  });
+  const flatArr = futureDates.flat();
+  const sortedDates = sortFutureDates(flatArr);
+  return sortedDates.slice(0, 4);
+}
+
+function sortFutureDates(dates) {
+  return dates.sort((a, b) => {
+    return moment(a.day) - moment(b.day);
+  });
+}
+
+export const activityIcons = {
+  eating: 'fas fa-utensils activity-icon dark-icon',
+  shopping: 'fas fa-shopping-bag activity-icon',
+  hiking: 'fas fa-leaf activity-icon',
+  bowling: 'fas fa-bowling-ball activity-icon',
+  picnic: 'fas fa-tree activity-icon',
+  movies: 'fas fa-ticket-alt activity-icon',
+  spa: 'fas fa-heart activity-icon',
+  other: 'fas fa-ellipsis-h activity-icon'
+};
