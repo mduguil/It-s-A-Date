@@ -32,7 +32,7 @@ export default class ContactsListModal extends React.Component {
       })
       .catch(err => {
         this.setState({
-          err: err
+          err: err.toString()
         });
       });
   }
