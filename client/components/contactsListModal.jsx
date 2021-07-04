@@ -102,7 +102,7 @@ export default class ContactsListModal extends React.Component {
                 }}
               />
             </div>
-            <>
+            <div>
               {this.state.isFetching
                 ? <div className="loading-placeholder center">Loading...</div>
                 : <>
@@ -129,7 +129,7 @@ export default class ContactsListModal extends React.Component {
                   }
                   </>
               }
-            </>
+            </div>
           </div>
         }
       </>

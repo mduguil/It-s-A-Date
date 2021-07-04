@@ -16,7 +16,8 @@ export default class WeeklyView extends React.Component {
       calendarDays: generateWeeklyCalendarDays(startDay, endDay),
       currMonth: moment(this.props.selectedDay),
       currWeek: moment(this.props.selectedDay),
-      byDate: []
+      byDate: [],
+      isfetching: false
     };
     this.prevWeek = this.prevWeek.bind(this);
     this.nextWeek = this.nextWeek.bind(this);
@@ -50,6 +51,9 @@ export default class WeeklyView extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      isfetching: true
+    });
     fetch(API_URLS.getDate)
       .then(res => res.json())
       .then(dates => {
@@ -57,7 +61,8 @@ export default class WeeklyView extends React.Component {
           byDate: dates.reduce((acc, item) => ({
             ...acc,
             [item.day]: acc[item.day] ? [...acc[item.day], item] : [item]
-          }), {})
+          }), {}),
+          isfetching: false
         });
       });
   }
@@ -116,11 +121,14 @@ export default class WeeklyView extends React.Component {
             </div>
           </div>
         </div>
-        <ShowDatesScheduled
-          byDate={this.state.byDate}
-          currMonth={this.state.currMonth}
-          selectedDay={this.state.selectedDay}
-        />
+        {this.state.isfetching
+          ? <div className="loading-placeholder center">Loading...</div>
+          : <ShowDatesScheduled
+              byDate={this.state.byDate}
+              currMonth={this.state.currMonth}
+              selectedDay={this.state.selectedDay}
+            />
+        }
       </div>
     );
   }
