@@ -19,7 +19,8 @@ export default class Calendar extends React.Component {
       calendar: [],
       currMonth: currMonth,
       calendarDays: generateCalendarDays(startDay, endDay),
-      byDate: []
+      byDate: [],
+      isfetching: false
     };
 
     this.prevMonth = this.prevMonth.bind(this);
@@ -27,6 +28,9 @@ export default class Calendar extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      isfetching: true
+    });
     fetch(API_URLS.getDate)
       .then(res => res.json())
       .then(dates => {
@@ -34,7 +38,8 @@ export default class Calendar extends React.Component {
           byDate: dates.reduce((acc, date) => ({
             ...acc,
             [date.day]: acc[date.day] ? [...acc[date.day], date] : [date]
-          }), {})
+          }), {}),
+          isfetching: false
         });
       });
   }
@@ -108,9 +113,17 @@ export default class Calendar extends React.Component {
             </div>
           </div>
         </div>
-        <UpcomingDates
-          byDate={this.state.byDate}
-        />
+        <div>
+          <div className="upcoming-date-title">
+            Upcoming Dates
+          </div>
+          {this.state.isfetching
+            ? <div className="loading-placeholder center">Loading...</div>
+            : <UpcomingDates
+              byDate={this.state.byDate}
+              />
+          }
+        </div>
       </div>
     );
   }
