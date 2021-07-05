@@ -110,7 +110,9 @@ export default class ContactsListModal extends React.Component {
           </div>
           <div>
             {this.state.err
-              ? <div>{this.state.err}</div>
+              ? <div className="error-message-container row center">
+                    <div className="error-message">{this.state.err}</div>
+                  </div>
               : <>
                   {this.state.isFetching && <div className="loading-placeholder center">Loading...</div>}
                   {this.state.contacts.map(

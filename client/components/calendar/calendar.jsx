@@ -124,7 +124,9 @@ export default class Calendar extends React.Component {
             Upcoming Dates
           </div>
           {this.state.err
-            ? <div>{this.state.err}</div>
+            ? <div className="error-message-container row center">
+                <div className="error-message">{this.state.err}</div>
+              </div>
             : <>
               {this.state.isFetching && <div className="loading-placeholder center">Loading...</div>}
               <UpcomingDates

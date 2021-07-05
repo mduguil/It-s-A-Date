@@ -750,3 +750,11 @@ i:hover {
 .activity-legend-container {
   position: fixed;
 }
+
+.error-message {
+  color: #fff;
+  background-color: rgb(255, 95, 95);
+  font-size: 1.2rem;
+  padding: 5px 15px;
+  margin-top: 20px;
+}
