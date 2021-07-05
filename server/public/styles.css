@@ -1,5 +1,5 @@
 * {
-  font-family: Roboto, sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 .container {
@@ -11,8 +11,8 @@
 .search-title,
 .contacts-title,
 .add-contacts-title {
-  font-size: 2.3rem;
-  color: #3d3d3d;
+  font-size: 2.4rem;
+  color: #252525;
   font-weight: bold;
 }
 
@@ -20,6 +20,7 @@
 .contacts-container,
 .add-contacts-container {
   padding: 0 16px;
+  padding-bottom: 90px;
 }
 
 .input-container {
@@ -34,7 +35,7 @@
 label,
 .scheduled-date-placeholder-container,
 .activity-label {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #8d8d8d;
   font-weight: bold;
 }
@@ -44,7 +45,7 @@ select {
   height: 28px;
   color: #575757;
   margin: 0 4px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   border-radius: 5px;
   border: none;
 }
@@ -95,7 +96,7 @@ select:hover {
 input[type=time] {
   outline: none;
   border: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   width: 200px;
   height: 38px;
   background-color: #f7f6f6;
@@ -166,6 +167,7 @@ input:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.2rem;
 }
 
 .search-container {
@@ -176,7 +178,7 @@ input:hover {
   border-radius: 5px;
   background-color: #e9e7e7;
   color: #504f4f;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   width: 100%;
   outline: none;
   display: block;
@@ -254,7 +256,7 @@ input:hover {
 .place-info,
 .contact-info {
   color: #969696;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   width: 100%;
 }
 
@@ -262,7 +264,7 @@ input:hover {
 .contact-name {
   font-weight: bold;
   color: #404040;
-  font-size: 1rem;
+  font-size: 1.25rem;
   padding-top: 5px;
 }
 
@@ -308,7 +310,7 @@ input:hover {
   margin: 0 4px;
   border-radius: 11px;
   padding: 7px 14px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #ededed;
 }
 
@@ -341,7 +343,6 @@ input:hover {
 }
 
 .contact-name {
-  font-size: 1.2rem;
   margin-bottom: 3px;
 }
 
@@ -357,7 +358,7 @@ input:hover {
   border: none;
   color: #21b4ab;
   padding: 12px 20px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   outline-color: #21b4ab;
 }
@@ -409,6 +410,7 @@ button:hover {
   border-radius: 2px;
   max-width: 425px;
   min-width: 330px;
+  margin-top: 20px;
 }
 
 .new-contact-img-container {
@@ -429,6 +431,7 @@ button:hover {
 .add-contact-name-label {
   padding-left: 10px;
   color: #6b6b6b;
+  margin-bottom: 7px;
 }
 
 .new-contact-name,
@@ -438,7 +441,7 @@ button:hover {
   border: none;
   height: 40px;
   outline-color: grey;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding-left: 10px;
   color: #5e5e5e;
 }
@@ -505,13 +508,14 @@ i:hover {
 }
 
 .month-name {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #464646;
 }
 
 .days-of-the-week {
   display: flex;
+  font-size: 1.2rem;
 }
 
 .day-name {
@@ -521,6 +525,7 @@ i:hover {
 
 .calendar-numbers {
   margin-top: 4px;
+  font-size: 1.2rem;
 }
 
 .week {
@@ -598,7 +603,7 @@ i:hover {
 
 .scheduled-date-title,
 .upcoming-date-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #303030;
   margin: 25px 15px 0;
@@ -636,7 +641,8 @@ i:hover {
   margin-left: 5px;
   line-height: 1.2;
   width: 100%;
-  font-size: 1.18rem;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .upcoming-dates-invitees {
@@ -683,7 +689,11 @@ i:hover {
   flex-direction: column;
   padding-left: 10px;
   padding-top: 17px;
-  font-size: 1.18rem;
+  font-size: 1.3rem;
+}
+
+.scheduled-invites-container {
+  font-weight: normal;
 }
 
 .scheduled-invitees {
@@ -693,6 +703,7 @@ i:hover {
 
 .scheduled-time {
   color: #717171;
+  font-weight: 500;
 }
 
 .scheduled-location {
@@ -700,6 +711,7 @@ i:hover {
   background-color: #ffe9e9;
   color: #f44343;
   padding: 10px;
+  font-size: 1.1rem;
 }
 
 .scheduled-note {
