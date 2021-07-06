@@ -38,38 +38,48 @@ export default class SentInvites extends React.Component {
 
   render() {
     return (
-      <div className="invitations-container">
-        {hasFutureDates(this.state.byDate)
-          ? <div className="sent-invitation-container">
-              {getFutureDates(this.state.byDate).map((sent, i) => {
-                return (
-                  <div className="sent-invitation" key={i}>
-                    <div className="profile-pic-container">
-                      <img className="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
-                    </div>
-                    <div className="sent-invitation-info">
-                      <div className="sent-contact">{sent.invites}</div>
-                      <div className="sent-activity">{sent.activity}</div>
-                      <div className="sent-datetime">
-                        {moment(sent.day).format('ddd MMMM D')} @ {moment(sent.day + ' ' + sent.time).format('h:m a')}
-                      </div>
-                    </div>
-                    <MakeDecisions
-                      yes="Edit"
-                      no="Delete"
-                      decisionsContainer="sent-invites-decisions-container"
-                      yesBtnContainer="sent-invites-yes-btn-container"
-                      noBtnContainer="sent-invites-no-btn-container"
-                      yesBtn="invite-button sent-yes-button sent-invites-decisions-btn"
-                      noBtn="no-button sent-no-button sent-invites-decisions-btn"
-                    />
-                  </div>
-                );
-              })}
+      <>
+      {this.state.err
+        ? <div className="error-message-container row center">
+              <div className="error-message">{this.state.err}</div>
             </div>
-          : <div className="scheduled-date-placeholder-container center">No Dates Sent</div>
-        }
-      </div>
+        : <>
+            {this.state.isFetching && <div className="loading-placeholder center">Loading...</div>}
+            <div className="invitations-container">
+              {hasFutureDates(this.state.byDate)
+                ? <div className="sent-invitation-container">
+                    {getFutureDates(this.state.byDate).map((sent, i) => {
+                      return (
+                        <div className="sent-invitation" key={i}>
+                          <div className="profile-pic-container">
+                            <img className="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+                          </div>
+                          <div className="sent-invitation-info">
+                            <div className="sent-contact">{sent.invites}</div>
+                            <div className="sent-activity">{sent.activity}</div>
+                            <div className="sent-datetime">
+                              {moment(sent.day).format('ddd MMMM D')} @ {moment(sent.day + ' ' + sent.time).format('h:m a')}
+                            </div>
+                          </div>
+                          <MakeDecisions
+                            yes="Edit"
+                            no="Delete"
+                            decisionsContainer="sent-invites-decisions-container"
+                            yesBtnContainer="sent-invites-yes-btn-container"
+                            noBtnContainer="sent-invites-no-btn-container"
+                            yesBtn="invite-button sent-yes-button sent-invites-decisions-btn"
+                            noBtn="no-button sent-no-button sent-invites-decisions-btn"
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                : <div className="scheduled-date-placeholder-container center">No Dates Sent</div>
+              }
+            </div>
+          </>
+      }
+      </>
     );
   }
 }
