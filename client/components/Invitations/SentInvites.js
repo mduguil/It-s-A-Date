@@ -22,12 +22,10 @@ export default class SentInvites extends React.Component {
 
   deleteDate = (day, dateId) => {
     const headers = new Headers();
-    const bodyJSON = JSON.stringify(this.state.byDate);
     headers.set('Content-Type', 'application/json');
     fetch(`/api/dates/${dateId}`, {
       method: 'DELETE',
-      headers,
-      body: bodyJSON
+      headers
     })
       .then(res => res.json())
       .then(date => {
