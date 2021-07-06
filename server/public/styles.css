@@ -791,8 +791,13 @@ i:hover {
   border-bottom: 2px solid #1dc0c0;
 }
 
+.invitations-container {
+  display: flex;
+  justify-content: center;
+}
+
 .sent-invitation-container {
-  margin: 0 10px;
+  min-width: 360px;
 }
 
 .sent-invitation {
