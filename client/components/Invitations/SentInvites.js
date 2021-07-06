@@ -50,7 +50,7 @@ export default class SentInvites extends React.Component {
                       <div className="sent-contact">{sent.invites}</div>
                       <div className="sent-activity">{sent.activity}</div>
                       <div className="sent-datetime">
-                        {sent.day} @ {moment(sent.day + ' ' + sent.time).format('h:m a')}
+                        {moment(sent.day).format('ddd MMMM D')} @ {moment(sent.day + ' ' + sent.time).format('h:m a')}
                       </div>
                     </div>
                   </div>
