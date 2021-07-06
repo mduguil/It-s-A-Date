@@ -66,7 +66,8 @@ app.get('/api/dates', (req, res, next) => {
            "time",
            "activity",
            "invites",
-           "notes"
+           "notes",
+           "dateId"
       from "dates"
   `;
 

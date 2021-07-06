@@ -4,6 +4,12 @@ import { API_URLS } from '../../constants';
 import { getFutureDates, hasFutureDates } from '../calendar/utils';
 import MakeDecisions from '../makeDecisions';
 
+function removeDateById(byDate, day, id) {
+  const clone = JSON.parse(JSON.stringify(byDate));
+  clone[day] = clone[day].filter(date => date.dateId !== id);
+  return clone;
+}
+
 export default class SentInvites extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +18,29 @@ export default class SentInvites extends React.Component {
       isFetching: false,
       err: ''
     };
+  }
+
+  deleteDate = (day, dateId) => {
+    const headers = new Headers();
+    const bodyJSON = JSON.stringify(this.state.byDate);
+    headers.set('Content-Type', 'application/json');
+    fetch(`/api/dates/${dateId}`, {
+      method: 'DELETE',
+      headers,
+      body: bodyJSON
+    })
+      .then(res => res.json())
+      .then(date => {
+        const updatedByDate = removeDateById(this.state.byDate, day, dateId);
+        this.setState({
+          byDate: updatedByDate
+        });
+      })
+      .catch(err => {
+        this.setState({
+          err: err.toString()
+        });
+      });
   }
 
   componentDidMount() {
@@ -69,6 +98,7 @@ export default class SentInvites extends React.Component {
                             noBtnContainer="sent-invites-no-btn-container"
                             yesBtn="invite-button sent-yes-button sent-invites-decisions-btn"
                             noBtn="no-button sent-no-button sent-invites-decisions-btn"
+                            handleCancelBtn={() => this.deleteDate(sent.day, sent.dateId)}
                           />
                         </div>
                       );
