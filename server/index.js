@@ -115,6 +115,26 @@ app.get('/api/places', function (req, res, next) {
     .catch(err => next(err));
 });
 
+app.delete('/api/dates/:id', (req, res) => {
+  const dateId = parseInt(req.params.id, 10);
+  if (!Number.isInteger(dateId) || dateId < 1) {
+    throw new ClientError(400, 'ID must be a positive integer');
+  }
+
+  const dates = `
+    delete from "dates"
+    where "dateId" = $1
+    returning *
+  `;
+  const params = [dateId];
+  db.query(dates, params)
+    .then(result => {
+      const [date] = result.rows;
+      res.json(date);
+    })
+    .catch(err => (err));
+});
+
 app.use((req, res) => {
   res.sendFile('/index.html', {
     root: path.join(__dirname, 'public')
