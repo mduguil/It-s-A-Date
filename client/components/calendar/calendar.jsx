@@ -20,7 +20,7 @@ export default class Calendar extends React.Component {
       currMonth: currMonth,
       calendarDays: generateCalendarDays(startDay, endDay),
       byDate: [],
-      isfetching: false,
+      isFetching: false,
       err: ''
     };
 
@@ -30,7 +30,7 @@ export default class Calendar extends React.Component {
 
   componentDidMount() {
     this.setState({
-      isfetching: true
+      isFetching: true
     });
     fetch(API_URLS.getDate)
       .then(res => res.json())
@@ -40,7 +40,7 @@ export default class Calendar extends React.Component {
             ...acc,
             [date.day]: acc[date.day] ? [...acc[date.day], date] : [date]
           }), {}),
-          isfetching: false
+          isFetching: false
         });
       })
       .catch(err => {

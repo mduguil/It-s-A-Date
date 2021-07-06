@@ -65,7 +65,7 @@ select:hover {
   justify-content: flex-end;
 }
 
-.selection {
+.activity-input > .ui.selection.dropdown {
   border: none;
 }
 
