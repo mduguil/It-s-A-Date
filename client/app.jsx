@@ -7,6 +7,7 @@ import {
 import Home from './pages/home';
 import Navbar from '../client/components/navbar';
 import Date from './pages/date';
+import Invitations from './pages/invitations';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,7 +23,6 @@ export default class App extends React.Component {
       <Router>
         <div>
           <Navbar />
-
           <Switch>
             <Route exact path="/">
               <Home />
@@ -35,6 +35,9 @@ export default class App extends React.Component {
             </Route>
             <Route path="/date-form">
               <Date />
+            </Route>
+            <Route path="/invitations">
+              <Invitations />
             </Route>
           </Switch>
         </div>

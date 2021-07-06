@@ -10,7 +10,8 @@
 .form-title,
 .search-title,
 .contacts-title,
-.add-contacts-title {
+.add-contacts-title,
+.invitations-title {
   font-size: 2.4rem;
   color: #252525;
   font-weight: bold;
