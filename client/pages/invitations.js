@@ -6,6 +6,12 @@ export default class Invitations extends React.Component {
     return (
       <div className="container">
         <h1 className="invitations-title center row">Invitations</h1>
+        <div className="sent-received-container">
+          <div className="sent-tab row center">Sent</div>
+          <div className="curr-invitation-tab-container row center">
+            <div className="curr-invitation-tab" />
+          </div>
+        </div>
         <SentInvites />
       </div>
     );
