@@ -18,13 +18,13 @@ export default class UpcomingDates extends React.Component {
                       </div>
                     </div>
                     <div className="upcoming-date-info-container">
-                      <div className="upcoming-dates-invitees" key="invite">
+                      <div className="upcoming-dates-invitees" key="activity">
                         {date.activity} <span className="filler-word">on</span> {moment(date.day).format('dddd, MMMM D')}
                       </div>
                       <div className="scheduled-time" key="time">
                         {moment(date.day + ' ' + date.time).format('h:m a')}
                       </div>
-                      <div className="scheduled-invites-container" key="time">
+                      <div className="scheduled-invites-container" key="invite">
                         With <span className="scheduled-invitees">{date.invites}</span>
                       </div>
                     </div>
