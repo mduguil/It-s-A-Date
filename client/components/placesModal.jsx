@@ -6,7 +6,8 @@ export default class PlacesModal extends React.Component {
     this.state = {
       isFetching: false,
       searchInput: this.props.defaultSearch,
-      places: []
+      places: [],
+      err: ''
     };
     this.fetchPlaces = this.fetchPlaces.bind(this);
   }
@@ -19,7 +20,7 @@ export default class PlacesModal extends React.Component {
 
   fetchPlaces() {
     this.setState({
-      isfetching: true
+      isFetching: true
     });
 
     fetch(`/api/places?searchTerm=${this.state.searchInput}`)
@@ -27,7 +28,12 @@ export default class PlacesModal extends React.Component {
       .then(placesData => {
         this.setState({
           places: placesData.results,
-          isfetching: false
+          isFetching: false
+        });
+      })
+      .catch(err => {
+        this.setState({
+          err: err.toString()
         });
       });
   }
@@ -58,13 +64,17 @@ export default class PlacesModal extends React.Component {
             />
           </div>
         </form>
-          {this.state.isfetching
-            ? <div className="loading-placeholder center">Loading...</div>
-            : <div className="search-list">
-              {
-                this.state.places.map(
-                  (place, i) => {
-                    return (
+        {this.state.isFetching
+          ? <div className="loading-placeholder center">Loading...</div>
+          : <>
+            {this.state.err &&
+              <div className="error-message-container row center">
+                <div className="error-message">{this.state.err}</div>
+              </div>}
+            <div className="search-list">
+              {this.state.places.map(
+                (place, i) => {
+                  return (
                       <div className="search-result" key={i}>
                         <div className="place-img-container">
                           <img className="place-img" src="https://complianz.io/wp-content/uploads/2019/03/placeholder-300x202.jpg" />
@@ -81,11 +91,12 @@ export default class PlacesModal extends React.Component {
                           </div>
                         </div>
                       </div>
-                    );
-                  }
-                )
+                  );
+                }
+              )
               }
             </div>
+            </>
           }
       </div >
     );

@@ -1,31 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-export default class InputActivity extends React.Component {
-  render() {
+const Activity = ({ options, selectedActivity, handleChange, label }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    const onBodyClick = event => {
+      if (ref.current.contains(event.target)) {
+        return;
+      }
+      setOpen(false);
+    };
+    document.body.addEventListener('click', onBodyClick, { capture: true });
+
+    return () => {
+      document.body.removeEventListener('click', onBodyClick, {
+        capture: true
+      });
+    };
+  }, []);
+
+  const renderActivities = options.map(activity => {
+    if (activity === selectedActivity) {
+      return null;
+    }
+
     return (
-      <div className="input-container row">
-        <label className="row">
-          <div className="activity-label col-half row">
-            Activity
-          </div>
-          <div className="activity-input col-half row">
-            <select
-              className="activity col-half"
-              value={this.props.selectedActivity}
-              onChange={this.props.handleChange}
-              required
-            >
-              {
-              this.props.options.map(activity => {
-                return (
-                  <option value={activity} key={activity} className={activity.toLowerCase()}>{activity}</option>
-                );
-              })
-              }
-            </select>
-          </div>
-        </label>
+      <div className="row activity-options" key={activity}>
+        <div className={activity === 'Spa Day' ? 'spa-bubble bubble' : `${activity.toLowerCase()}-bubble bubble`}></div>
+        <div
+          value={activity}
+          onClick={handleChange}
+          className="item"
+        >
+          {activity}
+        </div>
       </div>
     );
-  }
-}
+  });
+
+  return (
+    <div ref={ref}>
+      <div className="field input-container row">
+        <label className="row">
+          <div className="activity-label col-half row">
+             Activity
+           </div>
+        </label>
+        <div className="activity-input col-half row">
+          <div
+            onClick={() => setOpen(!open)}
+            className={`ui selection dropdown activity col-half ${open ? 'visible active' : ''}`}
+          >
+            <i className="dropdown icon"></i>
+            <div className="selected-activity-dropdown-container row">
+              <div className={selectedActivity === 'Spa Day' ? 'spa-bubble bubble' : `${selectedActivity.toLowerCase()}-bubble bubble`}></div>
+              <div className="text">{selectedActivity}</div>
+            </div>
+            <div className={`menu ${open ? 'visible transition' : ''}`}>
+              {renderActivities}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Activity;

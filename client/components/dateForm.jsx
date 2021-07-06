@@ -7,9 +7,8 @@ import PlacesModal from './placesModal';
 import AddInvites from './addInvites';
 import ContactsListModal from './contactsListModal';
 import MakeDecisions from './makeDecisions';
+import { activities, monthNames, dayNames } from '../constants';
 
-const activities = ['Eating', 'Shopping', 'Hiking', 'Picnic', 'Movies', 'Spa Day', 'Bowling', 'Other'];
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const timeInputName = 'time';
 const selectedMonthInputName = 'selectedMonth';
 const selectedYearInputName = 'selectedYear';
@@ -19,11 +18,9 @@ export default class DateForm extends React.Component {
     super(props);
     const selectedMonth = new Date().getMonth();
     const selectedYear = new Date().getFullYear();
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.state = {
       [selectedYearInputName]: selectedYear,
       [selectedMonthInputName]: selectedMonth,
-      dayNames,
       selectedActivity: 'Eating',
       day: new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
@@ -79,7 +76,7 @@ export default class DateForm extends React.Component {
 
   onSelectChange({ target: { value } }, fieldName, shouldConvertToNumber = false) {
     const newSelectedFieldValue = shouldConvertToNumber ? +value : value;
-    const newDays = this.getDaysOfTheMonth(this.state.dayNames, newSelectedFieldValue, this.state.selectedYear);
+    const newDays = this.getDaysOfTheMonth(dayNames, newSelectedFieldValue, this.state.selectedYear);
 
     this.setState({
       [fieldName]: newSelectedFieldValue,
@@ -172,11 +169,11 @@ export default class DateForm extends React.Component {
           <h1 className="form-title center row">Date</h1>
           <form onSubmit={this.handleSubmit}>
             <InputActivity
-              value={this.state.selectedActivity}
+              selectedActivity={this.state.selectedActivity}
               options={activities}
               handleChange={event => {
                 this.setState({
-                  selectedActivity: event.target.value
+                  selectedActivity: event.target.innerHTML
                 });
               }
               }

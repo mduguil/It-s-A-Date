@@ -3,7 +3,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 
 const classNames = require('classnames');
 
-function NavbarLink({ icon, to, activeOnlyWhenExact }) {
+function NavbarLink({ icon, to, activeOnlyWhenExact, title }) {
   const match = useRouteMatch({
     path: to,
     exact: activeOnlyWhenExact
@@ -15,7 +15,7 @@ function NavbarLink({ icon, to, activeOnlyWhenExact }) {
     currPage: match
   });
   return (
-    <Link to={to}>
+    <Link to={to} title={title}>
       <i className={className}></i>
     </Link>
   );
@@ -29,16 +29,25 @@ export default class Navbar extends React.Component {
           <NavbarLink to='/'
             icon="fa-calendar"
             activeOnlyWhenExact={true}
+            title="Home"
           />
           <NavbarLink
             to='/weekly-view'
+            title="Daily Schedule"
             icon="fa-clipboard"
           />
           <NavbarLink to='/date-form'
+            title="New Date"
             icon="fa-plus-circle new-date-icon"
           />
-          <NavbarLink icon="fa-envelope" />
-          <NavbarLink icon="fa-cog"/>
+          <NavbarLink
+            title="Invitations"
+            icon="fa-envelope"
+          />
+          <NavbarLink
+            title="Settings"
+            icon="fa-cog"
+          />
         </div>
       </div>
     );
