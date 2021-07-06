@@ -796,10 +796,6 @@ i:hover {
   justify-content: center;
 }
 
-.sent-invitation-container {
-  min-width: 360px;
-}
-
 .sent-invitation {
   display: flex;
   margin: 18px 0;
@@ -808,6 +804,7 @@ i:hover {
   height: 85px;
   align-items: center;
   justify-content: space-evenly;
+  padding: 6px;
 }
 
 .profile-pic {
