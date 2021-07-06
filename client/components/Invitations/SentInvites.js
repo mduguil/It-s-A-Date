@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { API_URLS } from '../../constants';
 import { getFutureDates, hasFutureDates } from '../calendar/utils';
 
@@ -48,7 +49,9 @@ export default class SentInvites extends React.Component {
                     <div className="sent-invitation-info">
                       <div className="sent-contact">{sent.invites}</div>
                       <div className="sent-activity">{sent.activity}</div>
-                      <div className="sent-datetime">{sent.day} @ {sent.time}</div>
+                      <div className="sent-datetime">
+                        {sent.day} @ {moment(sent.day + ' ' + sent.time).format('h:m a')}
+                      </div>
                     </div>
                   </div>
                 );
