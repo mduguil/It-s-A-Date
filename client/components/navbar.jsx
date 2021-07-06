@@ -48,6 +48,7 @@ export default class Navbar extends React.Component {
             icon="fa-envelope"
           />
           <NavbarLink
+            to='./settings'
             title="Settings"
             icon="fa-cog"
           />

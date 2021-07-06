@@ -154,7 +154,7 @@ input:hover {
 
 .location-label,
 .invite-label {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #616161;
   font-weight: 600;
 }
@@ -378,7 +378,7 @@ input:hover {
 .new-date-decisions-btn {
   width: 138px;
   height: 35px;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #8d8d8d;
   border: none;
@@ -792,7 +792,7 @@ i:hover {
 }
 
 .sent-invitation-container {
-  margin: 0 17px;
+  margin: 0 10px;
 }
 
 .sent-invitation {
@@ -824,4 +824,24 @@ i:hover {
 .sent-datetime {
   font-size: 1.1rem;
   color: #8b8b8b;
+}
+
+.sent-invites-decisions-btn {
+  width: 100px;
+  border: none;
+  height: 27px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.sent-yes-button {
+  background-color: #f7f7f7;
+  color: #898989;
+}
+
+.wip {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #535353;
+  margin-top: 30px;
 }

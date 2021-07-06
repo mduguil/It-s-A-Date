@@ -8,6 +8,7 @@ import Home from './pages/home';
 import Navbar from '../client/components/navbar';
 import Date from './pages/date';
 import Invitations from './pages/invitations';
+import Settings from './pages/settings';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -38,6 +39,9 @@ export default class App extends React.Component {
             </Route>
             <Route path="/invitations">
               <Invitations />
+            </Route>
+            <Route path="/settings">
+              <Settings />
             </Route>
           </Switch>
         </div>

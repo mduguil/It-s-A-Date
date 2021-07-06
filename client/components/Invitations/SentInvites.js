@@ -58,6 +58,10 @@ export default class SentInvites extends React.Component {
                       yes="Edit"
                       no="Delete"
                       decisionsContainer="sent-invites-decisions-container"
+                      yesBtnContainer="sent-invites-yes-btn-container"
+                      noBtnContainer="sent-invites-no-btn-container"
+                      yesBtn="invite-button sent-yes-button sent-invites-decisions-btn"
+                      noBtn="no-button sent-no-button sent-invites-decisions-btn"
                     />
                   </div>
                 );
