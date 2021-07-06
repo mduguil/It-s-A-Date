@@ -44,7 +44,7 @@ export default class SentInvites extends React.Component {
                 return (
                   <div className="sent-invitation" key={i}>
                     <div className="profile-pic-container">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+                      <img className="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
                     </div>
                     <div className="sent-invitation-info">
                       <div className="sent-contact">{sent.invites}</div>
@@ -57,7 +57,7 @@ export default class SentInvites extends React.Component {
                 );
               })}
             </div>
-          : <div>nada</div>
+          : <div className="scheduled-date-placeholder-container center">No Dates Sent</div>
         }
       </div>
     );
