@@ -237,6 +237,7 @@ export default class DateForm extends React.Component {
             </div>
             <MakeDecisions
               yes="Invite"
+              no="Cancel"
               decisionsContainer="new-date-decisions-container row"
               yesBtnContainer="new-date-yes-btn-container"
               noBtnContainer="new-date-no-btn-container"

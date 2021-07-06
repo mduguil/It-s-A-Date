@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { API_URLS } from '../../constants';
 import { getFutureDates, hasFutureDates } from '../calendar/utils';
+import MakeDecisions from '../makeDecisions';
 
 export default class SentInvites extends React.Component {
   constructor(props) {
@@ -53,6 +54,11 @@ export default class SentInvites extends React.Component {
                         {moment(sent.day).format('ddd MMMM D')} @ {moment(sent.day + ' ' + sent.time).format('h:m a')}
                       </div>
                     </div>
+                    <MakeDecisions
+                      yes="Edit"
+                      no="Delete"
+                      decisionsContainer="sent-invites-decisions-container"
+                    />
                   </div>
                 );
               })}

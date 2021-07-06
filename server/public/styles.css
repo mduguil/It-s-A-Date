@@ -802,6 +802,7 @@ i:hover {
   box-shadow: 0 3px 4px 3px #d0d0d0;
   height: 85px;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .profile-pic {

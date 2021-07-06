@@ -18,7 +18,7 @@ export default class MakeDecisions extends React.Component {
             className={this.props.noBtn}
             onClick={this.props.handleCancelBtn}
           >
-            Cancel
+            {this.props.no}
           </button>
         </div>
       </div>
