@@ -78,6 +78,33 @@ app.get('/api/dates', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/dates/:dateId', (req, res, next) => {
+  const dateId = parseInt(req.params.dateId, 10);
+  if (!Number.isInteger(dateId) || dateId < 1) {
+    throw new ClientError(400, 'ID must be a positive integer');
+  }
+
+  const dates = `
+    select "location",
+           "day",
+           "time",
+           "activity",
+           "invites",
+           "notes",
+           "dateId"
+      from "dates"
+      where "dateId" = $1
+  `;
+
+  const params = [dateId];
+
+  db.query(dates, params)
+    .then(result => {
+      res.status(200).json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.post('/api/dates', (req, res, next) => {
   const { location, day, time, activity, invites, notes } = req.body;
   if (!location || !day || !time || !activity) {
@@ -116,7 +143,7 @@ app.get('/api/places', function (req, res, next) {
     .catch(err => next(err));
 });
 
-app.delete('/api/dates/:id', (req, res) => {
+app.delete('/api/dates/:id', (req, res, next) => {
   const dateId = parseInt(req.params.id, 10);
   if (!Number.isInteger(dateId) || dateId < 1) {
     throw new ClientError(400, 'ID must be a positive integer');
@@ -127,13 +154,49 @@ app.delete('/api/dates/:id', (req, res) => {
     where "dateId" = $1
     returning *
   `;
+
   const params = [dateId];
   db.query(dates, params)
     .then(result => {
       const [date] = result.rows;
       res.json(date);
     })
-    .catch(err => (err));
+    .catch(err => next(err));
+});
+
+app.put('/api/dates/:id', (req, res, next) => {
+  const { location, day, time, activity, invites, notes } = req.body.input;
+  const dateId = parseInt(req.params.id, 10);
+  if (!Number.isInteger(dateId) || dateId < 1) {
+    throw new ClientError(400, 'ID must be a positive integer');
+  }
+  if (!location || !day || !time || !activity || !invites) {
+    throw new ClientError(400, 'location, day, time, activity & invites are required');
+  }
+
+  const dates = `
+    update "dates"
+       set "location" = $1,
+           "day" = $2,
+           "time" = $3,
+           "activity" = $4,
+           "invites" = $5,
+           "notes" = $6
+     where "dateId" = $7
+  `;
+
+  const params = [location, day, time, activity, invites, notes, dateId];
+
+  db.query(dates, params)
+    .then(result => {
+      const date = result.rows[0];
+      if (!date) {
+        throw new ClientError(404, `Cannot find date with "dateId" ${dateId}`);
+      } else {
+        res.status(200).json(date);
+      }
+    })
+    .catch(err => next(err));
 });
 
 app.use((req, res) => {

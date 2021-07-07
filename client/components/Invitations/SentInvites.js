@@ -15,9 +15,44 @@ export default class SentInvites extends React.Component {
     super(props);
     this.state = {
       byDate: [],
+      editing: {},
       isFetching: false,
       err: ''
     };
+  }
+
+  editDate = dateId => {
+    fetch(`/api/dates/${dateId}`, {
+      method: 'GET'
+    })
+      .then(res => res.json())
+      .then(date => {
+        this.setState({
+          editing: date[0]
+        });
+      })
+      .catch(err => {
+        this.setState({
+          err: err.toString()
+        });
+      });
+  }
+
+  saveDate = (day, dateId) => {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    fetch(`/api/dates/${dateId}`, {
+      method: 'PUT',
+      headers
+    })
+      .then(res => res.json())
+      .then(date => {
+      })
+      .catch(err => {
+        this.setState({
+          err: err.toString()
+        });
+      });
   }
 
   deleteDate = (day, dateId) => {
@@ -97,6 +132,7 @@ export default class SentInvites extends React.Component {
                             yesBtn="invite-button sent-yes-button sent-invites-decisions-btn"
                             noBtn="no-button sent-no-button sent-invites-decisions-btn"
                             handleCancelBtn={() => this.deleteDate(sent.day, sent.dateId)}
+                            handleYesClick={() => this.editDate(sent.dateId)}
                           />
                         </div>
                       );
