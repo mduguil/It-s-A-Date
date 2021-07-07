@@ -10,7 +10,8 @@
 .form-title,
 .search-title,
 .contacts-title,
-.add-contacts-title {
+.add-contacts-title,
+.invitations-title {
   font-size: 2.4rem;
   color: #252525;
   font-weight: bold;
@@ -153,7 +154,7 @@ input:hover {
 
 .location-label,
 .invite-label {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #616161;
   font-weight: 600;
 }
@@ -377,7 +378,7 @@ input:hover {
 .new-date-decisions-btn {
   width: 138px;
   height: 35px;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #8d8d8d;
   border: none;
@@ -774,4 +775,75 @@ i:hover {
   font-size: 1.2rem;
   padding: 5px 15px;
   margin-top: 20px;
+}
+
+.sent-tab {
+  font-size: 1.4rem;
+  color: #1dc0c0;
+}
+
+.curr-invitation-tab-container {
+  margin-top: 5px;
+}
+
+.curr-invitation-tab {
+  width: 70px;
+  border-bottom: 2px solid #1dc0c0;
+}
+
+.invitations-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sent-invitation {
+  display: flex;
+  margin: 18px 0;
+  border-radius: 3px;
+  box-shadow: 0 3px 4px 3px #d0d0d0;
+  height: 85px;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 6px;
+}
+
+.profile-pic {
+  width: 65px;
+  border-radius: 50%;
+}
+
+.sent-invitation-info {
+  margin: 0 10px;
+}
+
+.sent-contact {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #272727;
+}
+
+.sent-activity,
+.sent-datetime {
+  font-size: 1.1rem;
+  color: #8b8b8b;
+}
+
+.sent-invites-decisions-btn {
+  width: 100px;
+  border: none;
+  height: 27px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.sent-yes-button {
+  background-color: #f7f7f7;
+  color: #898989;
+}
+
+.wip {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #535353;
+  margin-top: 30px;
 }

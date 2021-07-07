@@ -25,7 +25,7 @@ export default class ShowDatesScheduled extends React.Component {
                           <div className="scheduled-date-info-container">
                             <div className="scheduled-invitees-container">
                               <div className="scheduled-invitees-img-container">
-                                <img className="scheduled-invitees-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"></img>
+                                <img className="scheduled-invitees-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
                               </div>
                               <div className="scheduled-invitees-time-container">
                                 <div className="scheduled-invitees" key="invite">

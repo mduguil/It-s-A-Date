@@ -7,6 +7,9 @@ import {
 import Home from './pages/home';
 import Navbar from '../client/components/navbar';
 import Date from './pages/date';
+import Invitations from './pages/invitations';
+import Settings from './pages/settings';
+import DateFormContainer from './components/dateFormContainer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,7 +25,6 @@ export default class App extends React.Component {
       <Router>
         <div>
           <Navbar />
-
           <Switch>
             <Route exact path="/">
               <Home />
@@ -33,8 +35,17 @@ export default class App extends React.Component {
             <Route path="/weekly-view">
               <Home weeklyView={true} />
             </Route>
+            <Route path="/date-form/:dateId">
+              <DateFormContainer />
+            </Route>
             <Route path="/date-form">
               <Date />
+            </Route>
+            <Route path="/invitations">
+              <Invitations />
+            </Route>
+            <Route path="/settings">
+              <Settings />
             </Route>
           </Switch>
         </div>

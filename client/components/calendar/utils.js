@@ -106,7 +106,9 @@ function checkActivity(activity) {
 export function hasFutureDates(byDate) {
   const days = Object.keys(byDate);
   return days.some(day => {
-    return moment(day).isAfter(moment());
+    const currDate = moment(day);
+    const isAfter = currDate.isAfter(moment());
+    return isAfter;
   });
 }
 
@@ -120,7 +122,7 @@ export function getFutureDates(byDate) {
   });
   const flatArr = futureDates.flat();
   const sortedDates = sortFutureDates(flatArr);
-  return sortedDates.slice(0, 4);
+  return sortedDates;
 }
 
 function sortFutureDates(dates) {

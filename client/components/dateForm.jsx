@@ -12,26 +12,29 @@ import { activities, monthNames, dayNames } from '../constants';
 const timeInputName = 'time';
 const selectedMonthInputName = 'selectedMonth';
 const selectedYearInputName = 'selectedYear';
-
 export default class DateForm extends React.Component {
   constructor(props) {
     super(props);
-    const selectedMonth = new Date().getMonth();
-    const selectedYear = new Date().getFullYear();
+    const dateId = props.dateId || '';
+    const editingDate = props.editingDate || null;
+    const selectedMonth = editingDate ? editingDate.day.split(' ')[0] - 1 : new Date().getMonth();
+    const selectedYear = editingDate ? editingDate.day.split(' ')[2] : new Date().getFullYear();
     this.state = {
+      dateId,
+      editingDate,
       [selectedYearInputName]: selectedYear,
       [selectedMonthInputName]: selectedMonth,
-      selectedActivity: 'Eating',
-      day: new Date().getDate(),
+      selectedActivity: editingDate ? editingDate.activity : 'Eating',
+      day: editingDate ? new Date(editingDate.day).getDate() : new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
       years: this.populateNumbers(2021, 2025),
-      [timeInputName]: '15:30',
+      [timeInputName]: editingDate ? editingDate.time : '15:30',
       searchIsOpen: false,
       contactsIsOpen: false,
-      address: '',
+      address: editingDate ? editingDate.location : '',
       invitees: [],
-      notes: ''
+      notes: editingDate ? editingDate.notes : ''
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
@@ -41,6 +44,32 @@ export default class DateForm extends React.Component {
     this.handleNotesChange = this.handleNotesChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.turnInvitesIntoStr = this.turnInvitesIntoStr.bind(this);
+  }
+
+  saveEditingDate = dateId => {
+    const editedDate = {
+      location: this.state.address,
+      day: (+this.state.selectedMonth + 1) + ' ' + this.state.day + ' ' + this.state.selectedYear,
+      time: this.state.[timeInputName],
+      activity: this.state.selectedActivity,
+      notes: this.state.notes,
+      invites: this.turnInvitesIntoStr(this.state.invitees)
+    };
+
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    fetch(`/api/dates/${dateId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(editedDate)
+    })
+      .then(res => res.json())
+      .then(this.props.onSubmitSuccess)
+      .catch(err => {
+        this.setState({
+          err: err.toString()
+        });
+      });
   }
 
   getMonthName(monthNum) {
@@ -236,12 +265,14 @@ export default class DateForm extends React.Component {
               />
             </div>
             <MakeDecisions
-              yes="Invite"
+              yes={this.state.editingDate ? 'Save' : 'Invite'}
+              no="Cancel"
               decisionsContainer="new-date-decisions-container row"
               yesBtnContainer="new-date-yes-btn-container"
               noBtnContainer="new-date-no-btn-container"
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
+              handleYesClick={() => this.saveEditingDate(this.state.dateId)}
             />
           </form>
         </div>

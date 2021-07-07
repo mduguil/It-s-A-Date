@@ -64,4 +64,8 @@
   .new-date-decisions-btn {
     width: 220px;
   }
+
+  .sent-invitation-container {
+    width: 700px;
+  }
 }

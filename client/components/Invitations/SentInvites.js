@@ -1,0 +1,118 @@
+import React from 'react';
+import moment from 'moment';
+import { API_URLS } from '../../constants';
+import { getFutureDates, hasFutureDates } from '../calendar/utils';
+import MakeDecisions from '../makeDecisions';
+
+function removeDateById(byDate, day, id) {
+  const clone = JSON.parse(JSON.stringify(byDate));
+  clone[day] = clone[day].filter(date => date.dateId !== id);
+  return clone;
+}
+
+export default class SentInvites extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      byDate: [],
+      isFetching: false,
+      err: ''
+    };
+  }
+
+  editDate = dateId => {
+    this.props.handleEditClick(dateId);
+  }
+
+  deleteDate = (day, dateId) => {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    fetch(`/api/dates/${dateId}`, {
+      method: 'DELETE',
+      headers
+    })
+      .then(res => res.json())
+      .then(date => {
+        const updatedByDate = removeDateById(this.state.byDate, day, dateId);
+        this.setState({
+          byDate: updatedByDate
+        });
+      })
+      .catch(err => {
+        this.setState({
+          err: err.toString()
+        });
+      });
+  }
+
+  componentDidMount() {
+    this.setState({
+      isFetching: true
+    });
+    fetch(API_URLS.getDate)
+      .then(res => res.json())
+      .then(dates => {
+        this.setState({
+          byDate: dates.reduce((acc, date) => ({
+            ...acc,
+            [date.day]: acc[date.day] ? [...acc[date.day], date] : [date]
+          }), {}),
+          isFetching: false
+        });
+      })
+      .catch(err => {
+        this.setState({
+          err: err.toString()
+        });
+      });
+  }
+
+  render() {
+    return (
+      <>
+      {this.state.err
+        ? <div className="error-message-container row center">
+              <div className="error-message">{this.state.err}</div>
+            </div>
+        : <>
+            {this.state.isFetching && <div className="loading-placeholder center">Loading...</div>}
+            <div className="invitations-container">
+              {hasFutureDates(this.state.byDate)
+                ? <div className="sent-invitation-container">
+                    {getFutureDates(this.state.byDate).map((sent, i) => {
+                      return (
+                        <div className="sent-invitation" key={i}>
+                          <div className="profile-pic-container">
+                            <img className="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+                          </div>
+                          <div className="sent-invitation-info">
+                            <div className="sent-contact">{sent.invites}</div>
+                            <div className="sent-activity">{sent.activity}</div>
+                            <div className="sent-datetime">
+                              {moment(sent.day).format('ddd MMMM D')} @ {moment(sent.day + ' ' + sent.time).format('h:m a')}
+                            </div>
+                          </div>
+                          <MakeDecisions
+                            yes="Edit"
+                            no="Delete"
+                            decisionsContainer="sent-invites-decisions-container"
+                            yesBtnContainer="sent-invites-yes-btn-container"
+                            noBtnContainer="sent-invites-no-btn-container"
+                            yesBtn="invite-button sent-yes-button sent-invites-decisions-btn"
+                            noBtn="no-button sent-no-button sent-invites-decisions-btn"
+                            handleCancelBtn={() => this.deleteDate(sent.day, sent.dateId)}
+                            handleYesClick={() => this.editDate(sent.dateId)}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                : <div className="scheduled-date-placeholder-container center">No Dates Sent</div>
+              }
+            </div>
+          </>
+      }
+      </>
+    );
+  }
+}

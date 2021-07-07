@@ -9,6 +9,7 @@ export default class MakeDecisions extends React.Component {
             type="submit"
             className={this.props.yesBtn}
             onSubmit={this.props.handleYesSubmit}
+            onClick={this.props.handleYesClick}
           >
             {this.props.yes}
           </button>
@@ -18,7 +19,7 @@ export default class MakeDecisions extends React.Component {
             className={this.props.noBtn}
             onClick={this.props.handleCancelBtn}
           >
-            Cancel
+            {this.props.no}
           </button>
         </div>
       </div>

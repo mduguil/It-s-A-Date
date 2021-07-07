@@ -26,7 +26,8 @@ export default class Navbar extends React.Component {
     return (
       <div className="navbar-container">
         <div className="navbar">
-          <NavbarLink to='/'
+          <NavbarLink
+            to='/'
             icon="fa-calendar"
             activeOnlyWhenExact={true}
             title="Home"
@@ -36,15 +37,18 @@ export default class Navbar extends React.Component {
             title="Daily Schedule"
             icon="fa-clipboard"
           />
-          <NavbarLink to='/date-form'
+          <NavbarLink
+            to='/date-form'
             title="New Date"
             icon="fa-plus-circle new-date-icon"
           />
           <NavbarLink
+            to='/invitations'
             title="Invitations"
             icon="fa-envelope"
           />
           <NavbarLink
+            to='./settings'
             title="Settings"
             icon="fa-cog"
           />
