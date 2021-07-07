@@ -24,23 +24,6 @@ export default class SentInvites extends React.Component {
     this.props.handleEditClick(dateId);
   }
 
-  saveDate = (day, dateId) => {
-    const headers = new Headers();
-    headers.set('Content-Type', 'application/json');
-    fetch(`/api/dates/${dateId}`, {
-      method: 'PUT',
-      headers
-    })
-      .then(res => res.json())
-      .then(date => {
-      })
-      .catch(err => {
-        this.setState({
-          err: err.toString()
-        });
-      });
-  }
-
   deleteDate = (day, dateId) => {
     const headers = new Headers();
     headers.set('Content-Type', 'application/json');

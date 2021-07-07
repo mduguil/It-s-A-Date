@@ -165,7 +165,7 @@ app.delete('/api/dates/:id', (req, res, next) => {
 });
 
 app.put('/api/dates/:id', (req, res, next) => {
-  const { location, day, time, activity, invites, notes } = req.body.input;
+  const { location, day, time, activity, invites, notes } = req.body;
   const dateId = parseInt(req.params.id, 10);
   if (!Number.isInteger(dateId) || dateId < 1) {
     throw new ClientError(400, 'ID must be a positive integer');
@@ -189,7 +189,7 @@ app.put('/api/dates/:id', (req, res, next) => {
 
   db.query(dates, params)
     .then(result => {
-      const date = result.rows[0];
+      const date = result;
       if (!date) {
         throw new ClientError(404, `Cannot find date with "dateId" ${dateId}`);
       } else {

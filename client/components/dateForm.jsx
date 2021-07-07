@@ -15,10 +15,12 @@ const selectedYearInputName = 'selectedYear';
 export default class DateForm extends React.Component {
   constructor(props) {
     super(props);
+    const dateId = props.dateId || '';
     const editingDate = props.editingDate || null;
     const selectedMonth = editingDate ? editingDate.day.split(' ')[0] - 1 : new Date().getMonth();
     const selectedYear = editingDate ? editingDate.day.split(' ')[2] : new Date().getFullYear();
     this.state = {
+      dateId,
       editingDate,
       [selectedYearInputName]: selectedYear,
       [selectedMonthInputName]: selectedMonth,
@@ -42,6 +44,32 @@ export default class DateForm extends React.Component {
     this.handleNotesChange = this.handleNotesChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.turnInvitesIntoStr = this.turnInvitesIntoStr.bind(this);
+  }
+
+  saveEditingDate = dateId => {
+    const editedDate = {
+      location: this.state.address,
+      day: (+this.state.selectedMonth + 1) + ' ' + this.state.day + ' ' + this.state.selectedYear,
+      time: this.state.[timeInputName],
+      activity: this.state.selectedActivity,
+      notes: this.state.notes,
+      invites: this.turnInvitesIntoStr(this.state.invitees)
+    };
+
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    fetch(`/api/dates/${dateId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(editedDate)
+    })
+      .then(res => res.json())
+      .then(this.props.onSubmitSuccess)
+      .catch(err => {
+        this.setState({
+          err: err.toString()
+        });
+      });
   }
 
   getMonthName(monthNum) {
@@ -244,6 +272,7 @@ export default class DateForm extends React.Component {
               noBtnContainer="new-date-no-btn-container"
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
+              handleYesClick={() => this.saveEditingDate(this.state.dateId)}
             />
           </form>
         </div>
