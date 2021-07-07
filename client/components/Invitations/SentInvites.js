@@ -15,27 +15,13 @@ export default class SentInvites extends React.Component {
     super(props);
     this.state = {
       byDate: [],
-      editing: {},
       isFetching: false,
       err: ''
     };
   }
 
   editDate = dateId => {
-    fetch(`/api/dates/${dateId}`, {
-      method: 'GET'
-    })
-      .then(res => res.json())
-      .then(date => {
-        this.setState({
-          editing: date[0]
-        });
-      })
-      .catch(err => {
-        this.setState({
-          err: err.toString()
-        });
-      });
+    this.props.handleEditClick(dateId);
   }
 
   saveDate = (day, dateId) => {

@@ -1,9 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import SentInvites from '../components/Invitations/SentInvites';
 
-export default class Invitations extends React.Component {
-  render() {
-    return (
+export default function Invitations(props) {
+  const history = useHistory();
+
+  function handleClick(dateId) {
+    history.push(`/date-form/${dateId}`);
+  }
+
+  return (
       <div className="container">
         <h1 className="invitations-title center row">Invitations</h1>
         <div className="sent-received-container">
@@ -12,8 +18,7 @@ export default class Invitations extends React.Component {
             <div className="curr-invitation-tab" />
           </div>
         </div>
-        <SentInvites />
+        <SentInvites handleEditClick={dateId => handleClick(dateId)}/>
       </div>
-    );
-  }
+  );
 }

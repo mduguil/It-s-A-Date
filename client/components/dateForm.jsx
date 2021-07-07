@@ -12,26 +12,26 @@ import { activities, monthNames, dayNames } from '../constants';
 const timeInputName = 'time';
 const selectedMonthInputName = 'selectedMonth';
 const selectedYearInputName = 'selectedYear';
-
 export default class DateForm extends React.Component {
   constructor(props) {
     super(props);
-    const selectedMonth = new Date().getMonth();
-    const selectedYear = new Date().getFullYear();
+    const editingDate = props.editingDate || {};
+    const selectedMonth = editingDate.day.split(' ')[0] - 1 || new Date().getMonth();
+    const selectedYear = editingDate.day.split(' ')[2] || new Date().getFullYear();
     this.state = {
       [selectedYearInputName]: selectedYear,
       [selectedMonthInputName]: selectedMonth,
-      selectedActivity: 'Eating',
-      day: new Date().getDate(),
+      selectedActivity: editingDate.activity || 'Eating',
+      day: new Date(editingDate.day).getDate() || new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
       years: this.populateNumbers(2021, 2025),
-      [timeInputName]: '15:30',
+      [timeInputName]: editingDate.time || '15:30',
       searchIsOpen: false,
       contactsIsOpen: false,
-      address: '',
+      address: editingDate.location || '',
       invitees: [],
-      notes: ''
+      notes: editingDate.notes || ''
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
