@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 export default function DateFormContainer() {
   const { dateId } = useParams();
   const [editingDate, setEditingDate] = useState(null);
-  const [err, setErr] = useState(null);
 
   useEffect(() => {
     fetch(`/api/dates/${dateId}`, {
@@ -14,9 +13,6 @@ export default function DateFormContainer() {
       .then(res => res.json())
       .then(date => {
         setEditingDate(date[0]);
-      })
-      .catch(err => {
-        setErr(err);
       });
   }, []);
 

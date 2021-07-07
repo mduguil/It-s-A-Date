@@ -15,23 +15,24 @@ const selectedYearInputName = 'selectedYear';
 export default class DateForm extends React.Component {
   constructor(props) {
     super(props);
-    const editingDate = props.editingDate || {};
-    const selectedMonth = editingDate.day.split(' ')[0] - 1 || new Date().getMonth();
-    const selectedYear = editingDate.day.split(' ')[2] || new Date().getFullYear();
+    const editingDate = props.editingDate || null;
+    const selectedMonth = editingDate ? editingDate.day.split(' ')[0] - 1 : new Date().getMonth();
+    const selectedYear = editingDate ? editingDate.day.split(' ')[2] : new Date().getFullYear();
     this.state = {
+      editingDate,
       [selectedYearInputName]: selectedYear,
       [selectedMonthInputName]: selectedMonth,
-      selectedActivity: editingDate.activity || 'Eating',
-      day: new Date(editingDate.day).getDate() || new Date().getDate(),
+      selectedActivity: editingDate ? editingDate.activity : 'Eating',
+      day: editingDate ? new Date(editingDate.day).getDate() : new Date().getDate(),
       days: this.getDaysOfTheMonth(dayNames, selectedMonth, selectedYear),
       months: this.populateNumbers(0, 11),
       years: this.populateNumbers(2021, 2025),
-      [timeInputName]: editingDate.time || '15:30',
+      [timeInputName]: editingDate ? editingDate.time : '15:30',
       searchIsOpen: false,
       contactsIsOpen: false,
-      address: editingDate.location || '',
+      address: editingDate ? editingDate.location : '',
       invitees: [],
-      notes: editingDate.notes || ''
+      notes: editingDate ? editingDate.notes : ''
     };
     this.populateDays = this.populateNumbers.bind(this);
     this.getMonthName = this.getMonthName.bind(this);
@@ -236,7 +237,7 @@ export default class DateForm extends React.Component {
               />
             </div>
             <MakeDecisions
-              yes="Invite"
+              yes={this.state.editingDate ? 'Save' : 'Invite'}
               no="Cancel"
               decisionsContainer="new-date-decisions-container row"
               yesBtnContainer="new-date-yes-btn-container"
