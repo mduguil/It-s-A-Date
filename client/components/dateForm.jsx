@@ -193,7 +193,7 @@ export default class DateForm extends React.Component {
       );
     }
     return (
-      <div className="container">
+      <>
         <div className="form-container">
           <h1 className="form-title center row">Date</h1>
           <form onSubmit={this.handleSubmit}>
@@ -276,7 +276,7 @@ export default class DateForm extends React.Component {
             />
           </form>
         </div>
-      </div>
+      </>
     );
   }
 

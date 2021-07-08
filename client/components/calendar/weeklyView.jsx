@@ -75,7 +75,7 @@ export default class WeeklyView extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <>
         <div className="calendar-container">
           <h1 className="calendar-title center row">Schedule</h1>
           <div className="calendar">
@@ -140,7 +140,7 @@ export default class WeeklyView extends React.Component {
               />
             </>
         }
-      </div>
+      </>
     );
   }
 }

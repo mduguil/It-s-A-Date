@@ -22,10 +22,10 @@ export default function Home(props) {
   }
 
   return (
-      <Calendar
-        handleDayClick={(event, day) => {
-          handleClick(day);
-        }}
-      />
+        <Calendar
+          handleDayClick={(event, day) => {
+            handleClick(day);
+          }}
+        />
   );
 }

@@ -10,7 +10,7 @@ export default function Invitations(props) {
   }
 
   return (
-      <div className="container">
+      <>
         <h1 className="invitations-title center row">Invitations</h1>
         <div className="sent-received-container">
           <div className="sent-tab row center">Sent</div>
@@ -19,6 +19,6 @@ export default function Invitations(props) {
           </div>
         </div>
         <SentInvites handleEditClick={dateId => handleClick(dateId)}/>
-      </div>
+      </>
   );
 }
