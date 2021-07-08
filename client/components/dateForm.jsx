@@ -55,7 +55,6 @@ export default class DateForm extends React.Component {
       notes: this.state.notes,
       invites: this.turnInvitesIntoStr(this.state.invitees)
     };
-
     const headers = new Headers();
     headers.set('Content-Type', 'application/json');
     fetch(`/api/dates/${dateId}`, {
@@ -64,7 +63,7 @@ export default class DateForm extends React.Component {
       body: JSON.stringify(editedDate)
     })
       .then(res => res.json())
-      .then(this.props.onSubmitSuccess)
+      .then(() => this.props.onSubmitSuccess())
       .catch(err => {
         this.setState({
           err: err.toString()
@@ -155,13 +154,13 @@ export default class DateForm extends React.Component {
       body: JSON.stringify(newDate)
     })
       .then(res => res.json())
-      .then(this.props.onSubmitSuccess);
+      .then(() => this.props.onSubmitSuccess());
   }
 
   render() {
     if (this.state.searchIsOpen) {
       return (
-        <div className="container">
+        <>
           <PlacesModal
             defaultSearch={this.state.selectedActivity}
             handleBackBtn={event => {
@@ -176,7 +175,7 @@ export default class DateForm extends React.Component {
               });
             }}
           />
-        </div>
+        </>
       );
     }
 
@@ -273,6 +272,7 @@ export default class DateForm extends React.Component {
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
               handleYesClick={() => this.saveEditingDate(this.state.dateId)}
+              handleCancelBtn={() => this.props.onSubmitSuccess}
             />
           </form>
         </div>

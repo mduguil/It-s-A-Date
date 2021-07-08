@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import DateForm from './dateForm';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 export default function DateFormContainer() {
+  const history = useHistory();
   const { dateId } = useParams();
   const [editingDate, setEditingDate] = useState(null);
+
+  function redirectOnCompleted() {
+    history.push('/');
+  }
 
   useEffect(() => {
     fetch(`/api/dates/${dateId}`, {
@@ -21,7 +26,7 @@ export default function DateFormContainer() {
       {
         !editingDate
           ? <div className="loading-placeholder center">Loading...</div>
-          : <DateForm dateId={dateId} editingDate={editingDate}/>
+          : <DateForm dateId={dateId} editingDate={editingDate} onSubmitSuccess={redirectOnCompleted}/>
       }
     </>
   );
