@@ -5,11 +5,17 @@
 .header-container {
   width: 100%;
   background-color: white;
-  z-index: 1;
+  margin-bottom: 5px;
 }
 
 .container {
   box-shadow: 0 0 29px 8px #ababab;
+}
+
+.slogan {
+  font-size: 1.1rem;
+  color: rgb(165, 165, 165);
+  font-weight: bold;
 }
 
 .calendar-title,
