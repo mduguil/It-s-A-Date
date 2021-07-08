@@ -161,7 +161,7 @@ export default class DateForm extends React.Component {
   render() {
     if (this.state.searchIsOpen) {
       return (
-        <div className="container">
+        <>
           <PlacesModal
             defaultSearch={this.state.selectedActivity}
             handleBackBtn={event => {
@@ -176,7 +176,7 @@ export default class DateForm extends React.Component {
               });
             }}
           />
-        </div>
+        </>
       );
     }
 
