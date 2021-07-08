@@ -8,7 +8,6 @@ export default class MakeDecisions extends React.Component {
           <button
             type="submit"
             className={this.props.yesBtn}
-            onSubmit={this.props.handleYesSubmit}
             onClick={this.props.handleYesClick}
           >
             {this.props.yes}
