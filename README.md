@@ -1,9 +1,9 @@
 # It's A Date - <a href="https://its-a-date1.herokuapp.com">Live</a>
 A scheduling app for hangouts with friends
-
-![home](https://user-images.githubusercontent.com/76453386/122995292-4bfa1800-d35e-11eb-9120-3966ebf101f4.png)
-![week](https://user-images.githubusercontent.com/76453386/122995301-50becc00-d35e-11eb-857e-670e1a0f083b.png)
-![form](https://user-images.githubusercontent.com/76453386/122995325-55838000-d35e-11eb-9d23-4daef60065ef.png)
+![home](https://user-images.githubusercontent.com/76453386/124865589-cc7c6380-df6f-11eb-91b1-d26e589f1751.png)
+![daily](https://user-images.githubusercontent.com/76453386/124865604-d1411780-df6f-11eb-8903-9df1bcdb3ef9.png)
+![form](https://user-images.githubusercontent.com/76453386/124865605-d1d9ae00-df6f-11eb-9299-e8c6f6a0da81.png)
+![invite](https://user-images.githubusercontent.com/76453386/124865614-d3a37180-df6f-11eb-91a8-416ade28035f.png)
 
 
 ### Features 
