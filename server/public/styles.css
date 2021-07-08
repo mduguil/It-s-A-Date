@@ -808,6 +808,10 @@ i:hover {
   justify-content: center;
 }
 
+.invitations-title {
+  margin: 0;
+}
+
 .sent-invitation-container {
   padding-bottom: 90px;
 }
