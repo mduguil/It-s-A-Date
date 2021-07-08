@@ -9,7 +9,7 @@ export default class UpcomingDates extends React.Component {
         {hasFutureDates(this.props.byDate)
           ? <>
             <div className="upcoming-dates-container">
-              {getFutureDates(this.props.byDate).slice(0, 4).map((date, i) => {
+              {getFutureDates(this.props.byDate).slice(0, 3).map((date, i) => {
                 return (
                   <div className="upcoming-date-schedule" key={i}>
                     <div className="upcoming-date-activity-container">
