@@ -22,6 +22,15 @@ export default class App extends React.Component {
 
   render() {
     return (
+      <div className="container">
+      <div className="header-container">
+        <div className="logo-container">
+          <img className="logo" src="/logo.png" />
+        </div>
+        <div className="slogan-container">
+          <div className="slogan">Schedule dates with friends</div>
+        </div>
+      </div>
       <Router>
         <div>
           <Navbar />
@@ -50,6 +59,7 @@ export default class App extends React.Component {
           </Switch>
         </div>
       </Router>
+      </div>
     );
   }
 }

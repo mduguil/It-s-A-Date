@@ -2,17 +2,22 @@
   box-sizing: border-box;
 }
 
-.center {
+.center,
+.logo-container,
+.slogan-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .container {
-  padding-top: 30px;
   max-width: 992px;
   margin: 0 auto;
   min-height: 100vh;
+}
+
+.logo {
+  max-width: 100%;
 }
 
 .row {

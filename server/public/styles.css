@@ -2,8 +2,14 @@
   font-family: Lato, sans-serif;
 }
 
+.header-container {
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+}
+
 .container {
-  box-shadow: 0 0 29px 8px #ababab;
+  box-shadow: 0 1 29px 8px #ababab;
 }
 
 .calendar-title,

@@ -72,7 +72,7 @@ export default class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <>
         <div className="calendar-container">
           <h1 className="calendar-title center row">Calendar</h1>
           <div className="calendar">
@@ -119,23 +119,21 @@ export default class Calendar extends React.Component {
             </div>
           </div>
         </div>
-        <div>
-          <div className="upcoming-date-title">
-            Upcoming Dates
-          </div>
-          {this.state.err
-            ? <div className="error-message-container row center">
-                <div className="error-message">{this.state.err}</div>
-              </div>
-            : <>
-              {this.state.isFetching && <div className="loading-placeholder center">Loading...</div>}
-              <UpcomingDates
-                byDate={this.state.byDate}
-              />
-              </>
-          }
+        <div className="upcoming-date-title">
+          Upcoming Dates
         </div>
-      </div>
+        {this.state.err
+          ? <div className="error-message-container row center">
+              <div className="error-message">{this.state.err}</div>
+            </div>
+          : <>
+            {this.state.isFetching && <div className="loading-placeholder center">Loading...</div>}
+            <UpcomingDates
+              byDate={this.state.byDate}
+            />
+            </>
+        }
+      </>
     );
   }
 }
