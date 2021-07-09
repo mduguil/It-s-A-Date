@@ -4,7 +4,8 @@ A scheduling app for hangouts with friends
 ![home](https://user-images.githubusercontent.com/76453386/124865589-cc7c6380-df6f-11eb-91b1-d26e589f1751.png)
 ![daily](https://user-images.githubusercontent.com/76453386/124865604-d1411780-df6f-11eb-8903-9df1bcdb3ef9.png)
 ![form](https://user-images.githubusercontent.com/76453386/124865605-d1d9ae00-df6f-11eb-9299-e8c6f6a0da81.png)
-![invite](https://user-images.githubusercontent.com/76453386/124865614-d3a37180-df6f-11eb-91a8-416ade28035f.png)
+![invites](https://user-images.githubusercontent.com/76453386/125005229-23397a00-e010-11eb-85e2-3babca0ffbea.png)
+
 
 
 ### Features 
