@@ -46,8 +46,7 @@ export default class DateForm extends React.Component {
     this.turnInvitesIntoStr = this.turnInvitesIntoStr.bind(this);
   }
 
-  saveEditingDate = (event, dateId) => {
-    event.preventDefault();
+  saveEditingDate = dateId => {
     const editedDate = {
       location: this.state.address,
       day: (+this.state.selectedMonth + 1) + ' ' + this.state.day + ' ' + this.state.selectedYear,
@@ -136,8 +135,7 @@ export default class DateForm extends React.Component {
     return invites;
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
     const newDate = {
       location: this.state.address,
       day: (+this.state.selectedMonth + 1) + ' ' + this.state.day + ' ' + this.state.selectedYear,
@@ -195,7 +193,7 @@ export default class DateForm extends React.Component {
       <>
         <div className="form-container">
           <h1 className="form-title center row">Date</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form>
             <InputActivity
               selectedActivity={this.state.selectedActivity}
               options={activities}
@@ -271,7 +269,12 @@ export default class DateForm extends React.Component {
               noBtnContainer="new-date-no-btn-container"
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
-              handleYesClick={event => this.saveEditingDate(event, this.state.dateId)}
+              handleYesClick={event => {
+                event.preventDefault();
+                this.state.editingDate
+                  ? this.saveEditingDate(this.state.dateId)
+                  : this.handleSubmit();
+              }}
               handleCancelBtn={() => this.props.onSubmitSuccess}
             />
           </form>
