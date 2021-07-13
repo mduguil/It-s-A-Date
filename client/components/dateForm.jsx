@@ -46,7 +46,8 @@ export default class DateForm extends React.Component {
     this.turnInvitesIntoStr = this.turnInvitesIntoStr.bind(this);
   }
 
-  saveEditingDate = dateId => {
+  saveEditingDate = (event, dateId) => {
+    event.preventDefault();
     const editedDate = {
       location: this.state.address,
       day: (+this.state.selectedMonth + 1) + ' ' + this.state.day + ' ' + this.state.selectedYear,
@@ -145,7 +146,6 @@ export default class DateForm extends React.Component {
       notes: this.state.notes,
       invites: this.turnInvitesIntoStr(this.state.invitees)
     };
-
     fetch('/api/dates', {
       method: 'POST',
       headers: {
@@ -271,7 +271,7 @@ export default class DateForm extends React.Component {
               noBtnContainer="new-date-no-btn-container"
               yesBtn="invite-button new-date-decisions-btn"
               noBtn="no-button new-date-decisions-btn"
-              handleYesClick={() => this.saveEditingDate(this.state.dateId)}
+              handleYesClick={event => this.saveEditingDate(event, this.state.dateId)}
               handleCancelBtn={() => this.props.onSubmitSuccess}
             />
           </form>
